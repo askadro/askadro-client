@@ -7,20 +7,25 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "forceConsistentCasingInFileNames": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@tailwind": ["./src/components/tailwind/index"]
+      "@/*": ["./*"],
+      "@business": ["./components/business/index"],
+      "@ui": ["./components/ui/index"],
+      "@assets": ["./assets/*"],
+      "@utils": ["./utils/index"],
+      "@helpers": ["./helpers/*"],
+      "@styles": ["./styles/*"],
+      "@pages": ["./pages/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
