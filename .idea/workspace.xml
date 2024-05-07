@@ -4,54 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="06.05.2024 16:43">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/auth.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/paths.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/user.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/auth/about-us/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/auth/contact/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/auth/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/auth/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/auth/register/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/dashboard/homepage/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/dashboard/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/dashboard/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/dashboard/profile/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/dashboard/reports/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/dashboard/tickets/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/providers.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/travel.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/svgs/home.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/svgs/home2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/svgs/report.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/svgs/ticket.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/svgs/user.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/business/AppNav.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/business/AuthNav.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/Drawer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/Header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/NavItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/NavList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/app.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/nav.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/paths.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helpers/tailwind-material.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middleware/auth.mw.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/navType.ts" afterDir="false" />
+    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="template created">
+      <change afterPath="$PROJECT_DIR$/styles/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helprs/tailwind-material.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/homepage/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/home/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/NavItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/NavItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/nav.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/nav.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/paths.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,12 +40,12 @@
     &quot;assignee&quot;: &quot;HakanKorkz&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/askadro/askadro-client.git",
-    "accountId": "da2603df-8953-456a-a2e6-e741faa6f22e"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/askadro/askadro-client.git&quot;,
+    &quot;accountId&quot;: &quot;da2603df-8953-456a-a2e6-e741faa6f22e&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 8
@@ -93,21 +58,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/dev/askadro/askadro-client/app/dashboard/profile",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "C:\\dev\\askadro\\askadro-client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/dev/askadro/askadro-client/app/dashboard/profile&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\dev\\askadro\\askadro-client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\dev\askadro\askadro-client\app\dashboard\profile" />
@@ -154,8 +119,18 @@
       <option name="presentableId" value="Default" />
       <updated>1715001151448</updated>
       <workItem from="1715001153644" duration="1897000" />
-      <workItem from="1715066031829" duration="12674000" />
+      <workItem from="1715066031829" duration="17326000" />
+      <workItem from="1715093227822" duration="110000" />
     </task>
+    <task id="LOCAL-00001" summary="template created">
+      <option name="closed" value="true" />
+      <created>1715083941236</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715083941236</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +139,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="06.05.2024 16:43" />
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="template created" />
+    <option name="LAST_COMMIT_MESSAGE" value="template created" />
   </component>
 </project>

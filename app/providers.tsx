@@ -1,7 +1,7 @@
 "use client"
 
 import {ThemeProvider} from "@/helpers/tailwind-material";
-import AuthLayout from "@/layouts/AuthLayout";
+
 import React from "react";
 import {
     QueryClient,

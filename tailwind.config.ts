@@ -76,7 +76,8 @@ const config = withMT({
             },
             fontFamily: {
                 sans: ["var(--font-sans)", ...fontFamily.sans],
-            }
+            },
+
         },
     },
     plugins: [require("tailwindcss-animate")],
