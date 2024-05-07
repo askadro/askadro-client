@@ -26,6 +26,7 @@
       "@helpers": ["./helpers/*"],
       "@styles": ["./styles/*"],
       "@pages": ["./pages/*"],
+      "@config": ["./config/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

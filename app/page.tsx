@@ -1,14 +1,17 @@
-import {Button, Navbar} from "@/helprs/tailwind-material";
+"use client"
+import { Metadata } from 'next'
+import {GetUsers} from "@/api/user";
+import {useEffect} from "react";
 
-export default function Home() {
+// export const metadata: Metadata = {
+//     title: 'Next.js',
+// }
 
-    return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+export default function Page() {
+    const {data,error} = GetUsers()
+    useEffect(()=>{
+        console.log(data,error)
+    },[data,error])
 
-            <Navbar placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                <Button placeholder={undefined} onPointerEnterCapture={undefined}
-                        onPointerLeaveCapture={undefined}>Button</Button>
-            </Navbar>
-        </main>
-    );
+    return '...'
 }
