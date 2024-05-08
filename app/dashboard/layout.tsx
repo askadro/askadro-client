@@ -11,8 +11,9 @@ const DashboardLayout = ({children}: { children: React.ReactNode }) => {
     const router = useRouter();
     const pathname = usePathname();
     useEffect(() => {
-        if (pathname?.split("/")[2] === "undefined") {
-            router.replace(`${APP_PATHS.dashboard}/${APP_PATHS.home}`);
+        console.log("db: ",pathname?.split("/"))
+        if (!pathname?.split("/")[2]) {
+            router.push(`${APP_PATHS.dashboard}/${APP_PATHS.home}`);
         }
     }, [router,pathname]);
 

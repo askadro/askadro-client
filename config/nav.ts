@@ -20,6 +20,12 @@ export const dashboard_navs = [
     },
     {
         id:v4(),
+        title:"Kullanıcılar",
+        path: APP_PATHS.users,
+        icon:Home,
+    },
+    {
+        id:v4(),
         title:"Talepler",
         path: APP_PATHS.tickets,
         icon:Package,

@@ -3,7 +3,7 @@ import Credentials from 'next-auth/providers/credentials';
 import {authConfig} from './auth.config';
 import {z} from 'zod';
 import bcrypt from 'bcrypt';
-import {Login} from "@/api/auth";
+import {Login} from "@/pages/api/auth";
 
 async function getUser(email: string) {
     try {

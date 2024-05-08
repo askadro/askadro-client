@@ -4,19 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="template created">
-      <change afterPath="$PROJECT_DIR$/styles/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="little fix">
+      <change afterPath="$PROJECT_DIR$/app/dashboard/users/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/dashboard/users/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/business/AddUserForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/business/UserTable.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/business/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/FormDatePicker.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/FormSelectInput.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/FormTextInput.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/calendar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/popover.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/select.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/toast.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/toaster.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/use-toast.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/enums.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/_document.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/CreateUserType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/UserType.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/homepage/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/home/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/paths.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/user.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/dashboard/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/providers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/NavItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/NavItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Drawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Drawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/nav.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/nav.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/paths.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +82,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/dev/askadro/askadro-client/app/dashboard/profile&quot;,
@@ -81,6 +104,8 @@
       <recent name="C:\dev\askadro\askadro-client\app\auth" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\dev\askadro\askadro-client\app" />
+      <recent name="C:\dev\askadro\askadro-client\pages" />
       <recent name="C:\dev\askadro\askadro-client\assets\images" />
       <recent name="C:\dev\askadro\askadro-client\assets" />
       <recent name="C:\dev\askadro\askadro-client\assets\svgs" />
@@ -120,7 +145,10 @@
       <updated>1715001151448</updated>
       <workItem from="1715001153644" duration="1897000" />
       <workItem from="1715066031829" duration="17326000" />
-      <workItem from="1715093227822" duration="110000" />
+      <workItem from="1715093227822" duration="144000" />
+      <workItem from="1715150045031" duration="15769000" />
+      <workItem from="1715176157507" duration="682000" />
+      <workItem from="1715176893737" duration="5378000" />
     </task>
     <task id="LOCAL-00001" summary="template created">
       <option name="closed" value="true" />
@@ -130,16 +158,26 @@
       <option name="project" value="LOCAL" />
       <updated>1715083941236</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="little fix">
+      <option name="closed" value="true" />
+      <created>1715093354174</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715093354174</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="06.05.2024 16:43" />
     <MESSAGE value="first commit" />
     <MESSAGE value="template created" />
-    <option name="LAST_COMMIT_MESSAGE" value="template created" />
+    <MESSAGE value="little fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="little fix" />
   </component>
 </project>

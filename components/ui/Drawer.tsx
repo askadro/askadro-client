@@ -9,9 +9,10 @@ import {Badge} from "@/components/ui/badge";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import NavItem from "@/components/ui/NavItem";
 import {APP_NAME} from "@/config/app";
+import {useRouter} from "next/navigation";
 
 export const Drawer = () => {
-
+const router = useRouter();
     const returnNavList = () => {
         return dashboard_navs.map((nav: NavType) => {
             return <nav key={nav.id} className="grid items-start px-2 text-sm font-medium lg:px-4">
@@ -39,15 +40,14 @@ export const Drawer = () => {
                 <div className="mt-auto p-4">
                     <Card x-chunk="dashboard-02-chunk-0">
                         <CardHeader className="p-2 pt-0 md:p-4">
-                            <CardTitle>Upgrade to Pro</CardTitle>
+                            <CardTitle>Bağlantı kurmak</CardTitle>
                             <CardDescription>
-                                Unlock all features and get unlimited access to our support
-                                team.
+                                İletişime geçmek için lütfen bizi arayın
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
-                            <Button size="sm" className="w-full">
-                                Upgrade
+                            <Button size="sm" onClick={()=>router.push("/contact")} className="w-full">
+                                Ara
                             </Button>
                         </CardContent>
                     </Card>
