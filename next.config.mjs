@@ -1,8 +1,14 @@
 /** @type {import('next').NextConfig} */
+import pkg from './next-i18next.config.js';
+const { i18n } = pkg;
+
+
 const nextConfig = {
-    env:{
-        BASE_URL:process.env.BASE_URL,
+    env: {
+        BASE_URL: process.env.BASE_URL,
     },
+    i18n,
+    reactStrictMode:true,
     webpack(config) {
         // Grab the existing rule that handles SVG imports
         const fileLoaderRule = config.module.rules.find((rule) =>
@@ -20,7 +26,7 @@ const nextConfig = {
             {
                 test: /\.svg$/i,
                 issuer: fileLoaderRule.issuer,
-                resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
+                resourceQuery: {not: [...fileLoaderRule.resourceQuery.not, /url/]}, // exclude if *.svg?url
                 use: ['@svgr/webpack'],
             },
         )

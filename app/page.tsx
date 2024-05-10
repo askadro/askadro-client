@@ -1,24 +1,26 @@
 "use client"
-import {Metadata} from 'next'
-import {GetUsers} from "@/api/user";
 import {useEffect} from "react";
 import {usePathname, useRouter} from "next/navigation";
 import {APP_PATHS} from "@/config/paths";
-
-// export const metadata: Metadata = {
-//     title: 'Next.js',
-// }
+import { useTranslation} from "next-i18next";
 
 export default function Page() {
+    const { t, i18n } = useTranslation('common')
     const router = useRouter();
     const pathname = usePathname();
     useEffect(() => {
-        console.log("db: ", pathname?.split("/"))
         if (pathname === "/") {
             if (true) {
-                router.push(`${APP_PATHS.dashboard}/${APP_PATHS.home}`);
+                router.replace(`${APP_PATHS.home}/`);
             }
         }
     }, [router, pathname]);
+
+    const clientSideLanguageChange = (newLocale: string) => {
+        i18n.changeLanguage(newLocale);
+    }
+
+    console.log(t("hi"))
+
     return null
 }

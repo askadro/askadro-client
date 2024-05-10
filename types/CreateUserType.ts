@@ -1,7 +1,22 @@
 export type CreateUserType = {
     firstName: string,
     lastName: string,
-    Identity: string,
     birthDate: Date,
-    gender: string
+    id?:any,
+    status?:boolean,
+    roles:string[],
+    iban:string,
+    Identity:string,
+    gender:string,
+    userAddress:string
+}
+
+export type UpdateUserType = {
+    firstName: string,
+    lastName: string,
+    birthDate: Date,
+    id?:any,
+    roles:string[],
+    iban:string,
+    userAddress:string
 }

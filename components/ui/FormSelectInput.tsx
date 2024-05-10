@@ -34,7 +34,7 @@ export const FormSelectInput = ({form, name, placeholder, label, description, da
                 <FormItem>
                     <FormLabel>{label}</FormLabel>
                     <FormControl>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                             <SelectTrigger className="w-[180px]">
                                 <SelectValue placeholder={placeholder || label}/>
                             </SelectTrigger>
@@ -42,9 +42,6 @@ export const FormSelectInput = ({form, name, placeholder, label, description, da
                                 <SelectGroup>
                                     <SelectLabel>{label}</SelectLabel>
                                     {data.map((item: Data) => <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>)}
-                                    {/*<SelectItem value="male">Erkek</SelectItem>*/}
-                                    {/*<SelectItem value="female">Kadın</SelectItem>*/}
-                                    {/*<SelectItem value="other">Diğer</SelectItem>*/}
                                 </SelectGroup>
                             </SelectContent>
                         </Select>

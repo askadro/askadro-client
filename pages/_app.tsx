@@ -1,8 +1,9 @@
 import type {AppProps} from 'next/app'
 import {HydrationBoundary, QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import React from "react";
+import { appWithTranslation } from 'next-i18next'
 
-export default function MyApp({Component, pageProps}: AppProps) {
+function MyApp({Component, pageProps}: AppProps) {
     const [queryClient] = React.useState(() => new QueryClient())
     return (
         <QueryClientProvider client={queryClient}>
@@ -12,3 +13,21 @@ export default function MyApp({Component, pageProps}: AppProps) {
         </QueryClientProvider>
     )
 }
+
+export default appWithTranslation(MyApp)
+
+/*
+
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+export async function getStaticProps({ locale }) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, [
+                'common',
+                'footer',
+            ])),
+            // Will be passed to the page component as props
+        },
+    }
+}*/

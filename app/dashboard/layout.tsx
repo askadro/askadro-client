@@ -11,15 +11,15 @@ const DashboardLayout = ({children}: { children: React.ReactNode }) => {
     const router = useRouter();
     const pathname = usePathname();
     useEffect(() => {
-        console.log("db: ",pathname?.split("/"))
         if (!pathname?.split("/")[2]) {
             router.push(`${APP_PATHS.dashboard}/${APP_PATHS.home}`);
         }
-    }, [router,pathname]);
+    }, [router, pathname]);
 
     return (
         <TooltipProvider>
-            <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+            <div
+                className="grid h-full w-full md:grid-cols-[150px_1fr] lg:grid-cols-[200px_1fr] xl:grid-cols-[250px_1fr]">
                 <Drawer/>
                 <div className="flex flex-col">
                     <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">

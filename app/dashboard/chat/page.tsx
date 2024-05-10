@@ -1,14 +1,11 @@
 import React from 'react';
 
-
-
-const UserDetail = () => {
-
+const Page = () => {
     return (
         <div>
-            details
+            chat
         </div>
     );
 };
 
-export default UserDetail;
+export default Page;

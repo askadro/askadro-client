@@ -9,72 +9,195 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import {User} from "@/types/UserType";
-import {gender} from "@/config/enums";
-import {Plus} from "lucide-react";
+import {ContactRound, Edit, ListCollapse, Trash} from "lucide-react";
 import {usePathname, useRouter} from "next/navigation";
-import Link from "next/link";
-import {GetUsers} from "@/api/user";
+import {DeleteUser, GetUsers} from "@/api/user";
+import {Badge} from "@/components/ui/badge";
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
+import Image from "next/image";
+
+import {Button} from "@/components/ui/button";
+import {useTranslation} from "next-i18next";
+import {formatDistance, subDays} from 'date-fns';
+import {tr} from "date-fns/locale";
+import {
+    Sheet,
+    SheetClose,
+    SheetContent, SheetDescription,
+    SheetFooter,
+    SheetHeader, SheetPortal,
+    SheetTitle,
+    SheetTrigger
+} from "@/components/ui/sheet";
+import {Label} from "@/components/ui/label";
+import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
+import {useState} from "react";
 
 
 export function UserTable() {
+    const {t} = useTranslation()
     const router = useRouter();
     const pathname = usePathname()
-    const {data, isLoading,error} = GetUsers()
-    console.log(data,"error : ",error)
+    const [sheetData, setSheetData] = useState<User | null>()
+    const [sheetOpen, setSheetOpen] = useState<boolean>(false)
+    const {mutateAsync: deleteUser} = DeleteUser()
+    const {data, isLoading, error} = GetUsers()
     if (isLoading) return null
     if (!data) return null
 
-    const returnGenderText = (g: string) => {
-        let cinsiyet = ""
-        gender.forEach((item: any) => {
-            if (g === item.value) {
-                cinsiyet = item.label
-            }
+    const renderTableHeader = () => {
+    }
+    const renderTableRow = () => {
+        return data.map((user: User) => {
+            return (
+                <TableRow key={user.id}>
+                    <TableCell className="hidden sm:table-cell">
+                        {
+                            user?.image ? <Image
+                                alt={user.firstName}
+                                className="aspect-square rounded-md object-cover"
+                                height="44"
+                                src={user.image}
+                                width="44"
+                            /> : <ContactRound size={44} strokeWidth={1.75}/>
+                        }
+
+                    </TableCell>
+                    <TableCell className="font-medium">
+                        {`${user.firstName} ${user.lastName}`}
+                    </TableCell>
+                    <TableCell>
+                        <Badge variant="outline">
+                            {user.status}
+                        </Badge>
+                    </TableCell>
+                    <TableCell> {user.roles?.map((r: string) => r.split(",").join(" "))}</TableCell>
+                    <TableCell className="hidden md:table-cell">
+                        {t(user.gender)}
+                    </TableCell>
+                    <TableCell className="hidden md:table-cell">
+                        {formatDistance(subDays(new Date(user.createdAt), 0), new Date(), {locale: tr})}
+                    </TableCell>
+                    <TableCell>
+                        <div className="row-auto">
+                            <Button onClick={(e) => {
+                                e.preventDefault()
+                                router.push(`${pathname}/detail/${user.id}`)
+                            }} variant="ghost"
+                                    size="icon">
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <ListCollapse strokeWidth={1.75}/>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>{t("detail")}</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </Button>
+                            <Button onClick={(e) => {
+                                e.preventDefault()
+                                router.push(`${pathname}/edit/${user.id}`)
+                            }}
+                                    variant="ghost"
+                                    size="icon">
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <Edit size={24} strokeWidth={1.75}/>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>{t("edit")}</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </Button>
+                            <Sheet>
+                                <SheetTrigger onClick={() => setSheetData(user)}>
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <Trash size={24} strokeWidth={1.75}/>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>{t("delete")}</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </SheetTrigger>
+                                <SheetContent side="bottom">
+                                    <SheetHeader>
+                                        <SheetTitle>{t("delete_user")}</SheetTitle>
+                                        <SheetDescription>
+                                            {t("delete_user_decs")}
+                                        </SheetDescription>
+                                    </SheetHeader>
+                                    <div className="grid gap-4 py-4">
+                                        <div className="grid grid-cols-4 items-center gap-4">
+                                            <Label htmlFor="name" className="text-right">
+                                                {`${t("do_you_want_delete_user")}`}
+                                            </Label>
+                                            <Label htmlFor="name">
+                                                {`${sheetData?.firstName} ${sheetData?.lastName}`}
+                                            </Label>
+
+                                        </div>
+
+                                    </div>
+                                    <SheetFooter>
+                                        <SheetClose asChild>
+                                            <Button type="submit">{t("cancel")}</Button>
+                                        </SheetClose>
+                                        <SheetClose asChild>
+                                            <Button variant="destructive"
+                                                    onClick={() => deleteUser(user?.id)}>{t("delete")}</Button>
+                                        </SheetClose>
+                                    </SheetFooter>
+                                </SheetContent>
+                            </Sheet>
+                        </div>
+
+                    </TableCell>
+                </TableRow>
+            )
         })
-        return cinsiyet
     }
 
-    const returnDateToAge = (date: string) => {
-        let bt = ""
-        if (!date) return bt;
-
-    }
     return (
-        <Table className="w-full">
-            <TableCaption>A list of your recent invoices.</TableCaption>
-            <TableHeader>
-                <TableRow>
-                    <TableHead className="w-[200px]">Kullanıcı Adı</TableHead>
-                    <TableHead>Status</TableHead>
-                    {/*<TableHead>Alan</TableHead>*/}
-                    <TableHead>Cinsiyet</TableHead>
-                    <TableHead className="text-right">Yaş</TableHead>
-                    <TableHead className="text-right">Güncelle</TableHead>
+        <Card x-chunk="dashboard-06-chunk-0">
+            <CardHeader>
+                <CardTitle>{t("personel")}</CardTitle>
+                <CardDescription>
+                    {t("personel_decs")}
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead className="hidden w-[100px] sm:table-cell">
+                                <span className="sr-only">Image</span>
+                            </TableHead>
+                            <TableHead>{t("name")}</TableHead>
+                            <TableHead>{t("status")}</TableHead>
+                            <TableHead>{t("roles")}</TableHead>
+                            <TableHead className="hidden md:table-cell">
+                                {t("gender")}
+                            </TableHead>
+                            <TableHead className="hidden md:table-cell">
+                                {t("createdAt")}
+                            </TableHead>
+                            <TableHead>
+                                <span className="sr-only">{t("actions")}</span>
+                            </TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {renderTableRow()}
+                    </TableBody>
+                </Table>
+            </CardContent>
+            <CardFooter>
+                <div className="text-xs text-muted-foreground">
+                    {t("showing")} <strong>1-10</strong> of <strong>{data.length}</strong> {t("products")}
+                </div>
+            </CardFooter>
+        </Card>
 
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                {data.map((user: User) => (
-                    <TableRow key={user?.id}>
-                        <TableCell className="font-medium">{`${user?.firstName} ${user?.lastName}`}</TableCell>
-                        <TableCell>{user?.status}</TableCell>
-                        {/*<TableCell>{user.male}</TableCell>*/}
-                        <TableCell>{returnGenderText(user?.gender)}</TableCell>
-                        <TableCell className="text-right">{user?.birthDate}</TableCell>
-                        <TableCell className="flex justify-end">
-                            <Link  href={{pathname: `${pathname}/${user.id}`}} >
-                                <Plus className="" />
-                            </Link>
-                        </TableCell>
-                    </TableRow>
-                    ))}
-            </TableBody>
-            <TableFooter>
-                <TableRow>
-                    <TableCell colSpan={4}>Total</TableCell>
-                    <TableCell className="text-right">$2,500.00</TableCell>
-                </TableRow>
-            </TableFooter>
-        </Table>
-)
+    )
 }

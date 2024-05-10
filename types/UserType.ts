@@ -2,12 +2,15 @@ export type User = {
     Identity: string
     firstName: string
     lastName: string
-    birthDate: string
+    birthDate: Date
     gender: string
-    address: any
+    userAddress: any
     id: string
     status: string
     deletedAt: any
     createdAt: string
     updatedAt: string
+    image:string
+    roles:string[]
+    iban:string
 }
