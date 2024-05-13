@@ -1,6 +1,5 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {z} from "zod";
-import {useTranslation} from "next-i18next";
 import {useToast} from "@/components/ui/use-toast";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -53,7 +52,6 @@ const getDefaultCityValue = (cityValue?: string): string => {
 
 export const CompanyForm = (props: Props) => {
     const {defaultValues, id, buttonTitle} = props
-    const {t} = useTranslation()
     const {toast} = useToast()
     const [city, setCity] = useState("")
     const form = useForm<z.infer<typeof formSchema>>({
@@ -93,6 +91,10 @@ export const CompanyForm = (props: Props) => {
         form.reset(defaultValues); // Reset with default values on change
     }, [defaultValues, form]);
     if (!provinces) return null
+
+    const t = (key: string) => {
+        return key
+    }
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">

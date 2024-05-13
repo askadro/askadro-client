@@ -22,12 +22,11 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/compo
 import {dashboard_navs} from "@/config/nav";
 import {NavType} from "@/types/navType";
 import {LanguageSwitcher} from "@business";
-import {useTranslation} from "next-i18next";
 
 const Header = () => {
-const {t,ready} = useTranslation("common");
-
-    console.log("t: ",t.name,ready)
+    const t = (key: string) => {
+        return key
+    }
     const returnNavList = () => {
         return dashboard_navs.map((nav: NavType) => {
             return <Link

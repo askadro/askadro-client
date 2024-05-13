@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {GetCompanies} from "@/api/company";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
-import {useTranslation} from "next-i18next";
 import {usePathname, useRouter} from "next/navigation";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {Company} from "@/types/Company";
@@ -26,9 +25,12 @@ import useRoute from "@/hooks/useRoute";
 
 export const CompanyTable = () => {
     const [sheetData, setSheetData] = useState<Company | null>()
-    const {t} = useTranslation()
     const {data} = GetCompanies()
     const route = useRoute()
+
+    const t = (key: string) => {
+        return key
+    }
 
 
     const renderTableRow = () => {

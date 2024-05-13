@@ -1,7 +1,9 @@
-/** @type {import('next').NextConfig} */
-import pkg from './next-i18next.config.js';
-const { i18n } = pkg;
 
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin();
+
+/** @type {import('next').NextConfig} */
 
 const nextConfig = {
     env: {
@@ -10,7 +12,6 @@ const nextConfig = {
     experimental: {
         appDir: true,
     },
-    i18n:i18n,
     reactStrictMode:true,
     webpack(config) {
         // Grab the existing rule that handles SVG imports
@@ -41,4 +42,5 @@ const nextConfig = {
     }
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
+

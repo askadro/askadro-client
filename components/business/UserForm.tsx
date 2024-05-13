@@ -10,7 +10,6 @@ import 'react-calendar/dist/Calendar.css';
 import {gender, ROLES} from "@/config/enums";
 import {SetUser, UpdateUser} from "@/api/user";
 import {useToast} from "@/components/ui/use-toast"
-import {useTranslation} from "next-i18next";
 import {UpdateUserType} from "@/types/CreateUserType";
 
 type ValuePiece = Date | null;
@@ -46,7 +45,9 @@ const cleanValues = {firstName:"",lastName:"",Identity:"",iban: "",gender: "",us
 
 export const UserForm = (props: Props) => {
     const {defaultValues, id, buttonTitle} = props
-    const {t} = useTranslation()
+    const t = (key: string) => {
+        return key
+    }
     const {toast} = useToast()
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),

@@ -17,7 +17,6 @@ import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} f
 import Image from "next/image";
 
 import {Button} from "@/components/ui/button";
-import {useTranslation} from "next-i18next";
 import {formatDistance, subDays} from 'date-fns';
 import {tr} from "date-fns/locale";
 import {
@@ -36,7 +35,9 @@ import useRoute from "@/hooks/useRoute";
 
 
 export function UserTable() {
-    const {t} = useTranslation()
+    const t = (key: string) => {
+        return key
+    }
     const [sheetData, setSheetData] = useState<User | null>()
     const {mutateAsync: deleteUser} = DeleteUser()
     const {data, isLoading} = GetUsers()
