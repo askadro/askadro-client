@@ -1,5 +1,7 @@
 {
   "hi": "Merhaba!",
   "actions": "Aksiyon",
-  "do_you_want_delete_user": "Kullanıcıyı silmek istiyor musunuz?"
+  "do_you_want_delete_user": "Kullanıcıyı silmek istiyor musunuz?",
+  "search_user": "Personel ara",
+  "personel_decs": "Personel bilgileri"
 }

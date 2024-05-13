@@ -36,6 +36,7 @@
     "next": "14.2.3",
     "next-auth": "^5.0.0-beta.17",
     "next-i18next": "^15.3.0",
+    "next-themes": "^0.3.0",
     "react": "^18",
     "react-date-picker": "^11.0.0",
     "react-day-picker": "^8.10.1",

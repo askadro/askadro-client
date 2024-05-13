@@ -2,6 +2,8 @@ import type {AppProps} from 'next/app'
 import {HydrationBoundary, QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import React from "react";
 import { appWithTranslation } from 'next-i18next'
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import nextI18NextConfig from '../next-i18next.config.js';
 
 function MyApp({Component, pageProps}: AppProps) {
     const [queryClient] = React.useState(() => new QueryClient())
@@ -14,7 +16,7 @@ function MyApp({Component, pageProps}: AppProps) {
     )
 }
 
-export default appWithTranslation(MyApp)
+export default appWithTranslation(MyApp,nextI18NextConfig)
 
 /*
 

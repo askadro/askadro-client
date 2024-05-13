@@ -3,25 +3,13 @@ import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
 import {Button} from "@/components/ui/button";
 import {
     CircleUser,
-    Home,
-    LineChart,
     Menu,
-    Package,
     Package2,
-    PanelLeft,
     Search,
-    ShoppingCart,
-    Users,
-    Users2
+
 } from "lucide-react";
 import Link from "next/link";
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList, BreadcrumbPage,
-    BreadcrumbSeparator
-} from "@/components/ui/breadcrumb";
+
 import {Input} from "@/components/ui/input";
 import {
     DropdownMenu,
@@ -30,14 +18,16 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
-import Image from "next/image";
-import {Badge} from "@/components/ui/badge";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {dashboard_navs} from "@/config/nav";
 import {NavType} from "@/types/navType";
+import {LanguageSwitcher} from "@business";
+import {useTranslation} from "next-i18next";
 
 const Header = () => {
+const {t,ready} = useTranslation("common");
 
+    console.log("t: ",t.name,ready)
     const returnNavList = () => {
         return dashboard_navs.map((nav: NavType) => {
             return <Link
@@ -99,12 +89,13 @@ const Header = () => {
                         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground"/>
                         <Input
                             type="search"
-                            placeholder="Search products..."
+                            placeholder={t("search_user")}
                             className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
                         />
                     </div>
                 </form>
             </div>
+            <LanguageSwitcher />
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button variant="secondary" size="icon" className="rounded-full">

@@ -1,5 +1,7 @@
 {
   "hi": "Hi!",
   "actions": "Action",
-  "do_you_want_delete_user": "Do you want delete user?"
+  "do_you_want_delete_user": "Do you want delete user?",
+  "search_user": "Search personel",
+  "personel_decs": "Personel info"
 }

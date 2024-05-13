@@ -7,12 +7,11 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
-import {gender} from "@/config/enums";
+import {gender, ROLES} from "@/config/enums";
 import {SetUser, UpdateUser} from "@/api/user";
 import {useToast} from "@/components/ui/use-toast"
 import {useTranslation} from "next-i18next";
 import {UpdateUserType} from "@/types/CreateUserType";
-import {ROLES} from "@/config/app";
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
