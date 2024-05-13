@@ -7,7 +7,10 @@ const nextConfig = {
     env: {
         BASE_URL: process.env.BASE_URL,
     },
-    i18n,
+    experimental: {
+        appDir: true,
+    },
+    i18n:i18n,
     reactStrictMode:true,
     webpack(config) {
         // Grab the existing rule that handles SVG imports

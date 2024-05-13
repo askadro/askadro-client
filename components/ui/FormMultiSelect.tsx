@@ -5,15 +5,14 @@ import {FormProps} from "react-hook-form";
 import Select from 'react-select'
 
 type Props = {
-    form: FormProps<any>
     name: string
     label: string
     description?: string
     placeholder?: string
     data: any[]
     multi?: boolean
-    roles: string[]
-    setRoles: any
+    state: string[] | string
+    setState: any
 }
 
 export const FormMultiSelect = ({
@@ -21,15 +20,14 @@ export const FormMultiSelect = ({
                                     description,
                                     data,
                                     multi = true,
-                                    roles,
-                                    setRoles
+                                    state,
+                                    setState
                                 }: Props) => {
     return (
-
-        <FormItem>
+        <FormItem className="">
             <FormLabel>{label}</FormLabel>
             <FormControl className="w-[360px]">
-                <Select options={data} onChange={setRoles} value={roles} isMulti={multi}/>
+                <Select options={data} onChange={setState} value={state} isMulti={multi}/>
             </FormControl>
             {description ? <FormDescription>
                 {description}

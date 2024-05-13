@@ -41,7 +41,7 @@ export const FormSelectInput = ({form, name, placeholder, label, description, da
                             <SelectContent>
                                 <SelectGroup>
                                     <SelectLabel>{label}</SelectLabel>
-                                    {data.map((item: Data) => <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>)}
+                                    {data?.map((item: Data) => <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>)}
                                 </SelectGroup>
                             </SelectContent>
                         </Select>

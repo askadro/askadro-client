@@ -9,12 +9,9 @@ type Props = {
     placeholder?: string
     label: string
     description?: string
-    type?:string
-    disable?:boolean
-    defaultValue?:string | number | readonly string[] | undefined
 }
 
-export const FormTextInput = ({form, name, placeholder, label, description,type="text",disable=false,defaultValue}: Props) => {
+export const FormSelectImage = ({form, name, label, description}: Props) => {
     return (
         <FormField
             control={form.control}
@@ -23,7 +20,7 @@ export const FormTextInput = ({form, name, placeholder, label, description,type=
                 <FormItem>
                     <FormLabel>{label}</FormLabel>
                     <FormControl className="w-[360px]">
-                        <Input defaultValue={defaultValue} disabled={disable} type={type} placeholder={placeholder || label} {...field}/>
+                        <Input id="picture" type="file" {...field} />
                     </FormControl>
                     {description ? <FormDescription>
                         {description}

@@ -1,3 +1,4 @@
+export {FormSelectImage} from "@/components/ui/FormSelectImage";
 export {Paging} from "@/components/ui/Paging";
 export {FormMultiSelect} from "@/components/ui/FormMultiSelect";
 export {FormTextArea} from "@/components/ui/FormTextArea";

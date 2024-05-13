@@ -1,83 +1,79 @@
-import {
-    Table,
-    TableBody,
-    TableCaption,
-    TableCell,
-    TableFooter,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
-import {User} from "@/types/UserType";
-import {ContactRound, Edit, ListCollapse, Trash} from "lucide-react";
-import {usePathname, useRouter} from "next/navigation";
-import {DeleteUser, GetUsers} from "@/api/user";
-import {Badge} from "@/components/ui/badge";
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import Image from "next/image";
-
-import {Button} from "@/components/ui/button";
+import React, {useState} from 'react';
+import {GetCompanies} from "@/api/company";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {useTranslation} from "next-i18next";
-import {formatDistance, subDays} from 'date-fns';
+import {usePathname, useRouter} from "next/navigation";
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
+import {Company} from "@/types/Company";
+import Image from "next/image";
+import {Building2, ContactRound, Edit, ListCollapse, Trash} from "lucide-react";
+import {Badge} from "@/components/ui/badge";
+import {formatDistance, subDays} from "date-fns";
 import {tr} from "date-fns/locale";
+import {Button} from "@/components/ui/button";
+import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
 import {
-    Sheet,
-    SheetClose,
-    SheetContent, SheetDescription,
+    Sheet, SheetClose,
+    SheetContent,
+    SheetDescription,
     SheetFooter,
-    SheetHeader, SheetPortal,
+    SheetHeader,
     SheetTitle,
     SheetTrigger
 } from "@/components/ui/sheet";
 import {Label} from "@/components/ui/label";
-import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
-import {useState} from "react";
 import useRoute from "@/hooks/useRoute";
 
-
-export function UserTable() {
+export const CompanyTable = () => {
+    const [sheetData, setSheetData] = useState<Company | null>()
     const {t} = useTranslation()
-    const [sheetData, setSheetData] = useState<User | null>()
-    const {mutateAsync: deleteUser} = DeleteUser()
-    const {data, isLoading} = GetUsers()
+    const {data} = GetCompanies()
     const route = useRoute()
-    if (isLoading) return null
-    if (!data) return null
+
 
     const renderTableRow = () => {
-        return data.map((user: User) => {
+        return data?.map((company: Company) => {
             return (
-                <TableRow key={user.id}>
+                <TableRow key={company.id} >
                     <TableCell className="hidden sm:table-cell">
                         {
-                            user?.image ? <Image
-                                alt={user.firstName}
+                            company?.logo ? <Image
+                                alt={company?.name}
                                 className="aspect-square rounded-md object-cover"
                                 height="44"
-                                src={user.image}
+                                src={company?.logo}
                                 width="44"
-                            /> : <ContactRound size={44} strokeWidth={1.75}/>
+                            /> : <Building2 size={44} strokeWidth={1.75}/>
                         }
 
                     </TableCell>
                     <TableCell className="font-medium">
-                        {`${user.firstName} ${user.lastName}`}
+                        {`${company?.name}`}
                     </TableCell>
                     <TableCell>
                         <Badge variant="outline">
-                            {user.status}
+                            {company?.shortName}
                         </Badge>
                     </TableCell>
-                    <TableCell> {user.roles?.map((r: string) => r.split(",").join(" "))}</TableCell>
                     <TableCell className="hidden md:table-cell">
-                        {t(user.gender)}
+                        {t(company?.phone)}
                     </TableCell>
                     <TableCell className="hidden md:table-cell">
-                        {formatDistance(subDays(new Date(user.createdAt), 0), new Date(), {locale: tr})}
+                        <Badge variant="outline">
+                            {t(company?.timeOfPayment)}
+                        </Badge>
+                    </TableCell>
+                    <TableCell className="hidden md:table-cell">
+                        <Badge variant="outline">
+                            {t(company?.totalWorkingTime)}
+                        </Badge>
+                    </TableCell>
+                    <TableCell className="hidden md:table-cell">
+                        {formatDistance(subDays(new Date(company?.createdDate), 0), new Date(), {locale: tr})}
                     </TableCell>
                     <TableCell>
                         <div className="row-auto">
-                            <Button onClick={(e) => route(e, `detail/${user.id}`)
+                            <Button onClick={(e) => route(e, `detail/${company.id}`)
                             } variant="ghost"
                                     size="icon">
                                 <Tooltip>
@@ -89,7 +85,7 @@ export function UserTable() {
                                     </TooltipContent>
                                 </Tooltip>
                             </Button>
-                            <Button onClick={(e) => route(e,`edit/${user.id}`)
+                            <Button onClick={(e) =>        route(e,`edit/${company.id}`)
                             }
                                     variant="ghost"
                                     size="icon">
@@ -103,7 +99,7 @@ export function UserTable() {
                                 </Tooltip>
                             </Button>
                             <Sheet>
-                                <SheetTrigger onClick={() => setSheetData(user)}>
+                                <SheetTrigger onClick={() => setSheetData(company)}>
                                     <Tooltip>
                                         <TooltipTrigger asChild>
                                             <Trash size={24} strokeWidth={1.75}/>
@@ -126,7 +122,7 @@ export function UserTable() {
                                                 {`${t("do_you_want_delete_user")}`}
                                             </Label>
                                             <Label htmlFor="name">
-                                                {`${sheetData?.firstName} ${sheetData?.lastName}`}
+                                                {`${sheetData?.name}`}
                                             </Label>
 
                                         </div>
@@ -138,7 +134,9 @@ export function UserTable() {
                                         </SheetClose>
                                         <SheetClose asChild>
                                             <Button variant="destructive"
-                                                    onClick={() => deleteUser(user?.id)}>{t("delete")}</Button>
+                                                // onClick={() => deleteUser(company?.id)}
+                                            >
+                                                {t("delete")}</Button>
                                         </SheetClose>
                                     </SheetFooter>
                                 </SheetContent>
@@ -154,9 +152,9 @@ export function UserTable() {
     return (
         <Card x-chunk="dashboard-06-chunk-0">
             <CardHeader>
-                <CardTitle>{t("personel")}</CardTitle>
+                <CardTitle>{t("companies")}</CardTitle>
                 <CardDescription>
-                    {t("personel_decs")}
+                    {t("companies_decs")}
                 </CardDescription>
             </CardHeader>
             <CardContent>
@@ -164,13 +162,14 @@ export function UserTable() {
                     <TableHeader>
                         <TableRow>
                             <TableHead className="hidden w-[100px] sm:table-cell">
-                                <span className="sr-only">Image</span>
+                                <span className="sr-only">{t("logo")}</span>
                             </TableHead>
                             <TableHead>{t("name")}</TableHead>
-                            <TableHead>{t("status")}</TableHead>
-                            <TableHead>{t("roles")}</TableHead>
+                            <TableHead>{t("shortName")}</TableHead>
+                            <TableHead>{t("phone")}</TableHead>
+                            <TableHead>{t("timeOfPayment")}</TableHead>
                             <TableHead className="hidden md:table-cell">
-                                {t("gender")}
+                                {t("totalWorkingTime")}
                             </TableHead>
                             <TableHead className="hidden md:table-cell">
                                 {t("createdAt")}
@@ -185,12 +184,7 @@ export function UserTable() {
                     </TableBody>
                 </Table>
             </CardContent>
-            <CardFooter>
-                <div className="text-xs text-muted-foreground">
-                    {t("showing")} <strong>1-10</strong> of <strong>{data.length}</strong> {t("products")}
-                </div>
-            </CardFooter>
         </Card>
+    );
+};
 
-    )
-}
