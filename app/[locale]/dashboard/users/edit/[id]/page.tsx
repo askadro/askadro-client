@@ -17,7 +17,6 @@ const UserDetail = () => {
     const params = useParams()
     const {data, isLoading, isSuccess, error, refetch: refecthUser} = GetUser(params?.id)
     const [user, setUser] = useState<CreateUserType | null>(data)
-    console.log("params: ", router)
     useEffect(() => {
         if (isSuccess) {
             setUser(data)

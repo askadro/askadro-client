@@ -30,7 +30,7 @@ export async function Providers({
                 >
                     <TooltipProvider>
                         {children}
-                        <Toaster/>
+                        <Toaster />
                     </TooltipProvider>
                 </ThemeProvider>
             </HydrateClient>

@@ -1,3 +1,4 @@
+export {FormComboboxSelect} from "@/components/ui/FormComboboxSelect";
 export {Authorized} from "@/components/ui/Authorized";
 export {FormSelectImage} from "@/components/ui/FormSelectImage";
 export {Paging} from "@/components/ui/Paging";

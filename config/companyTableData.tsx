@@ -11,7 +11,21 @@ import {
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import * as React from "react";
-
+import {useRouter} from "next/navigation"
+import {APP_PATHS} from "@/config/paths";
+import useRoute from "@/hooks/useRoute";
+import {
+    Sheet, SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger
+} from "@/components/ui/sheet";
+import {Label} from "@/components/ui/label";
+import {Input} from "@/components/ui/input";
+import {useTranslations} from "next-intl";
 
 
 export const companyColums: ColumnDef<Company>[] = [
@@ -93,7 +107,10 @@ export const companyColums: ColumnDef<Company>[] = [
         enableHiding: false,
         cell: ({row}) => {
             const company = row.original
-
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            const route = useRoute()
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            const t = useTranslations()
             return (
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -104,14 +121,12 @@ export const companyColums: ColumnDef<Company>[] = [
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem
-                            onClick={() => navigator.clipboard.writeText(company.id)}
-                        >
-                            Copy payment ID
+                        <DropdownMenuItem onClick={(e) => route(e, `detail/${company.id}`)}>
+                           Detail
                         </DropdownMenuItem>
                         <DropdownMenuSeparator/>
-                        <DropdownMenuItem>View customer</DropdownMenuItem>
-                        <DropdownMenuItem>View payment details</DropdownMenuItem>
+                        <DropdownMenuItem
+                            onClick={(e) => route(e, `edit/${company.id}`)}>Edit</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             )

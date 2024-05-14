@@ -1,6 +1,6 @@
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {apiClient} from "@/api/index";
-import {COMPANIES, CREATE_COMPANY, CREATE_USER, UPDATE_COMPANY, UPDATE_USER} from "@/api/paths";
+import {COMPANIES, CREATE_COMPANY, CREATE_USER, DELETE_COMPANY, UPDATE_COMPANY, UPDATE_USER} from "@/api/paths";
 import {CACHE_TIMEOUT} from "@/config/app";
 import {Company, CreateCompany, UpdateCompanyType} from "@/types/Company";
 
@@ -44,6 +44,19 @@ export function UpdateCompany() {
     return useMutation({
         mutationFn: async (body: UpdateCompanyType) => {
             const res = await apiClient.patch(`${UPDATE_COMPANY}/${body.id}`, body);
+            return await res.data;
+        },
+        async onSuccess() {
+            await  queryClient.invalidateQueries({queryKey: ["companies"]})
+        }
+    });
+}
+
+export function DeleteCompany() {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: async (id:string) => {
+            const res = await apiClient.delete(`${DELETE_COMPANY}/${id}`);
             return await res.data;
         },
         async onSuccess() {

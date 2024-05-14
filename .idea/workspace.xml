@@ -4,55 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="language plsease answer like quality for senior developer hakan Korkmaz (Mrs.)  pls can you solve the problem, hurry up ı am waiting you for this issue.!">
-      <change afterPath="$PROJECT_DIR$/api/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/not-found.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/business/Table.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/Authorized.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/checkbox.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/companyTableData.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/jobTitles.ts" afterDir="false" />
+    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="add authorized person fo company">
+      <change afterPath="$PROJECT_DIR$/components/ui/FormComboboxSelect.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/command.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/dialog.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/about-us/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/about-us/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/contact/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/contact/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/register/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/chat/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/chat/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/companies/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/add/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/companies/detail/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/detail/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/companies/edit/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/edit/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/companies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/home/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/home/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/profile/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/reports/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/reports/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/tickets/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/users/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/add/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/users/detail/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/detail/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/users/edit/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/edit/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/business/AuthNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/AuthNav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/company.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/companies/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/add/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/companies/detail/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/detail/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/users/detail/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/detail/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/users/edit/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/edit/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/business/CompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/CompanyForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/business/UserTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/UserTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/business/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/Drawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Drawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/NavList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/NavList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/business/UserForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/UserForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Authorized.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Authorized.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/FormTextInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormTextInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/NameWithBack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/NameWithBack.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/nav.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/nav.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/paths.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/companyTableData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/config/companyTableData.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messages/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/tr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/types/Company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/Company.ts" afterDir="false" />
@@ -66,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -174,7 +143,7 @@
       <workItem from="1715586937379" duration="18893000" />
       <workItem from="1715666494167" duration="370000" />
       <workItem from="1715666885589" duration="37000" />
-      <workItem from="1715666930908" duration="18883000" />
+      <workItem from="1715666930908" duration="30413000" />
     </task>
     <task id="LOCAL-00001" summary="template created">
       <option name="closed" value="true" />
@@ -208,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715593977796</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add authorized person fo company">
+      <option name="closed" value="true" />
+      <created>1715696259074</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715696259074</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,6 +199,7 @@
     <MESSAGE value="little fix" />
     <MESSAGE value="user crud added and responsible design" />
     <MESSAGE value="language plsease answer like quality for senior developer hakan Korkmaz (Mrs.)  pls can you solve the problem, hurry up ı am waiting you for this issue.!" />
-    <option name="LAST_COMMIT_MESSAGE" value="language plsease answer like quality for senior developer hakan Korkmaz (Mrs.)  pls can you solve the problem, hurry up ı am waiting you for this issue.!" />
+    <MESSAGE value="add authorized person fo company" />
+    <option name="LAST_COMMIT_MESSAGE" value="add authorized person fo company" />
   </component>
 </project>

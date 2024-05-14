@@ -7,23 +7,33 @@ type Props = {
     form: FormProps<any>
     name: string
     placeholder?: string
-    label: string
+    label?: string
     description?: string
-    type?:string
-    disable?:boolean
-    defaultValue?:string | number | readonly string[] | undefined
+    type?: string
+    disable?: boolean
+    defaultValue?: string | number | readonly string[] | undefined
 }
 
-export const FormTextInput = ({form, name, placeholder, label, description,type="text",disable=false,defaultValue}: Props) => {
+export const FormTextInput = ({
+                                  form,
+                                  name,
+                                  placeholder,
+                                  label,
+                                  description,
+                                  type = "text",
+                                  disable = false,
+                                  defaultValue
+                              }: Props) => {
     return (
         <FormField
             control={form.control}
             name={name}
             render={({field}) => (
                 <FormItem>
-                    <FormLabel>{label}</FormLabel>
-                    <FormControl className="w-[360px]">
-                        <Input defaultValue={defaultValue} disabled={disable} type={type} placeholder={placeholder || label} {...field}/>
+                    {label ? <FormLabel>{label}</FormLabel> : null}
+                    <FormControl>
+                        <Input defaultValue={defaultValue} disabled={disable} type={type}
+                               placeholder={placeholder || label} {...field}/>
                     </FormControl>
                     {description ? <FormDescription>
                         {description}

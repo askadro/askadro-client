@@ -3,7 +3,7 @@ import {Button} from "@/components/ui/button";
 import {ChevronLeft} from "lucide-react";
 import {Badge} from "@/components/ui/badge";
 import {useRouter} from "next/navigation";
-import {useTranslation} from "next-i18next";
+import {useTranslations} from "next-intl";
 
 type Props = {
     name:String
@@ -12,7 +12,7 @@ type Props = {
 
 const NameWithBack = ({name,desc}:Props) => {
     const router = useRouter()
-    const {t} = useTranslation()
+    const t = useTranslations("index")
     return (
         <div className="flex items-center gap-4">
             <Button onClick={() => router.back()} variant="outline" size="icon" className="h-7 w-7">

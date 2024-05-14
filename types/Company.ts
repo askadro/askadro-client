@@ -33,9 +33,8 @@ export type CreateCompany = {
     registrationNumber: string
     timeOfPayment: string
     totalWorkingTime: string
-    password: string
-    shortName: string
-    logo:string
+    shortName?: string
+    logo?:string
     authorized?:Authorized[]
 }
 
@@ -47,9 +46,9 @@ export type UpdateCompanyType = {
     registrationNumber: string
     timeOfPayment: string
     totalWorkingTime: string
-    password: string
-    shortName: string
-    logo:string
+    password?: string
+    shortName?: string
+    logo?:string
     authorized?:Authorized[]
     id: string
 }

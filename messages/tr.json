@@ -75,6 +75,16 @@
     "what_month": "Hangi ay",
     "back": "Geri",
     "opsiyonel": "Opsiyonel",
-    "add_authorized": "Yetkili Ekle"
+    "add_authorized": "Yetkili Ekle",
+    "how_work_hour": "Bir personelin azami çalışma süresi",
+    "name_and_surname": "Ad Soyad",
+    "new_company": "Yeni şirket",
+    "user_work_decs": "Kullanıcı için girilmiş işler",
+    "staff_work_decs": "Personel için girilmiş işler",
+    "works": "İşler",
+    "delete": "Sil",
+    "delete_title": "Siliniyor...",
+    "delete_decs": "Aşağıdaki veri kalıcı olarak silinecek.",
+    "short_name": "Kısa isim"
   }
 }

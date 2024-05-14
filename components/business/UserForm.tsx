@@ -93,7 +93,7 @@ export const UserForm = (props: Props) => {
                 <FormSelectInput form={form} name="gender" label="Cinsiyet" data={gender}/>
                 <FormDatePicker form={form} name="birthDate" label="Date of birth"
                                 description="Doğum tarihi yaş bilgisi için önemli."/>
-                <FormMultiSelect form={form} name="roles" label={t("roles")} data={ROLES} state={roles}
+                <FormMultiSelect name="roles" label={t("roles")} data={ROLES} state={roles}
                                  setState={setRoles}/>
                 <FormTextArea form={form} label="Adress" name="userAddress"/>
                 <Button type="submit">{t(buttonTitle || "submit")}</Button>
