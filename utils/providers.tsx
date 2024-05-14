@@ -1,7 +1,6 @@
 "use client"
 
-
-import React, {Suspense} from "react";
+import React from "react";
 import {
     dehydrate,
     QueryClient,
@@ -10,10 +9,16 @@ import {
 import {ThemeProvider} from "@/components/theme-provider";
 import HydrateClient from "@/utils/hydrate.client";
 import {Toaster} from "@/components/ui/toaster";
+import {TooltipProvider} from "@/components/ui/tooltip";
 
-export function Providers({children}: { children: any }) {
+export async function Providers({
+                                    children,
+                                }: {
+    children: React.ReactNode;
+}) {
     const [queryClient] = React.useState(() => new QueryClient())
     const dehydratedState = dehydrate(queryClient);
+
     return (
         <QueryClientProvider client={queryClient}>
             <HydrateClient state={dehydratedState}>
@@ -23,14 +28,10 @@ export function Providers({children}: { children: any }) {
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <Suspense
-                        fallback={
-                            <p style={{textAlign: "center"}}>loading... on initial request</p>
-                        }
-                    >
+                    <TooltipProvider>
                         {children}
-                    </Suspense>
-                    <Toaster/>
+                        <Toaster/>
+                    </TooltipProvider>
                 </ThemeProvider>
             </HydrateClient>
         </QueryClientProvider>

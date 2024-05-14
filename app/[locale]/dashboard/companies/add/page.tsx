@@ -1,48 +1,34 @@
 "use client"
 import React, {useEffect, useState} from 'react';
-import {UserForm} from "@business";
+import {CompanyForm, UserForm} from "@business";
 import {useRouter, useParams} from "next/navigation";
-import {GetUser} from "@/api/user";
+import {GetUser, SetUser} from "@/api/user";
 import {Button} from "@/components/ui/button";
 import {ChevronLeft, PlusCircle} from "lucide-react";
 import {Badge} from "@/components/ui/badge";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import {Label} from "@/components/ui/label";
-import {Input} from "@/components/ui/input";
-import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
-import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
-import {useTranslation} from "next-i18next";
-import {CreateUserType} from "@/types/CreateUserType";
+import {useTranslations} from "next-intl";
+import useRoute from "@/hooks/useRoute";
 
 
-const UserDetail = () => {
+const CompanyDetail = () => {
     const router = useRouter()
-    const {t} = useTranslation()
-    const params = useParams()
-    const {data, isLoading, isSuccess, error, refetch: refecthUser} = GetUser(params?.id)
-    const [user, setUser] = useState<CreateUserType | null>(data)
-    console.log("params: ", router)
-    useEffect(() => {
-        if (isSuccess) {
-            setUser(data)
-        }
-    }, [data, isLoading, isSuccess]);
+    const route = useRoute()
+    const t = useTranslations("index")
 
-    if (!data || !user) return null
     return (
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
                 <div className="flex items-center gap-4">
-                    <Button onClick={() => router.back()} variant="outline" size="icon" className="h-7 w-7">
+                    <Button onClick={(e) => {
+                        e.preventDefault()
+                        router.back()
+                    }} variant="outline" size="icon" className="h-7 w-7">
                         <ChevronLeft className="h-4 w-4"/>
                         <span className="sr-only">{t("back")}</span>
                     </Button>
                     <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
-                        {t("user_detail")}
+                        {t("new_user")}
                     </h1>
-                    <Badge variant="outline" className="ml-auto sm:ml-0">
-                        {user?.status}
-                    </Badge>
                     <div className="hidden items-center gap-2 md:ml-auto md:flex">
                         <Button variant="outline" size="sm">
                             {t("clean")}
@@ -60,7 +46,7 @@ const UserDetail = () => {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent>
-                                    <UserForm defaultValues={user} id={user.id} buttonTitle={t("save")}/>
+                                    <CompanyForm />
                             </CardContent>
                         </Card>
                     </div>
@@ -78,4 +64,4 @@ const UserDetail = () => {
 {/*<UserForm defaultValues={data} id={params?.id} />*/
 }
 
-export default UserDetail;
+export default CompanyDetail;

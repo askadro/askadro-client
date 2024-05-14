@@ -12,13 +12,13 @@ import {Input} from "@/components/ui/input";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
-import {useTranslation} from "next-i18next";
 import {CreateUserType} from "@/types/CreateUserType";
+import {useTranslations} from "next-intl";
 
 
 const UserDetail = () => {
     const router = useRouter()
-    const {t} = useTranslation()
+    const t = useTranslations("index")
     const params = useParams()
     const {data, isLoading, isSuccess, error, refetch: refecthUser} = GetUser(params?.id)
     const [user, setUser] = useState<CreateUserType | null>(data)
@@ -28,9 +28,6 @@ const UserDetail = () => {
             setUser(data)
         }
     }, [data, isLoading, isSuccess]);
-
-    const returnDataTableContent = () => {
-    }
 
     if (!data || !user) return null
     return (

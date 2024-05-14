@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
 import {Button} from "@/components/ui/button";
@@ -22,11 +24,10 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/compo
 import {dashboard_navs} from "@/config/nav";
 import {NavType} from "@/types/navType";
 import {LanguageSwitcher} from "@business";
+import {useTranslations} from "next-intl";
 
 const Header = () => {
-    const t = (key: string) => {
-        return key
-    }
+    const t = useTranslations("index")
     const returnNavList = () => {
         return dashboard_navs.map((nav: NavType) => {
             return <Link
@@ -35,7 +36,7 @@ const Header = () => {
                 className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
             >
                 <nav.icon className="h-5 w-5"/>
-                {nav.title}
+                {t(nav.title)}
             </Link>
         })
     }

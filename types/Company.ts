@@ -10,7 +10,7 @@ export type Company = {
     shortName: string
     authorized?:Authorized[]
     logo:string
-    id?: string
+    id: string
     updatedDate: string
     deletedDate: any
     createdDate: string

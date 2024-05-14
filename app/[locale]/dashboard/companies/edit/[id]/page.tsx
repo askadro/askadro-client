@@ -6,14 +6,13 @@ import {Button} from "@/components/ui/button";
 import {ChevronLeft,} from "lucide-react";
 import {Badge} from "@/components/ui/badge";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
-
-import {useTranslation} from "next-i18next";
 import {GetCompany} from "@/api/company";
+import {useTranslations} from "next-intl";
 
 
 const CompanyEdit = () => {
     const router = useRouter()
-    const {t} = useTranslation()
+    const t = useTranslations("index")
     const params = useParams()
     const {data, isLoading, isSuccess, error, refetch: refecthUser} = GetCompany(params?.id)
 

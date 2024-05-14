@@ -1,3 +1,4 @@
+export {Authorized} from "@/components/ui/Authorized";
 export {FormSelectImage} from "@/components/ui/FormSelectImage";
 export {Paging} from "@/components/ui/Paging";
 export {FormMultiSelect} from "@/components/ui/FormMultiSelect";

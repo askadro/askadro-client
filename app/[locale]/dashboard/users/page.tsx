@@ -1,10 +1,10 @@
 "use client"
 
-import React, {useEffect} from 'react';
+import React from 'react';
 
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
-import {CompanyTable, UserForm, UserTable} from "@business";
+import {UserForm, UserTable} from "@business";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {
     DropdownMenu,
@@ -15,33 +15,25 @@ import {
 } from "@/components/ui/dropdown-menu";
 import {Button} from "@/components/ui/button";
 import {File, ListFilter, PlusCircle} from "lucide-react";
-import {useTranslation} from "next-i18next";
 import {usePathname, useRouter} from "next/navigation";
-import {GetCompanies} from "@/api/company";
-import {GetProvinces} from "@/api/province";
+import {useTranslations} from "next-intl";
 
 const Page = () => {
-    const {t} = useTranslation()
+    const t = useTranslations("index")
     const router = useRouter();
     const pathname = usePathname()
-    // const {data} = GetProvinces()
-    //
-    // useEffect(() => {
-    //     console.log("privinces: ", data)
-    // }, [data]);
     return (
-        // <Tabs defaultValue="user-list" className="">
-        <div>
-            <div className="flex items-center ">
-                {/*<TabsList>*/}
-                {/*    <TabsTrigger value="user-list">{t("users")}</TabsTrigger>*/}
-                {/*    <TabsTrigger value="active">Active</TabsTrigger>*/}
-                {/*    <TabsTrigger value="draft">Draft</TabsTrigger>*/}
-                {/*    <TabsTrigger value="archived" className="hidden sm:flex"> Archived*/}
-                {/*    </TabsTrigger>*/}
-                {/*    /!*<TabsTrigger value="user-list">Personel Listesi</TabsTrigger>*!/*/}
-                {/*    /!*<TabsTrigger value="new-user">Personel Ekle</TabsTrigger>*!/*/}
-                {/*</TabsList>*/}
+        <Tabs defaultValue="user-list" className="">
+            <div className="flex items-center">
+                <TabsList>
+                    <TabsTrigger value="user-list">{t("users")}</TabsTrigger>
+                    <TabsTrigger value="active">Active</TabsTrigger>
+                    <TabsTrigger value="draft">Draft</TabsTrigger>
+                    <TabsTrigger value="archived" className="hidden sm:flex"> Archived
+                    </TabsTrigger>
+                    {/*<TabsTrigger value="user-list">Personel Listesi</TabsTrigger>*/}
+                    {/*<TabsTrigger value="new-user">Personel Ekle</TabsTrigger>*/}
+                </TabsList>
                 <div className="ml-auto flex items-center gap-2">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
@@ -70,22 +62,21 @@ const Page = () => {
                     Export
                   </span>
                     </Button>
-                    <Button onClick={() => router.push(`${pathname}/add`)} size="sm" className="h-7 gap-1">
+                    <Button onClick={()=>router.push(`${pathname}/add`)} size="sm" className="h-7 gap-1">
                         <PlusCircle className="h-3.5 w-3.5"/>
                         <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                    {t("add_company")}
+                    {t("add_user")}
                   </span>
                     </Button>
                 </div>
             </div>
-                <CompanyTable />
-        </div>
-        //         <TabsContent value="user-list">
-        //         </TabsContent>
-        //         <TabsContent value="new-user">
-        //             <UserForm/>
-        //         </TabsContent>
-        // </Tabs>
+                <TabsContent value="user-list">
+                    <UserTable/>
+                </TabsContent>
+                <TabsContent value="new-user">
+                    <UserForm/>
+                </TabsContent>
+        </Tabs>
     );
 };
 

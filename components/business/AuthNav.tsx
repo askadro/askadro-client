@@ -6,7 +6,6 @@ import {APP_NAME} from "@/config/app";
 import {auth_navs} from "@/config/nav";
 import {Collapse} from "@material-tailwind/react";
 import {useRouter} from "next/navigation";
-import Link from "next/link";
 import {NavList} from "@ui";
 
 export default function AuthNav() {

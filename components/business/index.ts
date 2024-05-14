@@ -1,3 +1,4 @@
+export {CustomTable} from "@/components/business/Table";
 export {CompanyForm} from "@/components/business/CompanyForm";
 export {CompanyTable} from "@/components/business/CompanyTable";
 export {LanguageSwitcher} from "@/components/business/LanguageSwitcher";

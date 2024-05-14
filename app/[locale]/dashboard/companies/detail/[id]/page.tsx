@@ -10,15 +10,15 @@ import {Input} from "@/components/ui/input";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
-import {useTranslation} from "next-i18next";
 import {GetCompany} from "@/api/company";
 import {Company} from "@/types/Company";
 import NameWithBack from "@/components/ui/NameWithBack";
+import {useTranslations} from "next-intl";
 
 
 const CompanyDetail = () => {
     const router = useRouter()
-    const {t} = useTranslation()
+    const t = useTranslations("index")
     const params = useParams()
     const {data, isLoading, isSuccess, error, refetch: refecthUser} = GetCompany(params?.id)
     const [company, setCompany] = useState<Company | null>(data)

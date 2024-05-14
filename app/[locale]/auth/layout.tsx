@@ -4,7 +4,7 @@ import AppNav from "@/components/business/AppNav";
 import React, {useEffect} from "react";
 import AuthNav from "@/components/business/AuthNav";
 import Image from "next/image";
-import imageUrl from "../../assets/images/travel.jpg"
+import imageUrl from "../../../assets/images/travel.jpg"
 import {usePathname, useRouter} from "next/navigation";
 import {APP_PATHS, AUTH_PATHS} from "@/config/paths";
 

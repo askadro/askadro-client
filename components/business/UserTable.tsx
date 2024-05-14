@@ -32,12 +32,11 @@ import {Label} from "@/components/ui/label";
 import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
 import {useState} from "react";
 import useRoute from "@/hooks/useRoute";
+import {useTranslations} from "next-intl";
 
 
 export function UserTable() {
-    const t = (key: string) => {
-        return key
-    }
+    const t = useTranslations("index")
     const [sheetData, setSheetData] = useState<User | null>()
     const {mutateAsync: deleteUser} = DeleteUser()
     const {data, isLoading} = GetUsers()

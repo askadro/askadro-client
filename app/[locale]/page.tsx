@@ -1,9 +1,15 @@
-import {useTranslations} from 'next-intl';
+"use client"
 
-export default function Index() {
-    const t = useTranslations('Index');
-    return (<>
-        <h1>{t('title')}</h1>
-        <p>{t('description')}</p>
-    </>);
+import * as React from "react"
+import {GetCompanies} from "@/api/company";
+import {CustomTable} from "@business";
+import {companyColums} from "@/config/companyTableData";
+
+
+export default function DataTableDemo() {
+    const {data} = GetCompanies()
+
+    return (
+        <CustomTable columns={companyColums} data={data} searchFilterParam={"name"} searchPlaceholder={"Search Company..."} />
+    )
 }

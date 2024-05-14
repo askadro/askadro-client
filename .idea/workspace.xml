@@ -5,38 +5,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="language plsease answer like quality for senior developer hakan Korkmaz (Mrs.)  pls can you solve the problem, hurry up ı am waiting you for this issue.!">
-      <change afterPath="$PROJECT_DIR$/api/address.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/company.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/province.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/dashboard/companies/add/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/dashboard/companies/detail/[id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/dashboard/companies/edit/[id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/dashboard/companies/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/business/CompanyForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/business/CompanyTable.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/FormSelectImage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/NameWithBack.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/useRoute.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/Company.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/getQueryClient.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/hydrate.client.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/not-found.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/business/Table.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/Authorized.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/checkbox.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/companyTableData.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/jobTitles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/paths.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/about-us/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/about-us/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/contact/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/contact/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/register/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/chat/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/chat/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/companies/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/add/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/companies/detail/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/detail/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/companies/edit/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/edit/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/companies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/home/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/home/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/profile/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/reports/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/reports/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/tickets/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/users/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/add/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/users/detail/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/detail/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/users/edit/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/edit/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/providers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/business/UserForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/UserForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/business/AuthNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/AuthNav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/business/CompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/CompanyForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/business/UserTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/UserTable.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/business/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/FormMultiSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormMultiSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/FormSelectInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormSelectInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/FormTextInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormTextInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Drawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Drawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/NavList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/NavList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/nav.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/nav.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/paths.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_document.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/tr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/Company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/Company.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/providers.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,22 +98,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/dev/askadro/askadro-client/app/dashboard/companies",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "C:\\dev\\askadro\\askadro-client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/dev/askadro/askadro-client/app/dashboard/companies&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\dev\\askadro\\askadro-client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\dev\askadro\askadro-client\app\dashboard\companies" />
@@ -103,11 +123,11 @@
       <recent name="C:\dev\askadro\askadro-client\app\dashboard\profile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\dev\askadro\askadro-client\app\[locale]" />
+      <recent name="C:\dev\askadro\askadro-client\app" />
+      <recent name="C:\dev\askadro\askadro-client\api" />
       <recent name="C:\dev\askadro\askadro-client\utils" />
       <recent name="C:\dev\askadro\askadro-client\data" />
-      <recent name="C:\dev\askadro\askadro-client\app\dashboard\users\detail" />
-      <recent name="C:\dev\askadro\askadro-client\app" />
-      <recent name="C:\dev\askadro\askadro-client\pages" />
     </key>
   </component>
   <component name="RunManager">
@@ -152,6 +172,9 @@
       <workItem from="1715323841379" duration="25727000" />
       <workItem from="1715580434182" duration="1729000" />
       <workItem from="1715586937379" duration="18893000" />
+      <workItem from="1715666494167" duration="370000" />
+      <workItem from="1715666885589" duration="37000" />
+      <workItem from="1715666930908" duration="18883000" />
     </task>
     <task id="LOCAL-00001" summary="template created">
       <option name="closed" value="true" />
