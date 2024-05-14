@@ -1,31 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="add authorized person fo company">
-      <change afterPath="$PROJECT_DIR$/components/ui/FormComboboxSelect.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/command.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/dialog.tsx" afterDir="false" />
+    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="company added and delete and table created">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/company.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/companies/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/add/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/companies/detail/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/detail/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/users/detail/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/detail/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/users/edit/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/edit/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/business/CompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/CompanyForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/business/UserForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/UserForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/Authorized.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Authorized.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/FormTextInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormTextInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/NameWithBack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/NameWithBack.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/companyTableData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/config/companyTableData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/tr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/Company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/Company.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/auth.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,22 +51,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/dev/askadro/askadro-client/app/dashboard/companies&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\dev\\askadro\\askadro-client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/dev/askadro/askadro-client/app/dashboard/companies",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "ts.external.directory.path": "C:\\dev\\askadro\\askadro-client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\dev\askadro\askadro-client\app\dashboard\companies" />
@@ -143,7 +128,7 @@
       <workItem from="1715586937379" duration="18893000" />
       <workItem from="1715666494167" duration="370000" />
       <workItem from="1715666885589" duration="37000" />
-      <workItem from="1715666930908" duration="30413000" />
+      <workItem from="1715666930908" duration="30632000" />
     </task>
     <task id="LOCAL-00001" summary="template created">
       <option name="closed" value="true" />
@@ -185,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715696259074</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="company added and delete and table created">
+      <option name="closed" value="true" />
+      <created>1715709472671</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715709472671</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,6 +193,7 @@
     <MESSAGE value="user crud added and responsible design" />
     <MESSAGE value="language plsease answer like quality for senior developer hakan Korkmaz (Mrs.)  pls can you solve the problem, hurry up ı am waiting you for this issue.!" />
     <MESSAGE value="add authorized person fo company" />
-    <option name="LAST_COMMIT_MESSAGE" value="add authorized person fo company" />
+    <MESSAGE value="company added and delete and table created" />
+    <option name="LAST_COMMIT_MESSAGE" value="company added and delete and table created" />
   </component>
 </project>
