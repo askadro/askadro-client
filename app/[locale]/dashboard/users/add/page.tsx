@@ -25,20 +25,15 @@ const UserDetail = () => {
                 <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
                     {t("new_user")}
                 </h1>
-                <div className="hidden items-center gap-2 md:ml-auto md:flex">
-                    <Button variant="outline" size="sm">
-                        {t("clean")}
-                    </Button>
-                    <Button size="sm">{t("saveUser")}</Button>
-                </div>
+
             </div>
             <div className="grid gap-4 lg:gap-8">
                 <div className="grid auto-rows-max items-start gap-4  lg:gap-8">
                     <Card x-chunk="dashboard-07-chunk-0">
                         <CardHeader>
-                            <CardTitle>{t("userDetail")}</CardTitle>
+                            <CardTitle>{t("new_staff")}</CardTitle>
                             <CardDescription>
-                                {t("userRoles")}
+                                {t("manager_or_staff_decs")}
                             </CardDescription>
                         </CardHeader>
                         <CardContent>

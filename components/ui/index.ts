@@ -1,4 +1,5 @@
-export {FormComboboxSelect} from "@/components/ui/FormComboboxSelect";
+export {FormMultiSelectWithSearch} from "@/components/ui/FormMultiSelectWithSearch";
+export {FormSelectWithSearch} from "@/components/ui/FormSelectWithSearch";
 export {Authorized} from "@/components/ui/Authorized";
 export {FormSelectImage} from "@/components/ui/FormSelectImage";
 export {Paging} from "@/components/ui/Paging";

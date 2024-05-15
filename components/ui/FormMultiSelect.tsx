@@ -1,8 +1,7 @@
 import React from 'react';
-import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
-import {Input} from "@/components/ui/input";
-import {FormProps} from "react-hook-form";
+import {FormControl, FormDescription, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import Select from 'react-select'
+import {cn} from "@/lib/utils";
 
 type Props = {
     name: string
@@ -26,8 +25,11 @@ export const FormMultiSelect = ({
     return (
         <FormItem className="">
             <FormLabel>{label}</FormLabel>
-            <FormControl className="w-[360px]">
-                <Select options={data} onChange={setState} value={state} isMulti={multi}/>
+            <FormControl>
+                <Select
+                    className={cn(
+                    "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+                )} options={data} onChange={setState} value={state} isMulti={multi}/>
             </FormControl>
             {description ? <FormDescription>
                 {description}

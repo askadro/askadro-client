@@ -10,11 +10,14 @@ import {companyColums} from "@/config/companyTableData";
 
 const Page = () => {
     const t = useTranslations("index")
+    const [rowSelection, setRowSelection] = React.useState({})
     const {data} = GetCompanies()
     return (
         <div>
-            <CustomTable columns={companyColums} data={data} searchFilterParam={"name"}
-                         searchPlaceholder={"Search Company..."}/>
+            <CustomTable
+                rowSelection={rowSelection} setRowSelection={setRowSelection} columns={companyColums} data={data}
+                searchFilterParam={"name"}
+                searchPlaceholder={"Search Company..."}/>
         </div>
 
     );

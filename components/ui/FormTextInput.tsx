@@ -12,6 +12,7 @@ type Props = {
     type?: string
     disable?: boolean
     defaultValue?: string | number | readonly string[] | undefined
+    uppercase?: boolean
 }
 
 export const FormTextInput = ({
@@ -22,7 +23,8 @@ export const FormTextInput = ({
                                   description,
                                   type = "text",
                                   disable = false,
-                                  defaultValue
+                                  defaultValue,
+                                  uppercase
                               }: Props) => {
     return (
         <FormField
@@ -32,7 +34,8 @@ export const FormTextInput = ({
                 <FormItem>
                     {label ? <FormLabel>{label}</FormLabel> : null}
                     <FormControl>
-                        <Input defaultValue={defaultValue} disabled={disable} type={type}
+                        <Input className={uppercase ? "uppercase" : ""} defaultValue={defaultValue} disabled={disable}
+                               type={type}
                                placeholder={placeholder || label} {...field}/>
                     </FormControl>
                     {description ? <FormDescription>

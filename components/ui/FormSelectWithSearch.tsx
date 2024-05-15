@@ -1,42 +1,21 @@
 import React from 'react';
 import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
-import {FormProps} from "react-hook-form";
 import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
 import {Button} from "@/components/ui/button";
 import {cn} from "@/lib/utils";
 import {Check, ChevronsUpDown} from "lucide-react";
-import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList} from "@/components/ui/command";
+import {Command, CommandEmpty, CommandInput, CommandItem, CommandList} from "@/components/ui/command";
+import {FormProps} from "@/types/FormPropsType";
 
-type Props = {
-    form: any
-    name: string
-    placeholder?: string
-    label?: string
-    description?: string
-    type?: string
-    disable?: boolean
-    defaultValue?: string | number | readonly string[] | undefined
-    data:any[]
-}
-
-export const FormComboboxSelect = ({
-                                       form,
-                                       name,
-                                       placeholder,
-                                       label,
-                                       description,
-                                       type = "text",
-                                       disable = false,
-                                       defaultValue,
-    data
-                                   }: Props)  => {
+export const FormSelectWithSearch = (props: FormProps) => {
+    const {form, data,description,label,name} = props
     return (
         <FormField
             control={form.control}
             name={name}
             render={({field}) => (
-                <FormItem className="flex flex-col justify-between">
-                    {label ? <FormLabel>{label}</FormLabel> : null}
+                <FormItem className="flex flex-col mb-2">
+                    <FormLabel>{label}</FormLabel>
                     <Popover>
                         <PopoverTrigger asChild>
                             <FormControl>
@@ -50,14 +29,14 @@ export const FormComboboxSelect = ({
                                 >
                                     {field.value
                                         ? data?.find(
-                                            (d) => d.value === field.value
-                                        )?.label.substring(0, 18)
+                                            (language) => language.value === field.value
+                                        )?.label
                                         : `Select ${name}`}
-                                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50"/>
                                 </Button>
                             </FormControl>
                         </PopoverTrigger>
-                        <PopoverContent className="w-[200px] p-0">
+                        <PopoverContent className="p-0">
                             <Command>
                                 <CommandInput placeholder={`Search ${name}`}/>
                                 <CommandEmpty>{`No ${name} found.`}</CommandEmpty>
@@ -67,7 +46,7 @@ export const FormComboboxSelect = ({
                                             value={d.label}
                                             key={d.value}
                                             onSelect={() => {
-                                                form?.setValue(name, d.value)
+                                                form.setValue(name, d.value)
                                             }}
                                         >
                                             <Check
@@ -88,9 +67,10 @@ export const FormComboboxSelect = ({
                     {description ? <FormDescription>
                         {description}
                     </FormDescription> : null}
-                    <FormMessage />
+                    <FormMessage/>
                 </FormItem>
             )}
         />
     );
 };
+

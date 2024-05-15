@@ -1,8 +1,9 @@
 import {ColumnDef} from "@tanstack/react-table";
-import {Company} from "@/types/Company";
 import {Checkbox} from "@/components/ui/checkbox";
 import {Button} from "@/components/ui/button";
 import {ArrowUpDown, MoreHorizontal} from "lucide-react";
+import useRoute from "@/hooks/useRoute";
+import {useTranslations} from "next-intl";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -11,11 +12,10 @@ import {
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import * as React from "react";
-import useRoute from "@/hooks/useRoute";
-import {useTranslations} from "next-intl";
+import {User} from "@/types/UserType";
+import {Badge} from "@/components/ui/badge";
 
-
-export const companyColums: ColumnDef<Company>[] = [
+export const usersColums: ColumnDef<User>[] = [
     {
         id: "select",
         header: ({table}) => (
@@ -39,31 +39,48 @@ export const companyColums: ColumnDef<Company>[] = [
         enableHiding: false,
     },
     {
-        accessorKey: "name",
+        accessorKey: "firstName",
         header: ({column}) => {
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
-                    Name
+                    Ad
                     <ArrowUpDown className="ml-2 h-4 w-4"/>
                 </Button>
             )
         },
         cell: ({row}) => (
-            <div className="capitalize">{row.getValue("name")}</div>
+            <div className="capitalize">{`${row.getValue("firstName")}`}</div>
         ),
     },
     {
-        accessorKey: "shortName",
-        header: "short_name",
+        accessorKey: "lastName",
+        header: ({column}) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                >
+                    Soyad
+                    <ArrowUpDown className="ml-2 h-4 w-4"/>
+                </Button>
+            )
+        },
         cell: ({row}) => (
-            <div className="capitalize">{row.getValue("shortName")}</div>
+            <div className="capitalize">{`${row.getValue("lastName")}`}</div>
         ),
     },
     {
-        accessorKey: "location",
+        accessorKey: "gender",
+        header: "gender",
+        cell: ({row}) => (
+            <div className="capitalize">{row.getValue("gender")}</div>
+        ),
+    },
+    {
+        accessorKey: "status",
         header: ({column}) => {
             return (
                 <Button
@@ -75,25 +92,21 @@ export const companyColums: ColumnDef<Company>[] = [
                 </Button>
             )
         },
-        cell: ({row}) => <div className="capitalize">{row.getValue("location")}</div>,
+        cell: ({row}) => <Badge variant="outline">{row.getValue("status")}</Badge>,
     },
     {
-        accessorKey: "totalWorkingTime",
-        header: "totalWorkingTime",
-        cell: ({row}) => (
-            <div className="">{row.getValue("totalWorkingTime")}</div>
+        accessorKey: "roles",
+        header: "roles",
+        cell: ({row}: any) => (
+            <div className="">{row.getValue("roles")?.map((i: any) => <Badge key={i}
+                                                                            variant="secondary">{i}</Badge>)}</div>
         ),
-    },
-    {
-        accessorKey: "timeOfPayment",
-        header: () => <div className="">Time Of Payment</div>,
-        cell: ({row}) => <div className="font-medium">{row.getValue("timeOfPayment")}</div>
     },
     {
         id: "actions",
         enableHiding: false,
         cell: ({row}) => {
-            const company = row.original
+            const user = row.original
             // eslint-disable-next-line react-hooks/rules-of-hooks
             const route = useRoute()
             // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -108,12 +121,12 @@ export const companyColums: ColumnDef<Company>[] = [
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem onClick={(e) => route(e, `detail/${company.id}`)}>
-                           Detail
+                        <DropdownMenuItem onClick={(e) => route(e, `detail/${user.id}`)}>
+                            Detail
                         </DropdownMenuItem>
                         <DropdownMenuSeparator/>
                         <DropdownMenuItem
-                            onClick={(e) => route(e, `edit/${company.id}`)}>Edit</DropdownMenuItem>
+                            onClick={(e) => route(e, `edit/${user.id}`)}>Edit</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             )

@@ -28,9 +28,11 @@ type Props = {
     searchFilterParam: string
     searchPlaceholder: string
     newPath?: string
+    rowSelection:any
+    setRowSelection:any
 }
 
-export function CustomTable({columns, data, searchFilterParam, searchPlaceholder, newPath = "add"}: Props) {
+export function CustomTable({columns, data, searchFilterParam, searchPlaceholder, newPath = "add",rowSelection={}, setRowSelection}: Props) {
     const t = useTranslations("index")
     const route = useRoute()
     const [sorting, setSorting] = React.useState<SortingState>([])
@@ -39,8 +41,6 @@ export function CustomTable({columns, data, searchFilterParam, searchPlaceholder
     )
     const [columnVisibility, setColumnVisibility] =
         React.useState<VisibilityState>({})
-    const [rowSelection, setRowSelection] = React.useState({})
-    // const {data} = GetCompanies()
     const table = useReactTable({
         data,
         columns,
@@ -59,6 +59,8 @@ export function CustomTable({columns, data, searchFilterParam, searchPlaceholder
             rowSelection,
         },
     })
+    // console.log("colums: ",rowSelection,data[Object.keys(rowSelection)[0]]) // seçilmişi bulur
+
     if (!data) return null
     return (
         <div className="w-full">
@@ -106,7 +108,7 @@ export function CustomTable({columns, data, searchFilterParam, searchPlaceholder
                         </Button>
                         <Button onClick={(e) => route(e, newPath)} size="sm" className="h-7 gap-1">
                             <PlusCircle className="h-3.5 w-3.5"/>
-                            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">{t("add_company")}</span>
+                            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">{t("add_user")}</span>
                         </Button>
                     </div>
                 </div>
