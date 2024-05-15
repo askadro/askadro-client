@@ -75,7 +75,9 @@ export const companyColums: ColumnDef<Company>[] = [
                 </Button>
             )
         },
-        cell: ({row}) => <div className="capitalize">{row.getValue("location")}</div>,
+        cell: ({row}) => {
+            return <div className="capitalize">{row.getValue("location")}</div>
+        },
     },
     {
         accessorKey: "totalWorkingTime",

@@ -17,7 +17,9 @@ const Page = () => {
             <CustomTable
                 rowSelection={rowSelection} setRowSelection={setRowSelection} columns={companyColums} data={data}
                 searchFilterParam={"name"}
-                searchPlaceholder={"Search Company..."}/>
+                searchPlaceholder={"Search Company..."}
+                addTitle={"add_company"}
+            />
         </div>
 
     );

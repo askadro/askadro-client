@@ -7,28 +7,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="company added and delete and table created">
-      <change afterPath="$PROJECT_DIR$/components/ui/FormMultiSelectWithSearch.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/usersTableData.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/FormPropsType.ts" afterDir="false" />
+    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="company fix">
+      <change afterPath="$PROJECT_DIR$/helpers/features.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/AddressType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/AuthType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/AuthorizedType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/province.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/province.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/company.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/companies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/users/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/add/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/users/edit/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/edit/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/business/CompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/CompanyForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/business/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/Table.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/business/UserForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/UserForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/Authorized.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Authorized.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/FormComboboxSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormSelectWithSearch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/FormMultiSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormMultiSelect.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/FormTextInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormTextInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/companyTableData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/config/companyTableData.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messages/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/tr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/Company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/Company.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/types/CreateUserType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/CreateUserType.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/UserType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/UserType.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/providers.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +41,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -148,7 +151,7 @@
       <workItem from="1715666494167" duration="370000" />
       <workItem from="1715666885589" duration="37000" />
       <workItem from="1715666930908" duration="30822000" />
-      <workItem from="1715759644456" duration="14285000" />
+      <workItem from="1715759644456" duration="23492000" />
     </task>
     <task id="LOCAL-00001" summary="template created">
       <option name="closed" value="true" />
@@ -214,7 +217,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715709761723</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="user fix">
+      <option name="closed" value="true" />
+      <created>1715779921185</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715779921185</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +241,8 @@
     <MESSAGE value="language plsease answer like quality for senior developer hakan Korkmaz (Mrs.)  pls can you solve the problem, hurry up ı am waiting you for this issue.!" />
     <MESSAGE value="add authorized person fo company" />
     <MESSAGE value="company added and delete and table created" />
-    <option name="LAST_COMMIT_MESSAGE" value="company added and delete and table created" />
+    <MESSAGE value="user fix" />
+    <MESSAGE value="company fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="company fix" />
   </component>
 </project>

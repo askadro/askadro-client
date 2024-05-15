@@ -2,7 +2,7 @@ import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {apiClient} from "@/api/index";
 import {COMPANIES, CREATE_COMPANY, CREATE_USER, DELETE_COMPANY, UPDATE_COMPANY, UPDATE_USER} from "@/api/paths";
 import {CACHE_TIMEOUT} from "@/config/app";
-import {Company, CreateCompany, UpdateCompanyType} from "@/types/Company";
+import {AddressType, AuthorizedType, AuthType, CreateCompany, UpdateCompanyType} from "@/types";
 
 export function GetCompanies() {
     return useQuery({
@@ -29,8 +29,8 @@ export function GetCompany(id: string | string[] | undefined) {
 export function SetCompany() {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async (body: CreateCompany) => {
-            const res = await apiClient.post(CREATE_COMPANY, body);
+        mutationFn: async ({auth,company,authorized,address}: {auth:AuthType,company:CreateCompany,authorized:AuthorizedType[],address:AddressType}) => {
+            const res = await apiClient.post(CREATE_COMPANY, {auth,company,authorized,address});
             return await res.data;
         },
         async onSuccess() {
@@ -42,8 +42,8 @@ export function SetCompany() {
 export function UpdateCompany() {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async (body: UpdateCompanyType) => {
-            const res = await apiClient.patch(`${UPDATE_COMPANY}/${body.id}`, body);
+        mutationFn: async ({id,auth,company,authorized,address}: {id:string,auth:AuthType,company:CreateCompany,authorized:AuthorizedType[],address:AddressType}) => {
+            const res = await apiClient.patch(`${UPDATE_COMPANY}/${id}`, {auth,company,authorized,address});
             return await res.data;
         },
         async onSuccess() {

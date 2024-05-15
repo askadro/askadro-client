@@ -30,9 +30,10 @@ type Props = {
     newPath?: string
     rowSelection:any
     setRowSelection:any
+    addTitle:string
 }
 
-export function CustomTable({columns, data, searchFilterParam, searchPlaceholder, newPath = "add",rowSelection={}, setRowSelection}: Props) {
+export function CustomTable({columns, data, searchFilterParam, searchPlaceholder, newPath = "add",rowSelection={}, setRowSelection,addTitle}: Props) {
     const t = useTranslations("index")
     const route = useRoute()
     const [sorting, setSorting] = React.useState<SortingState>([])
@@ -108,7 +109,7 @@ export function CustomTable({columns, data, searchFilterParam, searchPlaceholder
                         </Button>
                         <Button onClick={(e) => route(e, newPath)} size="sm" className="h-7 gap-1">
                             <PlusCircle className="h-3.5 w-3.5"/>
-                            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">{t("add_user")}</span>
+                            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">{t(addTitle)}</span>
                         </Button>
                     </div>
                 </div>

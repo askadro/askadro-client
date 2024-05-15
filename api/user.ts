@@ -1,8 +1,7 @@
 import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
-import {CreateUserType, UpdateUserType} from "@/types/CreateUserType";
 import {apiClient} from "@/api/index";
 import {CREATE_USER, DELETE_USER, UPDATE_USER, USER, USERS} from "@/api/paths";
-import {User} from "@/types/UserType";
+import {AddressType, AuthType, User} from "@/types";
 
 export const fetchUsers = async () => {
     const res = await apiClient.get(USERS);
@@ -41,8 +40,8 @@ export function GetUser(id: string | string[] | undefined) {
 export function SetUser() {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async (body: CreateUserType) => {
-            const res = await apiClient.post(CREATE_USER, body);
+        mutationFn: async ({auth, user, address}: {auth:AuthType, user:User, address:AddressType}) => {
+            const res = await apiClient.post(CREATE_USER, {auth, user, address});
             return await res.data;
         },
         async onSuccess() {
@@ -54,8 +53,8 @@ export function SetUser() {
 export function UpdateUser() {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async (body: UpdateUserType) => {
-            const res = await apiClient.patch(`${UPDATE_USER}/${body.id}`, body);
+        mutationFn: async ({id,auth, user, address}: {id:string | string[] | undefined,auth:AuthType, user:User, address:AddressType}) => {
+            const res = await apiClient.patch(`${UPDATE_USER}/${id}`, {id,auth, user, address});
             return await res.data;
         },
         async onSuccess(data) {

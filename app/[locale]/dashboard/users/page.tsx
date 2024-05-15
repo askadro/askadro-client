@@ -20,7 +20,9 @@ const Page = () => {
                          setRowSelection={setRowSelection}
                          columns={usersColums} data={user}
                          searchFilterParam={"firstName"}
-                         searchPlaceholder={"Search users with name..."}/>
+                         searchPlaceholder={"Search users with name..."}
+                         addTitle={"add_staff"}
+            />
         </div>
     );
 };

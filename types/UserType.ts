@@ -4,13 +4,12 @@ export type User = {
     lastName: string
     birthDate: Date
     gender: string
-    userAddress: any
-    id: string
-    status: string
-    deletedAt: any
-    createdAt: string
-    updatedAt: string
-    image:string
+    id?: string
+    status?: string
+    deletedAt?: any
+    createdAt?: string
+    updatedAt?: string
+    image?:string
     roles:string[]
     iban:string
 }

@@ -19,11 +19,11 @@ export const metadata: Metadata = {
 };
 
 export default async function LocaleLayout({
-                                       children,
-                                       params: {locale}
-                                   }: {
+                                               children,
+                                               params: {locale}
+                                           }: {
     children: React.ReactNode;
-    params: {locale: string};
+    params: { locale: string };
 }) {
     unstable_setRequestLocale(locale);
     const messages = await getMessages();
@@ -36,7 +36,7 @@ export default async function LocaleLayout({
             )}>
         <Providers>
             <NextIntlClientProvider messages={messages}>
-            {children}
+                {children}
             </NextIntlClientProvider>
         </Providers>
         </body>

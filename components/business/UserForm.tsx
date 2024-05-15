@@ -18,13 +18,11 @@ import 'react-calendar/dist/Calendar.css';
 import {gender, ROLES} from "@/config/enums";
 import {SetUser, UpdateUser} from "@/api/user";
 import {useToast} from "@/components/ui/use-toast"
-import {UpdateUserType} from "@/types/CreateUserType";
-import {Toggle} from "@/components/ui/toggle";
-import {Key} from "lucide-react";
-import {Label} from "@/components/ui/label";
 import {useTranslations} from "next-intl";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {GetProvinces} from "@/api/province";
+import {User} from "@/types";
+import {address, auth} from "@/helpers/features";
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
@@ -39,7 +37,7 @@ const formSchema = z.object({
     Identity: z.string().length(11, {
         message: "Identity must be exactly 11 characters.",
     }),
-    iban: z.string().refine(iban => /^TR\d{23}$/.test(iban), {
+    iban: z.string().refine(iban => /^TR\d{23}$/i.test(iban), {
         message: "IBAN must start with TR and be exactly 26 characters long.",
     }),
     gender: z.string(),
@@ -68,7 +66,7 @@ const formSchema = z.object({
 });
 
 type Props = {
-    defaultValues?: UpdateUserType
+    defaultValues?: User
     id?: string | string[] | undefined
     buttonTitle?: string
 }
@@ -100,34 +98,27 @@ export const UserForm = (props: Props) => {
     const {data: provinces, refetch: refecthProvinces} = GetProvinces()
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        const auth = {
-            username: values.username,
-            password: values.password
-        }
         const user = {
             firstName: values.firstName,
             lastName: values.lastName,
             Identity: values.Identity,
-            iban: values.iban,
+            iban: values.iban.toLowerCase(),
             gender: values.gender,
             birthDate: values.birthDate,
-            roles: values.roles
-        }
-        const address = {
-            city: values.city,
-            district: values.district,
-            address: values.address,
-            addressStatus:"ACTIVE"
-        }
+            roles: values.roles,
+        };
 
-        console.log({auth, user, address})
-        // const r = Array.from(roles)?.map((item: any) => item.value)
-        // if (defaultValues === undefined) {
-        //     await newUser({...values, roles: r})
-        // } else {
-        //     const {Identity, ...v} = values
-        //     await updateUser({...v, id, roles: r})
-        // }
+        const payload: any = { user };
+        if (auth(values)) payload.auth = auth(values);
+        if (address(values)) payload.address = address(values);
+
+        console.log(payload);
+
+        if (defaultValues === undefined) {
+            await newUser(payload);
+        } else {
+            await updateUser({ id, ...payload });
+        }
     }
 
     useEffect(() => {
@@ -168,7 +159,7 @@ export const UserForm = (props: Props) => {
                         <FormTextInput form={form} name="lastName" label="Soyad" placeholder="Soyad"/>
                         {!id ? <FormTextInput form={form} name="Identity" label="TC" placeholder="12345678921"
                                               description="TC ve isim uygunluğu sağlanmalı"/> : null}
-                        <FormTextInput form={form} name="iban" uppercase label="IBAN"
+                        <FormTextInput form={form} name="iban" label="IBAN"
                                        placeholder="TR123456789012345678901234"/>
                         <FormSelectWithSearch form={form} name="gender" label={t("gender")} placeholder={t("gender")}
                                               data={gender || []}/>
@@ -186,7 +177,7 @@ export const UserForm = (props: Props) => {
                     </CardHeader>
                     <CardContent>
                         <FormTextInput form={form} name="username" label={t("username")} placeholder={t("username")}/>
-                        <FormTextInput form={form} name="password" label={t("password")} placeholder={t("password")}/>
+                        <FormTextInput form={form} name="password" type="password" label={t("password")} placeholder={t("password")}/>
                     </CardContent>
                 </Card>
 
@@ -203,7 +194,7 @@ export const UserForm = (props: Props) => {
                         <FormTextArea form={form} label="address" name="address"/>
                     </CardContent>
                 </Card>
-                <Button className="" type="submit">{t(buttonTitle || "submit")}</Button>
+                <Button className="col-span-4 py-5" type="submit">{t(buttonTitle || "submit")}</Button>
             </form>
         </Form>
     );

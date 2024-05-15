@@ -27,7 +27,10 @@ const UserDetail = () => {
     return (
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
                 <div className="flex items-center gap-4">
-                    <Button onClick={() => router.back()} variant="outline" size="icon" className="h-7 w-7">
+                    <Button onClick={(e) => {
+                        e.preventDefault()
+                        router.back()
+                    }} variant="outline" size="icon" className="h-7 w-7">
                         <ChevronLeft className="h-4 w-4"/>
                         <span className="sr-only">{t("back")}</span>
                     </Button>

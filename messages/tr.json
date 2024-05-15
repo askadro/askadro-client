@@ -97,7 +97,9 @@
     "user": "Kullanıcı",
     "district": "Semt",
     "city": "Şehir",
-    "new_user_desc": "Yeni kullanıcı bilgileri"
-
+    "new_user_desc": "Yeni kullanıcı bilgileri",
+    "new_company_desc": "Yeni şirket bilgileri",
+    "location": "Konum",
+    "add_staff": "Personel ekle"
   }
 }

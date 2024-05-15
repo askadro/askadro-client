@@ -11,7 +11,7 @@ import HydrateClient from "@/utils/hydrate.client";
 import {Toaster} from "@/components/ui/toaster";
 import {TooltipProvider} from "@/components/ui/tooltip";
 
-export async function Providers({
+export function Providers({
                                     children,
                                 }: {
     children: React.ReactNode;

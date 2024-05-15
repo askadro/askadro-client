@@ -1,3 +1,4 @@
+
 export type Company = {
     name: string
     phone: string
@@ -8,34 +9,22 @@ export type Company = {
     totalWorkingTime: string
     password: string
     shortName: string
-    authorized?:Authorized[]
-    logo:string
+    logoId:string
     id: string
     updatedDate: string
     deletedDate: any
     createdDate: string
 }
 
-export type Authorized  = {
-    authorizedEmail: string
-    authorizedPassword: string
-    authorizedPerson: string
-    authorizedPhone: string
-    authorizedTitle: string
-    company: string
-}
 
 export type CreateCompany = {
     name: string
     phone: string
-    city: string
-    location: string
     registrationNumber: string
     timeOfPayment: string
     totalWorkingTime: string
     shortName?: string
-    logo?:string
-    authorized?:Authorized[]
+    logoId?:string
 }
 
 export type UpdateCompanyType = {
@@ -48,7 +37,6 @@ export type UpdateCompanyType = {
     totalWorkingTime: string
     password?: string
     shortName?: string
-    logo?:string
-    authorized?:Authorized[]
+    logoId?:string
     id: string
 }

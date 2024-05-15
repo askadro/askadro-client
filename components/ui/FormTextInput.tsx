@@ -2,9 +2,10 @@ import React from 'react';
 import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
 import {FormProps} from "react-hook-form";
+import {cn} from "@/lib/utils";
 
 type Props = {
-    form: FormProps<any>
+    form: any
     name: string
     placeholder?: string
     label?: string
@@ -24,17 +25,17 @@ export const FormTextInput = ({
                                   type = "text",
                                   disable = false,
                                   defaultValue,
-                                  uppercase
+                                  uppercase,
                               }: Props) => {
     return (
         <FormField
-            control={form.control}
+            control={form.control || form}
             name={name}
             render={({field}) => (
-                <FormItem>
+                <FormItem className="mb-2">
                     {label ? <FormLabel>{label}</FormLabel> : null}
                     <FormControl>
-                        <Input className={uppercase ? "uppercase" : ""} defaultValue={defaultValue} disabled={disable}
+                        <Input autoComplete="new-password" className={uppercase ? "uppercase" : ""} defaultValue={defaultValue} disabled={disable}
                                type={type}
                                placeholder={placeholder || label} {...field}/>
                     </FormControl>
