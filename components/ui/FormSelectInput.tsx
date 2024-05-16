@@ -35,7 +35,7 @@ export const FormSelectInput = ({form, name, placeholder, label, description, da
                     <FormLabel>{label}</FormLabel>
                     <FormControl>
                         <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
-                            <SelectTrigger className="w-[180px]">
+                            <SelectTrigger>
                                 <SelectValue placeholder={placeholder || label}/>
                             </SelectTrigger>
                             <SelectContent>

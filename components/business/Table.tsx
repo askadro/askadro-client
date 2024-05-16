@@ -21,6 +21,7 @@ import {ChevronDown, File, PlusCircle} from "lucide-react";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {useTranslations} from "next-intl";
 import useRoute from "@/hooks/useRoute";
+import {ReactElement} from "react";
 
 type Props = {
     columns: any
@@ -28,12 +29,23 @@ type Props = {
     searchFilterParam: string
     searchPlaceholder: string
     newPath?: string
-    rowSelection:any
-    setRowSelection:any
-    addTitle:string
+    rowSelection: any
+    setRowSelection: any
+    addTitle: string
+    RightComponent?:  any
 }
 
-export function CustomTable({columns, data, searchFilterParam, searchPlaceholder, newPath = "add",rowSelection={}, setRowSelection,addTitle}: Props) {
+export function CustomTable({
+                                columns,
+                                data,
+                                searchFilterParam,
+                                searchPlaceholder,
+                                newPath = "add",
+                                rowSelection = {},
+                                setRowSelection,
+                                addTitle,
+                                RightComponent
+                            }: Props) {
     const t = useTranslations("index")
     const route = useRoute()
     const [sorting, setSorting] = React.useState<SortingState>([])
@@ -76,11 +88,11 @@ export function CustomTable({columns, data, searchFilterParam, searchPlaceholder
                     className="max-w-sm"
                 />
                 <div className="flex items-center ml-auto">
-                    <div className="ml-auto flex items-center gap-2">
+                    {RightComponent ? RightComponent : <div className="ml-auto flex items-center gap-2">
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <Button size="sm" variant="outline" className="ml-auto h-7 gap-1">
-                                    Columns <ChevronDown className="ml-2 h-4 w-4"/>
+                                    {t("columns")} <ChevronDown className="ml-2 h-4 w-4"/>
                                 </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
@@ -111,7 +123,7 @@ export function CustomTable({columns, data, searchFilterParam, searchPlaceholder
                             <PlusCircle className="h-3.5 w-3.5"/>
                             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">{t(addTitle)}</span>
                         </Button>
-                    </div>
+                    </div>}
                 </div>
             </div>
             <div className="rounded-md border">

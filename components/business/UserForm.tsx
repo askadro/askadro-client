@@ -92,7 +92,6 @@ export const UserForm = (props: Props) => {
         resolver: zodResolver(formSchema),
         defaultValues: useMemo(() => defaultValues, [defaultValues])
     })
-    const [roles, setRoles] = useState(() => new Set<string>())
     const {mutateAsync: newUser, data, error, isSuccess: newSuccess} = SetUser()
     const {mutateAsync: updateUser, isSuccess: updateSuccess} = UpdateUser()
     const {data: provinces, refetch: refecthProvinces} = GetProvinces()
@@ -124,7 +123,6 @@ export const UserForm = (props: Props) => {
     useEffect(() => {
         if (newSuccess || updateSuccess) {
             form.reset(cleanValues); // Reset the form on successful submission
-            setRoles(() => new Set<string>())
             toast({
                 title: `Kullanıcı başarılı bir şekilde ${newSuccess ? "eklendi" : "güncellendi"}`,
                 description: `Kullanıcı ${newSuccess ? "eklendi" : "güncellendi"} artık listeleniyor.`

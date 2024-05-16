@@ -8,30 +8,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="company fix">
-      <change afterPath="$PROJECT_DIR$/helpers/features.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/AddressType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/AuthType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/AuthorizedType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/ticket.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/new/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/new/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/business/TicketForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/FormDatePickerSha.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/FormTimePicker.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/accordion.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/modal/SelectModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/modal/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/time-picker/TimePickerInput.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/time-picker/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/time-picker/time-picker-utils.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/TicketType.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/company.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/paths.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/companies/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/add/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/companies/edit/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/edit/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/companies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/users/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/add/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/users/edit/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/edit/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/business/CompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/CompanyForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/business/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/Table.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/business/UserForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/UserForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/Authorized.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Authorized.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/FormTextInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormTextInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/companyTableData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/config/companyTableData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/FormDatePicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormDatePicker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/FormSelectInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormSelectInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/NameWithBack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/NameWithBack.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messages/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/tr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/Company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/Company.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/CreateUserType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/CreateUserType.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/UserType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/UserType.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +48,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -73,30 +80,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/dev/askadro/askadro-client/app/dashboard/companies&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\dev\\askadro\\askadro-client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/dev/askadro/askadro-client/app/[locale]/dashboard/tickets/new/[id]",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "ts.external.directory.path": "C:\\dev\\askadro\\askadro-client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\dev\askadro\askadro-client\app\[locale]\dashboard\tickets\new\[id]" />
       <recent name="C:\dev\askadro\askadro-client\app\dashboard\companies" />
       <recent name="C:\dev\askadro\askadro-client\app\dashboard\users\add" />
       <recent name="C:\dev\askadro\askadro-client\app\dashboard\users\edit\[id]" />
       <recent name="C:\dev\askadro\askadro-client\public\locales\en" />
-      <recent name="C:\dev\askadro\askadro-client\app\dashboard\profile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\dev\askadro\askadro-client\app\[locale]" />
@@ -151,7 +159,8 @@
       <workItem from="1715666494167" duration="370000" />
       <workItem from="1715666885589" duration="37000" />
       <workItem from="1715666930908" duration="30822000" />
-      <workItem from="1715759644456" duration="23492000" />
+      <workItem from="1715759644456" duration="23530000" />
+      <workItem from="1715847319737" duration="22968000" />
     </task>
     <task id="LOCAL-00001" summary="template created">
       <option name="closed" value="true" />
@@ -225,11 +234,30 @@
       <option name="project" value="LOCAL" />
       <updated>1715779921185</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="company fix">
+      <option name="closed" value="true" />
+      <created>1715808105273</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715808105273</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

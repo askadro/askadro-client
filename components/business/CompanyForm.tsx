@@ -74,7 +74,7 @@ const cleanValues = {
     location: "",
     registrationNumber: "",
     timeOfPayment: "",
-    totalWorkingTime: "",
+    totalWorkingTime: "8",
     password: "",
     shortName: "",
     logoId: "",
@@ -96,7 +96,6 @@ const getDefaultCityValue = (cityValue?: string): string => {
 
 export const CompanyForm = (props: Props) => {
     const {defaultValues, id, buttonTitle} = props
-    const [authorized, setAuthorized] = React.useState([]);
     const {toast} = useToast()
     const t = useTranslations("index")
     const form = useForm<z.infer<typeof formSchema>>({
@@ -155,13 +154,12 @@ export const CompanyForm = (props: Props) => {
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}
                   className="grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
-                <Card className="sm:col-span-2">
+                <Card className="lg:col-span-2 xl:col-span-2 col-span-4">
                     <CardHeader>
                         <CardTitle>{t("company")}</CardTitle>
                         <CardDescription>{t("new_company_desc")}</CardDescription>
                     </CardHeader>
                     <CardContent>
-
                         <FormTextInput form={form} name="name" label="Şirket Adı" placeholder={"As Kadro"}/>
                         <FormTextInput form={form} name="shortName" label="Kısa isim" placeholder={"As"}/>
                         <FormTextInput form={form} name="phone" type="tel" label="Phone"
@@ -177,11 +175,11 @@ export const CompanyForm = (props: Props) => {
                                        label="Ayın Kaçında Ödeme Yapılacak"
                                        placeholder={"25"} description={t("what_month")}/>
                         <FormTextInput form={form} name="totalWorkingTime" type="number" label="Çalışma Saati"
-                                       placeholder={"8"} description={t("how_work_hour")} defaultValue={8}/>
+                                       placeholder={"8"} description={t("how_work_hour")}/>
                     </CardContent>
                 </Card>
                 <Authorized/>
-                <Card className="sm:col-span-2 xl:col-span-4">
+                <Card className="col-span-4">
                     <CardHeader>
                         <CardTitle>{`${t("address")} (${t("opsiyonel")})`}</CardTitle>
                         <CardDescription>{t("address_decs")}</CardDescription>

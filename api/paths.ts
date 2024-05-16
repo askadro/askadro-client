@@ -3,6 +3,7 @@ export const LOGIN = "users/login";
 const userMainPath = "users"
 const companyMainPath = "companies";
 const provinceMainPath = "provinces";
+const ticketMainPath = "tickets";
 export const USERS = userMainPath;
 export const CREATE_USER = `${userMainPath}/create`;
 export const USER = `${userMainPath}/user`;
@@ -35,3 +36,7 @@ export const AUTHORIZED_COMPANY = `${companyMainPath}/new-authorized`;
 
 export const PROVINCES = `${provinceMainPath}`;
 export const DISTRICTS = `${provinceMainPath}/districts`;
+
+//TICKETS
+
+export const CREATE_TICKET = `${ticketMainPath}/create`

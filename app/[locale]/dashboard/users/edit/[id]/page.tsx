@@ -7,8 +7,8 @@ import {Button} from "@/components/ui/button";
 import {ChevronLeft, PlusCircle} from "lucide-react";
 import {Badge} from "@/components/ui/badge";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import {CreateUserType} from "@/types/CreateUserType";
 import {useTranslations} from "next-intl";
+import {User} from "@/types";
 
 
 const UserDetail = () => {
@@ -16,7 +16,7 @@ const UserDetail = () => {
     const t = useTranslations("index")
     const params = useParams()
     const {data, isLoading, isSuccess, error, refetch: refecthUser} = GetUser(params?.id)
-    const [user, setUser] = useState<CreateUserType | null>(data)
+    const [user, setUser] = useState<User | null>(data)
     useEffect(() => {
         if (isSuccess) {
             setUser(data)

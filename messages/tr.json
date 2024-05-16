@@ -100,6 +100,27 @@
     "new_user_desc": "Yeni kullanıcı bilgileri",
     "new_company_desc": "Yeni şirket bilgileri",
     "location": "Konum",
-    "add_staff": "Personel ekle"
+    "add_staff": "Personel ekle",
+    "save_company": "Şirketi kaydet",
+    "create_new_ticket": "Yeni talep oluştur",
+    "cancel": "İptal",
+    "continue": "Devam",
+    "create_ticket": "Talep oluştur",
+    "ticket-detail": "Talep detayı",
+    "control-and-finish": "Control ve son",
+    "select_roles": "Rol seçimi",
+    "ticket_detail": "Talep detayları",
+    "ticket_desc": "Girilecek olan bilgiler taleplerin detaylarını belirtecektir.",
+    "enter_hour": "Giriş saati",
+    "exit_hour": "Çıkış saati",
+    "ticket_date": "Talep tarihi",
+    "notes": "Notlar",
+    "notes_ticket_decs": "Her bir notu virgül ile ayırınız.",
+    "time_details": "Zaman bilgisi",
+    "exit_time": "Çıkış zamanı",
+    "enter_time": "Giriş zamanı",
+    "floor_service": "Kat görevlisi",
+    "garson": "Garson",
+    "selectable_staff_role": "Personellerin hangi rol ile gideceğini seçebilirsiniz."
   }
 }

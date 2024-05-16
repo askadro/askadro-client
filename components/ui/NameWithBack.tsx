@@ -6,11 +6,11 @@ import {useRouter} from "next/navigation";
 import {useTranslations} from "next-intl";
 
 type Props = {
-    name:String
-    desc?:string
+    name: String
+    desc?: string
 }
 
-const NameWithBack = ({name,desc}:Props) => {
+const NameWithBack = ({name, desc}: Props) => {
     const router = useRouter()
     const t = useTranslations("index")
     return (
@@ -22,9 +22,9 @@ const NameWithBack = ({name,desc}:Props) => {
             <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0 capitalize">
                 {name || ""}
             </h1>
-            <Badge variant="outline" className="ml-auto sm:ml-0">
+            {desc ? <Badge variant="outline" className="ml-auto sm:ml-0">
                 {desc || ""}
-            </Badge>
+            </Badge> : null}
         </div>
     );
 };
