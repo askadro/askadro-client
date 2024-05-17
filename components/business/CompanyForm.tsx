@@ -37,12 +37,11 @@ const formSchema = z.object({
     timeOfPayment: z.string().min(1, {}),
     totalWorkingTime: z.string().min(1, {}),
     shortName: z.string().min(3, {}).optional(),
-    logoId: z.string().min(2, {}).optional(),
-    username: z.string().min(6, {message: 'Username must be at least 6 characters.'}).optional(),
-    password: z.string().min(6, {message: 'Password must be at least 6 characters.'}).optional(),
+    logoId: z.string().optional(),
     city: z.string().length(36, {message: "Format error"}).optional(),
     district: z.string().length(36, {message: "Format error"}).optional(),
-    address: z.string().min(3, {message: "Do not allow empty"}).optional(),
+    password: z.string().min(6, {message: 'Password must be at least 6 characters.'}).optional(),
+    address: z.string().min(0, {message: "Do not allow empty"}).optional(),
     authorized: z.array(
         z.object({
             authorizedEmail: z.string().email("Invalid email format"),
@@ -51,35 +50,21 @@ const formSchema = z.object({
             authorizedTitle: z.string().min(2, "Job title must be at least 2 characters long")
         })
     ).optional()
-}).superRefine((data, ctx) => {
-    if ((data.username && !data.password) || (!data.username && data.password)) {
-        ctx.addIssue({
-            code: "custom",
-            message: "Both username and password must be provided together.",
-            path: ["username"], // or you can put both "username" and "password" in separate calls to addIssue
-        });
-        ctx.addIssue({
-            code: "custom",
-            message: "Both username and password must be provided together.",
-            path: ["password"],
-        });
-    }
-});
+})
 
 
 const cleanValues = {
     name: "",
     phone: "",
-    city: "70c5216e-9f0b-4102-8ad6-018c4c9600fa",
+    city: "",
     location: "",
     registrationNumber: "",
     timeOfPayment: "",
     totalWorkingTime: "8",
-    password: "",
     shortName: "",
     logoId: "",
     authorized: [],
-    username: "",
+    password:"",
     district: "",
     address: ""
 }
@@ -90,10 +75,6 @@ type Props = {
     buttonTitle?: string
 }
 
-const getDefaultCityValue = (cityValue?: string): string => {
-    return cityValue || "70c5216e-9f0b-4102-8ad6-018c4c9600fa";
-};
-
 export const CompanyForm = (props: Props) => {
     const {defaultValues, id, buttonTitle} = props
     const {toast} = useToast()
@@ -101,10 +82,7 @@ export const CompanyForm = (props: Props) => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: useMemo(() => {
-            return {
-                ...defaultValues,
-                city: getDefaultCityValue(defaultValues?.city)
-            };
+            return defaultValues
         }, [defaultValues]),
     })
     const {data: provinces} = GetProvinces()
@@ -124,7 +102,7 @@ export const CompanyForm = (props: Props) => {
         const payload: any = {company};
         if (auth(values)) payload.auth = auth(values);
         if (address(values)) payload.address = address(values);
-        if (values.authorized) payload.authorized = values.authorized
+        if (values.authorized?.length) payload.authorized = values.authorized
 
         console.log(payload);
         if (defaultValues === undefined) {
@@ -134,16 +112,16 @@ export const CompanyForm = (props: Props) => {
         }
     }
 
-
+    console.log("errors: ",form.formState.errors)
     useEffect(() => {
         if (newCompanySuccess || updateSuccess) {
             form.reset(cleanValues); // Reset the form on successful submission
             toast({
-                title: `Kullanıcı başarılı bir şekilde ${newCompanySuccess ? "eklendi" : "güncellendi"}`,
-                description: `Kullanıcı ${newCompanySuccess ? "eklendi" : "güncellendi"} artık listeleniyor.`
+                title:t("staff_added_success_title",{state:newCompanySuccess ? "eklendi" : "güncellendi"}),
+                description: t("staff_added_success_desc",{state:newCompanySuccess ? "eklendi" : "güncellendi"}),
             });
         }
-    }, [newCompanySuccess, form, toast, updateSuccess]);
+    }, [newCompanySuccess, form, toast, updateSuccess, t]);
 
     useEffect(() => {
         form.reset(defaultValues); // Reset with default values on change
@@ -170,7 +148,9 @@ export const CompanyForm = (props: Props) => {
                         <FormSelectInput form={form} name="city" label="City" data={provinces || []}/>
                         <FormTextInput form={form} name="location" label="Semt" placeholder={"Sultanbeyli"}/>
                         <FormTextInput form={form} name="registrationNumber" label="Vergi No"
-                                       placeholder={"456743484"}/>
+                                       placeholder={"456743484"} description={t("registration_number_for_username")}/>
+                        <FormTextInput form={form} name="password" label={t("password")}
+                                       placeholder={"********"} description={t("password_for_company")}/>
                         <FormTextInput form={form} name="timeOfPayment" type="number"
                                        label="Ayın Kaçında Ödeme Yapılacak"
                                        placeholder={"25"} description={t("what_month")}/>

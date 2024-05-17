@@ -27,19 +27,22 @@ import {Form} from "@/components/ui/form";
 import {useForm} from "react-hook-form";
 import {z} from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {FormDatePicker, FormDatePickerSha, FormTextArea, FormTextInput, FormTimePicker} from "@ui";
+import {
+    FormDatePicker,
+    FormDatePickerSha,
+    FormTextArea,
+    FormTextInput,
+    FormTimePicker,
+    TicketAccordionWithSelectTitle,
+    TicketDetailCard
+} from "@ui";
 import {useParams} from "next/navigation";
 import {GetCompanies} from "@/api/company";
 import {Separator} from "@/components/ui/separator";
 import {format} from "date-fns";
 import {isEmpty} from "lodash";
 import {Label} from "@/components/ui/label";
-
-const getInitialDate = (hour: number = 7) => {
-    const now = new Date();
-    now.setHours(hour, 0, 0, 0); // Saat 07:00:00.000 olarak ayarla
-    return now;
-};
+import {getInitialDate} from "@/helpers/features";
 
 const formSchema = z.object({
     enterHour: z.date().default(getInitialDate()),
@@ -59,8 +62,8 @@ const Page = () => {
     const params: { id: string } | null = useParams()
     const [rowSelection, setRowSelection] = React.useState({})
     const [tab, setTab] = React.useState("user-table")
-    const [ticketStaffs, setTicketStaffs] = React.useState<{ staffId: string, title: string }[]>([])
-    const [selectedData, setSelectedData] = React.useState<any[]>([])
+    const [staffForDb, setStaffForDb] = React.useState<{ staffId: string, title: string }[]>([])
+    const [selectedStaff, setSelectedStaff] = React.useState<any[]>([])
     const [ticketData, setTicketData] = React.useState(defaultValues)
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -74,7 +77,7 @@ const Page = () => {
 
     const finishTicketCreated = () => {
         const data = {
-            staffs: ticketStaffs,
+            staffs: staffForDb,
             ...ticketData,
             companyId: params?.id
 
@@ -83,7 +86,7 @@ const Page = () => {
     }
 
     const staffTitleCount = () => {
-        return ticketStaffs?.reduce((acc, item) => {
+        return staffForDb?.reduce((acc, item) => {
             // Eğer title daha önce eklenmemişse, 0'dan başlat
             // @ts-ignore
             if (!acc[item.title]) {
@@ -117,24 +120,17 @@ const Page = () => {
             staffId: u.id,
             title: ROLES[0].value
         }));
-        setSelectedData(selectedData)
-        setTicketStaffs(formattedData)
+        setSelectedStaff(selectedData)
+        setStaffForDb(formattedData)
     }, [rowSelection, user]);
 
-    const changeStaffRole = (v: string, userId: string | undefined) => {
-        setTicketStaffs((prevStaffs: any) =>
-            prevStaffs.map((staff: any) =>
-                staff.staffId === userId ? {...staff, title: v} : staff
-            )
-        )
-    }
 
     const StaffList = () => {
         const titleCounts = staffTitleCount();
 
         return (
             <ul className="grid gap-3">
-                {Object.entries(titleCounts).map(([title, count]:any) => (
+                {Object.entries(titleCounts).map(([title, count]: any) => (
                     <li key={title} className="flex items-center justify-between">
                         <span className="text-muted-foreground">{t(title)}</span>
                         <span>{count}</span>
@@ -186,75 +182,13 @@ const Page = () => {
                     />
                 </TabsContent>
                 <TabsContent value="ticket-detail">
-                    {selectedData?.length ? <Accordion type="single" collapsible className="w-full">
-                        <AccordionItem value="item-1">
-                            <AccordionTrigger>{`${t("staffs")} (${t("selectable_staff_role")})`}</AccordionTrigger>
-                            <AccordionContent className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
-                                <div
-                                    className="grid gap-4 grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-                                    {selectedData?.map((user: User) => {
-                                        const fullName = `${user.firstName} ${user.lastName}`.substring(0, 25)
-                                        return (
-                                            <Card key={user.id} className="">
-                                                <CardHeader className="flex">
-                                                    <CardTitle className="line-clamp-1 flex justify-between gap-4">
-                                                        <div className="line-clamp-1 ">{fullName}</div>
-                                                        <Badge
-                                                            className="self-center ">{user.status}</Badge></CardTitle>
-                                                </CardHeader>
-                                                <CardContent>
-                                                    <div className="text-2md font-bold">{t(user.gender)}</div>
-                                                    <p className="text-xs text-muted-foreground">
-                                                        {user?.roles?.toString()}
-                                                    </p>
-                                                    <Select
-                                                        defaultValue={ROLES[0].value}
-                                                        onValueChange={(c: string) => changeStaffRole(c, user.id)}>
-                                                        <SelectTrigger>
-                                                            <SelectValue placeholder={t("select_roles")}/>
-                                                        </SelectTrigger>
-                                                        <SelectContent>
-                                                            <SelectGroup>
-                                                                <SelectLabel>{t("roles")}</SelectLabel>
-                                                                {ROLES.map((role) => {
-                                                                    return (
-                                                                        <SelectItem key={role.value}
-                                                                                    value={role.value}
-                                                                        >{role.label}</SelectItem>
-                                                                    )
-                                                                })}
-                                                            </SelectGroup>
-                                                        </SelectContent>
-                                                    </Select>
-                                                    extra ücret ve role seçim, static olarak varsayılan ücret
-                                                </CardContent>
-                                            </Card>
-                                        )
-                                    })}
-                                </div>
-                            </AccordionContent>
-                        </AccordionItem>
-                    </Accordion> : null}
+                    {selectedStaff?.length ?<TicketAccordionWithSelectTitle  data={selectedStaff} setStaff={setStaffForDb} staff={staffForDb} titles={ROLES}/> : null}
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)}
                               className=" grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
-                            <Card className="sm:col-span-2 xl:col-span-4">
-                                <CardHeader>
-                                    <CardTitle>{`${t("ticket_detail")}`}</CardTitle>
-                                    <CardDescription>{t("ticket_desc")}</CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <FormTimePicker form={form} label={t("enter_hour")} name={"enterHour"}/>
-                                    <FormTimePicker form={form} label={t("exit_hour")} name={"exitHour"}/>
-                                    <div className="mt-6"/>
-                                    <FormDatePickerSha form={form} name={"ticket_date"} label={t("ticket_date")}/>
-                                    <FormTextArea form={form} name={"ticket_notes"} label={t("notes")}
-                                                  description={t("notes_ticket_decs")}/>
-                                </CardContent>
-                            </Card>
+                            <TicketDetailCard form={form}/>
                             <Button type="submit">{t("continue")}</Button>
                         </form>
-
                     </Form>
                 </TabsContent>
                 <TabsContent value="control-and-finish">
@@ -303,8 +237,9 @@ const Page = () => {
                             </> : null
                             }
                         </CardContent>
-                        <CardFooter className="flex flex-row items-center border-t bg-muted/50 px-6 py-3 justify-center">
-                           <Button onClick={()=>finishTicketCreated()}>{t("create_ticket")}</Button>
+                        <CardFooter
+                            className="flex flex-row items-center border-t bg-muted/50 px-6 py-3 justify-center">
+                            <Button onClick={() => finishTicketCreated()}>{t("create_ticket")}</Button>
                         </CardFooter>
                     </Card>
                 </TabsContent>

@@ -4,7 +4,7 @@ import ReportSvg from "../assets/svgs/report.svg"
 import TicketSvg from "../assets/svgs/ticket.svg"
 import UserSvg from "../assets/svgs/user.svg"
 import Home2Svg from "../assets/svgs/home2.svg"
-import {Home, LineChart, Package, Users2,MessageCircleX,Building2} from "lucide-react";
+import {Home, LineChart, Package, Users2,MessageCircleX,Building2,GanttChart} from "lucide-react";
 import {APP_PATHS} from "@/config/paths";
 
 const mergePath =(main:string,side:string)=>{
@@ -41,6 +41,12 @@ export const dashboard_navs = [
         title:"reports",
         path: APP_PATHS.reports,
         icon:LineChart,
+    },
+    {
+        id:v4(),
+        title:"my_services",
+        path: APP_PATHS.myservices,
+        icon:GanttChart,
     },
     {
         id:v4(),

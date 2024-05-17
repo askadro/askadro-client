@@ -39,4 +39,5 @@ export const DISTRICTS = `${provinceMainPath}/districts`;
 
 //TICKETS
 
+export const TICKETS = `${provinceMainPath}/all`;
 export const CREATE_TICKET = `${ticketMainPath}/create`

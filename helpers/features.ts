@@ -13,3 +13,9 @@ export const address = (values: any) => {
         addressStatus: "ACTIVE",
     } : undefined;
 }
+
+export const getInitialDate = (hour: number = 7) => {
+    const now = new Date();
+    now.setHours(hour, 0, 0, 0); // Saat 07:00:00.000 olarak ayarla
+    return now;
+};

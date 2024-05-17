@@ -12,8 +12,8 @@ import {Input} from "@/components/ui/input";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
-import {CreateUserType} from "@/types/CreateUserType";
 import {useTranslations} from "next-intl";
+import {User} from "@/types";
 
 
 const UserDetail = () => {
@@ -21,7 +21,7 @@ const UserDetail = () => {
     const t = useTranslations("index")
     const params = useParams()
     const {data, isLoading, isSuccess, error, refetch: refecthUser} = GetUser(params?.id)
-    const [user, setUser] = useState<CreateUserType | null>(data)
+    const [user, setUser] = useState<User | null>(data)
     useEffect(() => {
         if (isSuccess) {
             setUser(data)
