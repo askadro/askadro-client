@@ -95,10 +95,10 @@ export const usersColums: ColumnDef<User>[] = [
         cell: ({row}) => <Badge variant="outline">{row.getValue("status")}</Badge>,
     },
     {
-        accessorKey: "roles",
-        header: "roles",
+        accessorKey: "titles",
+        header: "titles",
         cell: ({row}: any) => (
-            <div className="">{row.getValue("roles")?.map((i: any) => <Badge key={i}
+            <div className="flex flex-row">{row.getValue("titles")?.map((i: any) => <Badge key={i}
                                                                             variant="secondary">{i}</Badge>)}</div>
         ),
     },

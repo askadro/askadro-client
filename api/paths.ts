@@ -35,7 +35,7 @@ export const AUTHORIZED_COMPANY = `${companyMainPath}/new-authorized`;
 //PROVINCES
 
 export const PROVINCES = `${provinceMainPath}`;
-export const DISTRICTS = `${provinceMainPath}/districts`;
+export const DISTRICTS = `${provinceMainPath}`;
 
 //TICKETS
 

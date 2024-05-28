@@ -18,11 +18,9 @@ import {
 import {GetProvinces} from "@/api/province";
 import {SetCompany, UpdateCompany} from "@/api/company";
 import {UpdateCompanyType} from "@/types/Company";
-import {Label} from "@/components/ui/label";
 import {useTranslations} from "next-intl";
 import validator from "validator";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
-import {gender, ROLES} from "@/config/enums";
 import {address, auth} from "@/helpers/features";
 
 

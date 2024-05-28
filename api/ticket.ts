@@ -19,8 +19,8 @@ export function GetTickets() {
 export function SetTicket() {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async ({companyId,staffs,enterHour,exitHour,date,notes}: Ticket) => {
-            const res = await apiClient.post(CREATE_TICKET, {companyId,staffs,enterHour,exitHour,date,notes});
+        mutationFn: async (ticket: Ticket) => {
+            const res = await apiClient.post(CREATE_TICKET, ticket);
             return await res.data;
         },
         async onSuccess() {

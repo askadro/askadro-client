@@ -1,15 +1,22 @@
+import {format} from "date-fns";
+
 export type User = {
-    Identity: string
+    identity?: string
     firstName: string
     lastName: string
-    birthDate: Date
+    birthDate: string
     gender: string
-    id?: string
-    status?: string
-    deletedAt?: any
-    createdAt?: string
-    updatedAt?: string
-    image?:string
-    roles:string[]
-    iban:string
+    id?:  string | string[] | undefined;
+    status?: string | undefined
+    image?: string | undefined
+    iban: string
+    titles: string[]
+    addressDetail?:string
+    districtId?: string
+    provinceId?: string
+    password?:string
+    username?: string
+    deletedAt?: Date
+    createdAt?: Date
+    updatedAt?: Date
 }

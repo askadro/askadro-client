@@ -14,11 +14,11 @@ export const TicketDetailCard = ({form,label,labelDesc,className}:{form:any,labe
                 <CardDescription>{t(labelDesc ||"ticket_desc")}</CardDescription>
             </CardHeader>
             <CardContent>
-                <FormTimePicker form={form} label={t("enter_hour")} name={"enterHour"}/>
-                <FormTimePicker form={form} label={t("exit_hour")} name={"exitHour"}/>
+                <FormTimePicker form={form} label={t("enter_hour")} name={"enterTime"}/>
+                <FormTimePicker form={form} label={t("exit_hour")} name={"exitTime"}/>
                 <div className="mt-6"/>
-                <FormDatePickerSha form={form} name={"ticket_date"} label={t("ticket_date")}/>
-                <FormTextArea form={form} name={"ticket_notes"} label={t("notes")}
+                <FormDatePickerSha form={form} name={"ticketDate"} label={t("ticket_date")}/>
+                <FormTextArea form={form} name={"ticketNotes"} label={t("notes")}
                               description={t("notes_ticket_decs")}/>
             </CardContent>
         </Card>

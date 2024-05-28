@@ -6,8 +6,10 @@ import {cn} from "@/lib/utils";
 import {Check, ChevronsUpDown} from "lucide-react";
 import {Command, CommandEmpty, CommandInput, CommandItem, CommandList} from "@/components/ui/command";
 import {FormProps} from "@/types/FormPropsType";
+import {useTranslations} from "next-intl";
 
 export const FormSelectWithSearch = (props: FormProps) => {
+    const t = useTranslations("index")
     const {form, data,description,label,name} = props
     return (
         <FormField
@@ -31,15 +33,15 @@ export const FormSelectWithSearch = (props: FormProps) => {
                                         ? data?.find(
                                             (language) => language.value === field.value
                                         )?.label
-                                        : `Select ${name}`}
+                                        : `${t("search_data",{state:label})}`}
                                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50"/>
                                 </Button>
                             </FormControl>
                         </PopoverTrigger>
                         <PopoverContent className="p-0">
                             <Command>
-                                <CommandInput placeholder={`Search ${name}`}/>
-                                <CommandEmpty>{`No ${name} found.`}</CommandEmpty>
+                                <CommandInput placeholder={`${t("search_data", {state: label})}`}/>
+                                <CommandEmpty>{`${t("not_found_with",{state:label})}`}</CommandEmpty>
                                 <CommandList>
                                     {data?.map((d) => (
                                         <CommandItem

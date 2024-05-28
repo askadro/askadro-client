@@ -1,10 +1,8 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {Form} from "@/components/ui/form";
 import {
     FormDatePicker,
-    FormMultiSelect,
     FormMultiSelectWithSearch,
-    FormSelectInput,
     FormSelectWithSearch,
     FormTextArea,
     FormTextInput
@@ -15,17 +13,13 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
-import {gender, ROLES} from "@/config/enums";
+import {gender, TITLES} from "@/config/enums";
 import {SetUser, UpdateUser} from "@/api/user";
 import {useToast} from "@/components/ui/use-toast"
 import {useTranslations} from "next-intl";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
-import {GetProvinces} from "@/api/province";
+import {GetDistricts, GetProvinces} from "@/api/province";
 import {User} from "@/types";
-import {address, auth} from "@/helpers/features";
-
-type ValuePiece = Date | null;
-type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 const formSchema = z.object({
     firstName: z.string().min(2, {
@@ -34,28 +28,26 @@ const formSchema = z.object({
     lastName: z.string().min(2, {
         message: "Last name must be at least 2 characters.",
     }),
-    Identity: z.string().length(11, {
+    identity: z.string().length(11, {
         message: "Identity must be exactly 11 characters.",
     }),
     iban: z.string().refine(iban => /^TR\d{23}$/i.test(iban), {
         message: "IBAN must start with TR and be exactly 26 characters long.",
     }),
     gender: z.string(),
-    birthDate: z.date({
-        required_error: "A date of birth is required.",
-    }),
-    roles: z.string().array(),
+    birthDate: z.string(),
+    titles: z.string().array(),
     username: z.string().min(6, {message: 'Username must be at least 6 characters.'}).optional(),
     password: z.string().min(6, {message: 'Password must be at least 6 characters.'}).optional(),
-    city: z.string().length(36, {message: "Format error"}).optional(),
-    district: z.string().length(36, {message: "Format error"}).optional(),
-    address: z.string().min(3, {message: ""}).optional(),
+    provinceId: z.string().length(36, {message: "Format error"}).optional(),
+    districtId: z.string().length(36, {message: "Format error"}).optional(),
+    addressDetail: z.string().min(3, {message: ""}).optional(),
 }).superRefine((data, ctx) => {
     if ((data.username && !data.password) || (!data.username && data.password)) {
         ctx.addIssue({
             code: "custom",
             message: "Both username and password must be provided together.",
-            path: ["username"], // or you can put both "username" and "password" in separate calls to addIssue
+            path: ["username"],
         });
         ctx.addIssue({
             code: "custom",
@@ -67,25 +59,26 @@ const formSchema = z.object({
 
 type Props = {
     defaultValues?: User
-    id?: string | string[] | undefined
     buttonTitle?: string
 }
 
 const cleanValues = {
     firstName: "",
     lastName: "",
-    Identity: "",
+    identity: "",
     iban: "",
     gender: "",
-    address: "",
-    district: "",
-    city: "",
+    addressDetail: "",
+    districtId: "",
+    provinceId: "",
     password: "",
-    username: ""
+    username: "",
+    birthDate: "",
+    titles: []
 }
 
 export const UserForm = (props: Props) => {
-    const {defaultValues, id, buttonTitle} = props
+    const {defaultValues, buttonTitle} = props
     const t = useTranslations("index")
     const {toast} = useToast()
     const form = useForm<z.infer<typeof formSchema>>({
@@ -95,28 +88,29 @@ export const UserForm = (props: Props) => {
     const {mutateAsync: newUser, data, error, isSuccess: newSuccess} = SetUser()
     const {mutateAsync: updateUser, isSuccess: updateSuccess} = UpdateUser()
     const {data: provinces, refetch: refecthProvinces} = GetProvinces()
+    const {data: districts} = GetDistricts(form.watch("provinceId"))
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         const user = {
-            firstName: values.firstName,
-            lastName: values.lastName,
-            Identity: values.Identity,
+            firstName: values.firstName.toLowerCase(),
+            lastName: values.lastName.toLowerCase(),
+            identity: values.identity,
             iban: values.iban.toLowerCase(),
-            gender: values.gender,
+            gender: values.gender.toLowerCase(),
             birthDate: values.birthDate,
-            roles: values.roles,
+            titles: values.titles,
+            addressDetail: values.addressDetail?.toLowerCase(),
+            districtId: values.districtId,
+            provinceId: values.provinceId,
+            password: values.password,
+            username: values.username?.toLowerCase(),
         };
-
-        const payload: any = { user };
-        if (auth(values)) payload.auth = auth(values);
-        if (address(values)) payload.address = address(values);
-
-        console.log(payload);
-
+        console.log("user: ", user)
         if (defaultValues === undefined) {
-            await newUser(payload);
+            await newUser(user);
         } else {
-            await updateUser({ id, ...payload });
+            const {identity, ...userData} = user
+            await updateUser({id: defaultValues?.id, ...userData});
         }
     }
 
@@ -130,11 +124,9 @@ export const UserForm = (props: Props) => {
         }
     }, [newSuccess, form, toast, updateSuccess]);
 
-
     useEffect(() => {
         form.reset(defaultValues); // Reset with default values on change
     }, [defaultValues, form]);
-
 
     useEffect(() => {
         if (!provinces) {
@@ -142,12 +134,12 @@ export const UserForm = (props: Props) => {
             })
         }
     }, [provinces, refecthProvinces]);
-
+    console.log(form.formState.errors)
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}
-                  className=" grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
-                <Card className="sm:col-span-2">
+                  className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+                <Card className="sm:col-span-1 md:col-span-1 lg:col-span-1">
                     <CardHeader>
                         <CardTitle>{t("user")}</CardTitle>
                         <CardDescription>{t("new_user_desc")}</CardDescription>
@@ -155,46 +147,47 @@ export const UserForm = (props: Props) => {
                     <CardContent>
                         <FormTextInput form={form} name="firstName" label="Ad" placeholder="Adı"/>
                         <FormTextInput form={form} name="lastName" label="Soyad" placeholder="Soyad"/>
-                        {!id ? <FormTextInput form={form} name="Identity" label="TC" placeholder="12345678921"
-                                              description="TC ve isim uygunluğu sağlanmalı"/> : null}
+                        {!defaultValues?.id ?
+                            <FormTextInput form={form} name="Identity" label="TC" placeholder="12345678921"
+                                           description="TC ve isim uygunluğu sağlanmalı"/> : null}
                         <FormTextInput form={form} name="iban" label="IBAN"
                                        placeholder="TR123456789012345678901234"/>
                         <FormSelectWithSearch form={form} name="gender" label={t("gender")} placeholder={t("gender")}
                                               data={gender || []}/>
-                        <FormDatePicker form={form} name="birthDate" label="Date of birth"
+                        <FormDatePicker form={form} name="birthDate" label={t("date_of_birth")}
                                         description="Doğum tarihi yaş bilgisi için önemli."/>
-                        <FormMultiSelectWithSearch form={form} name="roles" label={t("roles")} data={ROLES}/>
-                        {/*<FormMultiSelect name="roles" label={t("roles")} data={ROLES} state={roles}*/}
-                        {/*                 setState={setRoles}/>*/}
+                        <FormMultiSelectWithSearch form={form} name="titles" label={t("titles")} data={TITLES}
+                                                   defaultValue={defaultValues?.titles}/>
                     </CardContent>
                 </Card>
-                <Card className="sm:col-span-2">
+                <Card className="sm:col-span-1 md:col-span-1 lg:col-span-1">
                     <CardHeader>
                         <CardTitle>{`${t("is_manager")} (${t("opsiyonel")})`}</CardTitle>
                         <CardDescription>{t("is_manager_decs")}</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <FormTextInput form={form} name="username" label={t("username")} placeholder={t("username")}/>
-                        <FormTextInput form={form} name="password" type="password" label={t("password")} placeholder={t("password")}/>
+                        <FormTextInput form={form} name="password" type="password" label={t("password")}
+                                       placeholder={t("password")}/>
                     </CardContent>
                 </Card>
 
-                <Card className="sm:col-span-2 xl:col-span-4">
+                <Card className="sm:col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2">
                     <CardHeader>
                         <CardTitle>{`${t("address")} (${t("opsiyonel")})`}</CardTitle>
                         <CardDescription>{t("address_decs")}</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <FormSelectWithSearch form={form} name="city" label={t("city")} placeholder={t("city")}
+                        <FormSelectWithSearch form={form} name="provinceId" label={t("city")} placeholder={t("city")}
                                               data={provinces || []}/>
-                        <FormSelectWithSearch form={form} name="district" label={t("district")}
-                                              placeholder={t("district")} data={provinces || []}/>
-                        <FormTextArea form={form} label="address" name="address"/>
+                        <FormSelectWithSearch form={form} name="districtId" label={t("district")}
+                                              placeholder={t("district")} data={districts}/>
+                        <FormTextArea form={form} label="address_detail" name="addressDetail"/>
                     </CardContent>
                 </Card>
-                <Button className="col-span-4 py-5" type="submit">{t(buttonTitle || "submit")}</Button>
+                <Button className="col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-3 py-5"
+                        type="submit">{t(buttonTitle || "submit")}</Button>
             </form>
         </Form>
     );
 };
-

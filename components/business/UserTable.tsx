@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/table"
 import {User} from "@/types/UserType";
 import {ContactRound, Edit, ListCollapse, Trash} from "lucide-react";
-import {usePathname, useRouter} from "next/navigation";
 import {DeleteUser, GetUsers} from "@/api/user";
 import {Badge} from "@/components/ui/badge";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
@@ -47,6 +46,7 @@ export function UserTable() {
     const renderTableRow = () => {
         return data.map((user: User) => {
             return (
+            // @ts-ignore
                 <TableRow key={user.id}>
                     <TableCell className="hidden sm:table-cell">
                         {
@@ -68,12 +68,14 @@ export function UserTable() {
                             {user.status}
                         </Badge>
                     </TableCell>
-                    <TableCell> {user.roles?.map((r: string) => r.split(",").join(" "))}</TableCell>
+                    <TableCell> {user.titles?.map((r: string) => r.split(",").join(" "))}</TableCell>
                     <TableCell className="hidden md:table-cell">
                         {t(user.gender)}
                     </TableCell>
                     <TableCell className="hidden md:table-cell">
-                        {formatDistance(subDays(new Date(user.createdAt), 0), new Date(), {locale: tr})}
+                        {
+                            // @ts-ignore
+                            formatDistance(subDays(new Date(user.createdAt), 0), new Date(), {locale: tr})}
                     </TableCell>
                     <TableCell>
                         <div className="row-auto">
@@ -138,7 +140,7 @@ export function UserTable() {
                                         </SheetClose>
                                         <SheetClose asChild>
                                             <Button variant="destructive"
-                                                    onClick={() => deleteUser(user?.id)}>{t("delete")}</Button>
+                                                    onClick={() => deleteUser(user?.id as string)}>{t("delete")}</Button>
                                         </SheetClose>
                                     </SheetFooter>
                                 </SheetContent>

@@ -8,4 +8,5 @@ export type FormProps = {
     multi?: boolean
     state?: any
     setState?: any
+    defaultValue?: any
 }

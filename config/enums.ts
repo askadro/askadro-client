@@ -13,33 +13,44 @@ export const gender = [
     },
 ]
 
-export const ROLES = [
+export const TITLES = [
     {
-        value: "garson",
-        label: "Garson",
+        value:"waiter",
+        label:"waiter"
     },
     {
-        value: "komi",
-        label: "Komi",
+        value:"chef",
+        label:"chef"
     },
     {
-        value: "steward",
-        label: "Steward",
+        value:"earnings",
+        label:"earnings"
     },
     {
-        value: "floor_service",
-        label: "Kat Hizmetleri",
+        value:"package_handler",
+        label:"package_handler"
     },
     {
-        value: "hostes",
-        label: "Hostes",
+        value:"hostess",
+        label:"hostess"
     },
     {
-        value: "package_personel",
-        label: "Paketleme Personeli",
+        value:"housekeeper",
+        label:"housekeeper"
     },
     {
-        value: "kazanci",
-        label: "Kara Kazancı",
+        value:"steward",
+        label:"steward"
+    },
+    {
+        value:"komi",
+        label:"komi"
     }
 ]
+
+export enum JobStatusEnum {
+    WAITING = "waiting",
+    FINISH = "finished",
+    FAILED= "failed",
+    CREATING="creating"
+}

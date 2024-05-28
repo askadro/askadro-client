@@ -40,8 +40,8 @@ export function GetUser(id: string | string[] | undefined) {
 export function SetUser() {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async ({auth, user, address}: {auth:AuthType, user:User, address:AddressType}) => {
-            const res = await apiClient.post(CREATE_USER, {auth, user, address});
+        mutationFn: async (user:User ) => {
+            const res = await apiClient.post(CREATE_USER, user);
             return await res.data;
         },
         async onSuccess() {
@@ -53,12 +53,12 @@ export function SetUser() {
 export function UpdateUser() {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async ({id,auth, user, address}: {id:string | string[] | undefined,auth:AuthType, user:User, address:AddressType}) => {
-            const res = await apiClient.patch(`${UPDATE_USER}/${id}`, {id,auth, user, address});
+        mutationFn: async (user: User) => {
+            const res = await apiClient.patch(`${UPDATE_USER}/${user.id}`, user);
             return await res.data;
         },
         async onSuccess(data) {
-          await  queryClient.invalidateQueries({queryKey: ["users"]})
+            await queryClient.invalidateQueries({queryKey: ["users"]})
         }
     });
 }
@@ -66,7 +66,7 @@ export function UpdateUser() {
 export function DeleteUser() {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async (id:string) => {
+        mutationFn: async (id?: string) => {
             const res = await apiClient.delete(`${DELETE_USER}/${id}`);
             console.log("deleted user: ", res.data)
             return await res.data;

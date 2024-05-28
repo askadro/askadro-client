@@ -1,7 +1,7 @@
 "use client"
 
 import {CheckIcon, ChevronDown, X} from "lucide-react"
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import {cn} from "@/lib/utils"
 import {Badge} from "@/components/ui/badge"
 
@@ -21,10 +21,19 @@ import {
 } from "@/components/ui/form"
 import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover"
 import {FormProps} from "@/types/FormPropsType";
+import {useTranslations} from "next-intl";
 
 export const FormMultiSelectWithSearch = (props: FormProps) => {
-    const {label, name, form, data, description} = props
+    const {label, name, form, data, description,defaultValue} = props
     const [selected, setSelected] = useState(() => new Set<string>())
+    const t = useTranslations("index")
+
+    useEffect(() => {
+        if (defaultValue) {
+            setSelected(new Set(defaultValue));
+        }
+    }, [defaultValue]);
+
     return (
         <FormField
             control={form.control}
@@ -98,7 +107,7 @@ export const FormMultiSelectWithSearch = (props: FormProps) => {
                         >
                             <Command>
                                 <CommandInput
-                                    placeholder={`"Search ${name}..."`}
+                                    placeholder={`${t("search_data",{state:label})}`}
                                     className="h-9"
                                 />
                                 <CommandEmpty>No result found.</CommandEmpty>

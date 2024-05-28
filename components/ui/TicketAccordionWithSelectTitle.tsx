@@ -12,15 +12,14 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select";
-import {ROLES} from "@/config/enums";
 import {useTranslations} from "next-intl";
 
-export const TicketAccordionWithSelectTitle = ({data,setStaff,staff,titles}:{data:any[],setStaff:any,staff:any,titles:any[]}) => {
+export const TicketAccordionWithSelectTitle = ({data,setJob,titles}:{data:any[],setJob:any,titles:any[]}) => {
     const t = useTranslations("index")
-    const changeStaffRole = (v: string, userId: string | undefined) => {
-        setStaff((prevStaffs: any) =>
-            prevStaffs.map((staff: any) =>
-                staff.staffId === userId ? {...staff, title: v} : staff
+    const changeStaffRole = (v: string, userId: string | string[] | undefined) => {
+        setJob((prevStaffs: any) =>
+            prevStaffs.map((job: any) =>
+                job.id === userId ? {...job, title: v} : job
             )
         )
     }
@@ -34,6 +33,7 @@ export const TicketAccordionWithSelectTitle = ({data,setStaff,staff,titles}:{dat
                         {data?.map((user: User) => {
                             const fullName = `${user.firstName} ${user.lastName}`.substring(0, 25)
                             return (
+                            // @ts-ignore
                                 <Card key={user.id} className="">
                                     <CardHeader className="flex">
                                         <CardTitle className="line-clamp-1 flex justify-between gap-4">
@@ -44,7 +44,7 @@ export const TicketAccordionWithSelectTitle = ({data,setStaff,staff,titles}:{dat
                                     <CardContent>
                                         <div className="text-2md font-bold">{t(user.gender)}</div>
                                         <p className="text-xs text-muted-foreground">
-                                            {user?.roles?.toString()}
+                                            {user?.titles?.toString()}
                                         </p>
                                         <Select
                                             defaultValue={titles[0].value}

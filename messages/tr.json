@@ -139,6 +139,16 @@
     "update_ticket": "Talep güncelleme",
     "update_tickets_desc": "Bilgileri değiştirerek güncelleyebilirsiniz.",
     "extra_price": "Ek ücret",
-    "extra_hour": "Ek süre (dakika)"
+    "extra_hour": "Ek süre (dakika)",
+    "titles": "Ünvanlar",
+    "select_data": "{state} şeç",
+    "not_found": "Bulunamadı",
+    "not_found_with": "{state} bulunamadı",
+    "search_data": "{state} ara",
+    "address_detail": "Adres detayı",
+    "date_of_birth": "Doğum tarihi",
+    "waiter": "Garson",
+    "hostess": "Hostes",
+    "package_handler": "Paketçi"
   }
 }

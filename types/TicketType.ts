@@ -1,8 +1,13 @@
+import {Job} from "@/types/JobType";
+import {JobStatusEnum} from "@/config/enums";
+
 export type Ticket = {
     companyId: string,
-    staffs: [{ title: string, staffId: string }],
-    enterHour: string,
-    exitHour: string,
-    date: Date,
-    notes: string[]
+    userId:string,
+    enterTime: string,
+    exitTime: string,
+    ticketDate: string,
+    ticketNotes: string[],
+    jobs: Job[],
+    status:JobStatusEnum
 }

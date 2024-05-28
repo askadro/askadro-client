@@ -1,38 +1,22 @@
 "use client"
 
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {useTranslations} from "next-intl";
 import {GetUsers} from "@/api/user";
 import {CustomTable} from "@business";
 import {usersColums} from "@/config/usersTableData";
 import {Button} from "@/components/ui/button";
-import {ArrowRight, PlusCircle} from "lucide-react";
+import {ArrowRight} from "lucide-react";
 import {User} from "@/types";
 import {SetTicket} from "@/api/ticket";
 import {Tabs, TabsContent, TabsList, TabsTrigger,} from "@/components/ui/tabs";
-import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import {Badge} from "@/components/ui/badge";
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue
-} from "@/components/ui/select";
-import {ROLES} from "@/config/enums";
+import {TITLES} from "@/config/enums";
 import {Form} from "@/components/ui/form";
 import {useForm} from "react-hook-form";
 import {z} from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {
-    FormDatePicker,
-    FormDatePickerSha,
-    FormTextArea,
-    FormTextInput,
-    FormTimePicker,
     TicketAccordionWithSelectTitle,
     TicketDetailCard
 } from "@ui";
@@ -45,16 +29,16 @@ import {Label} from "@/components/ui/label";
 import {getInitialDate} from "@/helpers/features";
 
 const formSchema = z.object({
-    enterHour: z.date().default(getInitialDate()),
-    exitHour: z.date().default(getInitialDate(14)),
-    ticket_date: z.date().default(new Date()),
-    ticket_notes: z.string().optional().default("")
+    enterTime: z.date().default(getInitialDate()),
+    exitTime: z.date().default(getInitialDate(14)),
+    ticketDate: z.date().default(new Date()),
+    ticketNotes: z.string().optional().default(""),
 })
 const defaultValues = {
-    enterHour: getInitialDate(),
-    exitHour: getInitialDate(14),
-    ticket_date: new Date(),
-    ticket_notes: ""
+    enterTime: getInitialDate(),
+    exitTime: getInitialDate(14),
+    ticketDate: new Date(),
+    ticketNotes: ""
 };
 
 const Page = () => {
@@ -62,7 +46,7 @@ const Page = () => {
     const params: { id: string } | null = useParams()
     const [rowSelection, setRowSelection] = React.useState({})
     const [tab, setTab] = React.useState("user-table")
-    const [staffForDb, setStaffForDb] = React.useState<{ staffId: string, title: string }[]>([])
+    const [jobsData, setJobsData] = React.useState<{ staffId: string, title: string }[]>([])
     const [selectedStaff, setSelectedStaff] = React.useState<any[]>([])
     const [ticketData, setTicketData] = React.useState(defaultValues)
     const form = useForm<z.infer<typeof formSchema>>({
@@ -77,7 +61,7 @@ const Page = () => {
 
     const finishTicketCreated = () => {
         const data = {
-            staffs: staffForDb,
+            jobs: jobsData,
             ...ticketData,
             companyId: params?.id
 
@@ -86,7 +70,7 @@ const Page = () => {
     }
 
     const staffTitleCount = () => {
-        return staffForDb?.reduce((acc, item) => {
+        return jobsData?.reduce((acc, item) => {
             // Eğer title daha önce eklenmemişse, 0'dan başlat
             // @ts-ignore
             if (!acc[item.title]) {
@@ -99,7 +83,6 @@ const Page = () => {
             return acc;
         }, {});
     }
-
 
     const createTicket = () => {
         return (
@@ -117,12 +100,14 @@ const Page = () => {
         const keys = Object.keys(rowSelection);
         const selectedData = user?.filter((u: User, index: number) => keys.some((k: string) => k === index.toString()))
         const formattedData = selectedData?.map((u: { id: any; }) => ({
-            staffId: u.id,
-            title: ROLES[0].value
+            id: u.id,
+            title: TITLES[0].value,
+            enterTime: form.getValues("enterTime"),
+            exitTime: form.getValues("exitTime")
         }));
         setSelectedStaff(selectedData)
-        setStaffForDb(formattedData)
-    }, [rowSelection, user]);
+        setJobsData(formattedData)
+    }, [form, rowSelection, user]);
 
 
     const StaffList = () => {
@@ -182,7 +167,9 @@ const Page = () => {
                     />
                 </TabsContent>
                 <TabsContent value="ticket-detail">
-                    {selectedStaff?.length ?<TicketAccordionWithSelectTitle  data={selectedStaff} setStaff={setStaffForDb} staff={staffForDb} titles={ROLES}/> : null}
+                    {selectedStaff?.length ?
+                        <TicketAccordionWithSelectTitle data={selectedStaff} setJob={setJobsData}
+                                                        titles={TITLES}/> : null}
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)}
                               className=" grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
@@ -200,7 +187,7 @@ const Page = () => {
                                 <CardTitle className="group flex items-center gap-2 text-lg">
                                     {company.name}
                                 </CardTitle>
-                                <CardDescription>{`Date: ${format(ticketData?.ticket_date, "PPP")}`}</CardDescription>
+                                <CardDescription>{`Date: ${format(ticketData?.ticketDate, "PPP")}`}</CardDescription>
                             </div>
 
                         </CardHeader>
@@ -211,23 +198,23 @@ const Page = () => {
                                     <li className="flex items-center justify-between">
                                         <span
                                             className="text-muted-foreground">{t("enter_time")}</span>
-                                        <span>{format(ticketData?.enterHour, "HH:mm")}</span>
+                                        <span>{format(ticketData?.enterTime, "HH:mm")}</span>
                                     </li>
                                     <li className="flex items-center justify-between">
                                         <span
                                             className="text-muted-foreground">{t("exit_time")}</span>
-                                        <span>{format(ticketData?.exitHour, "HH:mm")}</span>
+                                        <span>{format(ticketData?.exitTime, "HH:mm")}</span>
                                     </li>
                                 </ul>
                                 <Separator className="my-2"/>
                                 <StaffList/>
                             </div>
-                            {ticketData?.ticket_notes ? <>
+                            {ticketData?.ticketDate ? <>
                                 <Separator className="my-4"/>
                                 <div className="grid gap-3">
                                     <Label>{t("notes")}</Label>
                                     <ul className="grid gap-3">
-                                        {ticketData?.ticket_notes?.split(",")?.map((note, index) => (
+                                        {ticketData?.ticketNotes?.split(",")?.map((note, index) => (
                                             <li key={index.toString()} className="flex items-center justify-between">
                                                 <span className="text-muted-foreground">{`- ${note}`}</span>
                                             </li>
