@@ -2,12 +2,12 @@ import {Job} from "@/types/JobType";
 import {JobStatusEnum} from "@/config/enums";
 
 export type Ticket = {
-    companyId: string,
+    companyId?: string,
     userId:string,
-    enterTime: string,
-    exitTime: string,
-    ticketDate: string,
-    ticketNotes: string[],
+    enterTime: Date,
+    exitTime: Date,
+    ticketDate: Date,
+    ticketNotes: string,
     jobs: Job[],
-    status:JobStatusEnum
+    status?:JobStatusEnum
 }

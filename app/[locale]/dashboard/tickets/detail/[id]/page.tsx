@@ -1,8 +1,7 @@
 "use client"
 
 import React, {useMemo} from 'react';
-import {TicketAccordionWithSelectTitle, TicketDetailCard} from "@ui";
-import {ROLES} from "@/config/enums";
+import {TicketDetailCard} from "@ui";
 import {Form} from "@/components/ui/form";
 import {Button} from "@/components/ui/button";
 import {useForm} from "react-hook-form";
@@ -11,10 +10,8 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {useTranslations} from "next-intl";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {Label} from "@/components/ui/label";
-import {Textarea} from "@/components/ui/textarea";
 import {Input} from "@/components/ui/input";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
-import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
 import {
     Select,
     SelectContent,
@@ -24,6 +21,7 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select";
+import {TITLES} from "@/config/enums";
 
 const formSchema = z.object({
     enterHour: z.date(),
@@ -92,7 +90,7 @@ const Page = () => {
                                 </TableCell>
                                 <TableCell>
                                     <Select
-                                        defaultValue={ROLES[0].value}
+                                        defaultValue={TITLES[0].value}
                                         // onValueChange={(c: string) => changeStaffRole(c, user.id)}
                                     >
                                         <SelectTrigger>
@@ -101,7 +99,7 @@ const Page = () => {
                                         <SelectContent>
                                             <SelectGroup>
                                                 <SelectLabel>{t("title")}</SelectLabel>
-                                                {ROLES.map((role) => {
+                                                {TITLES.map((role) => {
                                                     return (
                                                         <SelectItem key={role.value}
                                                                     value={role.value}

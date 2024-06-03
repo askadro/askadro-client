@@ -1,15 +1,32 @@
 "use client"
 
-import * as React from "react"
-import {GetCompanies} from "@/api/company";
-import {CustomTable} from "@business";
-import {companyColums} from "@/config/companyTableData";
+import {getLocalStorage} from "@/utils/storage";
+import {ValidateToken} from "@/api/auth";
+import {useEffect} from "react";
+import {redirect} from "next/navigation";
 
 
-export default function DataTableDemo() {
-    const {data} = GetCompanies()
+export default function LocalPage() {
+    const token = getLocalStorage("token")
+    const {mutate: validateToken, data: isValidate} = ValidateToken()
+    const reLink = (path:string)=> {
+        return redirect(`${getLocalStorage("lang")}/${path}`);
+    }
+    useEffect(() => {
+        if (token) {
+            validateToken(token)
+        } else {
+            reLink("auth/login")
+        }
+    }, [token, validateToken]);
 
-    return (
-        <CustomTable columns={companyColums} data={data} searchFilterParam={"name"} searchPlaceholder={"Search Company..."} />
-    )
+    useEffect(() => {
+        if (isValidate?.isValid) {
+            redirect(`${getLocalStorage("lang")}/`)
+        } else {
+            reLink("dashboard")
+        }
+    }, [isValidate]);
+
+    return null
 }

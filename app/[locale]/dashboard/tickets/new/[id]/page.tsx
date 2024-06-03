@@ -2,13 +2,13 @@
 
 import React, {useEffect, useMemo} from 'react';
 import {useTranslations} from "next-intl";
-import {GetUsers} from "@/api/user";
+import {GetProfile, GetUsers} from "@/api/user";
 import {CustomTable} from "@business";
 import {usersColums} from "@/config/usersTableData";
 import {Button} from "@/components/ui/button";
 import {ArrowRight} from "lucide-react";
 import {User} from "@/types";
-import {SetTicket} from "@/api/ticket";
+import {CreateTicket} from "@/api/ticket";
 import {Tabs, TabsContent, TabsList, TabsTrigger,} from "@/components/ui/tabs";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {TITLES} from "@/config/enums";
@@ -20,13 +20,16 @@ import {
     TicketAccordionWithSelectTitle,
     TicketDetailCard
 } from "@ui";
-import {useParams} from "next/navigation";
+import {redirect, useParams, useRouter} from "next/navigation";
 import {GetCompanies} from "@/api/company";
 import {Separator} from "@/components/ui/separator";
 import {format} from "date-fns";
 import {isEmpty} from "lodash";
 import {Label} from "@/components/ui/label";
 import {getInitialDate} from "@/helpers/features";
+import {useToast} from "@/components/ui/use-toast";
+import {cn} from "@/lib/utils";
+import {getLocalStorage} from "@/utils/storage";
 
 const formSchema = z.object({
     enterTime: z.date().default(getInitialDate()),
@@ -43,10 +46,17 @@ const defaultValues = {
 
 const Page = () => {
     const t = useTranslations("index")
+    const router = useRouter()
+    const {toast} = useToast()
     const params: { id: string } | null = useParams()
     const [rowSelection, setRowSelection] = React.useState({})
     const [tab, setTab] = React.useState("user-table")
-    const [jobsData, setJobsData] = React.useState<{ staffId: string, title: string }[]>([])
+    const [jobsData, setJobsData] = React.useState<{
+        userId: string,
+        title: string,
+        enterTime: Date,
+        exitTime: Date
+    }[]>([])
     const [selectedStaff, setSelectedStaff] = React.useState<any[]>([])
     const [ticketData, setTicketData] = React.useState(defaultValues)
     const form = useForm<z.infer<typeof formSchema>>({
@@ -54,24 +64,55 @@ const Page = () => {
         defaultValues: useMemo(() => defaultValues, [])
     })
     const {data: user} = GetUsers()
-
+    const {data: profile} = GetProfile()
     const {data: companies} = GetCompanies()
     const company = companies?.find((e: { id: string | undefined; }) => e.id === params?.id)
-    const {mutateAsync: setTicket, isSuccess: ticketSuccess} = SetTicket()
+    const {mutateAsync: createTicketAsync, isSuccess: ticketSuccess} = CreateTicket()
 
-    const finishTicketCreated = () => {
+    const finishTicketCreated = async () => {
+        if (!profile?.id) {
+            toast({
+                className: cn(
+                    'top-0 right-0 flex fixed md:max-w-[420px] md:top-4 md:right-4'
+                ),
+                title: "Profile shouldn't find",
+                description: "Giriş yapmadan oluşturulamaz",
+                variant: "destructive",
+            })
+        }
         const data = {
             jobs: jobsData,
             ...ticketData,
-            companyId: params?.id
-
+            companyId: params?.id,
+            userId: profile.id
         }
         console.log("last data: ", data)
+        await createTicketAsync(data)
     }
+
+    useEffect(() => {
+        if (ticketSuccess) {
+            toast({
+                title: "Ticket created",
+                description: "Talep oluşturuldu",
+            });
+
+            const timeoutId = setTimeout(() => {
+                form.reset(defaultValues);
+                setSelectedStaff([]);
+                setRowSelection({});
+                setTicketData(defaultValues);
+                setJobsData([]);
+                router.replace(`/${getLocalStorage("lang") || "tr"}/dashboard/tickets`);
+            }, 1500);
+
+            return () => clearTimeout(timeoutId); // Cleanup the timeout if the component unmounts or ticketSuccess changes
+        }
+    }, [ticketSuccess, form, router, toast]);
+
 
     const staffTitleCount = () => {
         return jobsData?.reduce((acc, item) => {
-            // Eğer title daha önce eklenmemişse, 0'dan başlat
             // @ts-ignore
             if (!acc[item.title]) {
                 // @ts-ignore
@@ -100,7 +141,7 @@ const Page = () => {
         const keys = Object.keys(rowSelection);
         const selectedData = user?.filter((u: User, index: number) => keys.some((k: string) => k === index.toString()))
         const formattedData = selectedData?.map((u: { id: any; }) => ({
-            id: u.id,
+            userId: u.id,
             title: TITLES[0].value,
             enterTime: form.getValues("enterTime"),
             exitTime: form.getValues("exitTime")

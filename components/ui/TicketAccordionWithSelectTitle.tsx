@@ -19,7 +19,7 @@ export const TicketAccordionWithSelectTitle = ({data,setJob,titles}:{data:any[],
     const changeStaffRole = (v: string, userId: string | string[] | undefined) => {
         setJob((prevStaffs: any) =>
             prevStaffs.map((job: any) =>
-                job.id === userId ? {...job, title: v} : job
+                job.userId === userId ? {...job, title: v} : job
             )
         )
     }
@@ -54,12 +54,12 @@ export const TicketAccordionWithSelectTitle = ({data,setJob,titles}:{data:any[],
                                             </SelectTrigger>
                                             <SelectContent>
                                                 <SelectGroup>
-                                                    <SelectLabel>{t("roles")}</SelectLabel>
-                                                    {titles.map((role) => {
+                                                    <SelectLabel>{t("titles")}</SelectLabel>
+                                                    {titles.map((title) => {
                                                         return (
-                                                            <SelectItem key={role.value}
-                                                                        value={role.value}
-                                                            >{role.label}</SelectItem>
+                                                            <SelectItem key={title.value}
+                                                                        value={title.value}
+                                                            >{title.label}</SelectItem>
                                                         )
                                                     })}
                                                 </SelectGroup>

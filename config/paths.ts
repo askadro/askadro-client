@@ -1,17 +1,20 @@
+import {getLocalStorage} from "@/utils/storage";
+
 const mergePath = (main: string, side: string) => {
     return `/${main}/${side}`;
 }
+let lang: string = getLocalStorage("lang") || "tr"
+const auth= `${lang}/auth`
 
 export const AUTH_PATHS = {
-    auth: "auth",
-    signin: "signin",
-    login: "login",
-    logout: "logout",
+    register: mergePath(auth,"register"),
+    login: mergePath(auth,"login"),
+    forget_password: mergePath(auth,"forget_password"),
 }
 export const AUTH_TOKEN_PATHS = {}
 export const AUTH_TOKEN_SECRET = {}
 
-let lang: string = "tr"
+
 // if (typeof window !== undefined) {
 //     if (localStorage?.getItem("lang") !== null) {
 //         lang = localStorage.getItem("lang") || "tr"

@@ -1,11 +1,23 @@
 import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
 import {apiClient} from "@/api/index";
-import {CREATE_USER, DELETE_USER, UPDATE_USER, USER, USERS} from "@/api/paths";
+import {CREATE_USER, DELETE_USER, PROFILE, UPDATE_USER, USER, USERS} from "@/api/paths";
 import {AddressType, AuthType, User} from "@/types";
+import {CACHE_TIME_16_HOUR, CACHE_TIME_64_HOUR} from "@/config/app";
 
 export const fetchUsers = async () => {
     const res = await apiClient.get(USERS);
     return await res.data;
+}
+
+export function GetProfile() {
+    return useQuery({
+        queryKey: ['profile'],
+        queryFn: async () => {
+            const res = await apiClient.get(PROFILE);
+            return await res.data;
+        },
+        staleTime: CACHE_TIME_64_HOUR, // 64 hour
+    });
 }
 
 export function GetUsers() {
@@ -15,7 +27,7 @@ export function GetUsers() {
             const res = await apiClient.get(USERS);
             return await res.data;
         },
-        staleTime: 960 * (60 * 4000), // 64 hour
+        staleTime: CACHE_TIME_16_HOUR, // 64 hour
     });
 }
 
@@ -33,7 +45,7 @@ export function GetUser(id: string | string[] | undefined) {
             // const selectedUser = await users.find((user:User) => user.id === id);
 
         },
-        staleTime: 960 * (60 * 4000), // 64 hour
+        staleTime: CACHE_TIME_16_HOUR, // 64 hour
     })
 }
 

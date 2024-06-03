@@ -149,6 +149,12 @@
     "date_of_birth": "Doğum tarihi",
     "waiter": "Garson",
     "hostess": "Hostes",
-    "package_handler": "Paketçi"
+    "package_handler": "Paketçi",
+    "earnings": "Kazancı",
+    "rememberMe": "Beni hatırla",
+    "something_went_wrong": "Bir şeyler yanlış",
+    "komi": "Komi",
+    "chef": "Şef",
+    "housekeeper": "Kat görevlisi"
   }
 }

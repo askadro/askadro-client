@@ -1,14 +1,23 @@
-export const LOGIN = "users/login";
 
+
+const authMainPath = "auth";
 const userMainPath = "users"
 const companyMainPath = "companies";
 const provinceMainPath = "provinces";
 const ticketMainPath = "tickets";
+const jobMainPath = "jobs"
+//AUTH
+export const LOGIN = `${authMainPath}/login`;
+export const VALIDATE_TOKEN = `${authMainPath}/validate-token`;
+export const LOGOUT = `${authMainPath}/logout`;
+
+//USER
 export const USERS = userMainPath;
 export const CREATE_USER = `${userMainPath}/create`;
 export const USER = `${userMainPath}/user`;
 export const UPDATE_USER = `${userMainPath}/update`;
 export const DELETE_USER = `${userMainPath}/delete`;
+export const PROFILE = `${userMainPath}/profile`;
 
 
 //yapılacaklar
@@ -16,8 +25,14 @@ export const DELETE_USER = `${userMainPath}/delete`;
 export const CREATE_ADDRESS = `${userMainPath}/user-address-create`;  // :id
 export const UPDATE_ADDRESS = `${userMainPath}/user-address-update`;  // :userAddressId
 
-//işler
-export const USER_JOB = `${userMainPath}/job`; //id
+//jobs
+export const CREATE_JOB = `${jobMainPath}/new`;
+export const GET_JOB = `${jobMainPath}`; //:id
+export const UPDATE_JOB = `${jobMainPath}/update`; //:id
+export const GET_JOBS = `${jobMainPath}`;
+export const DELETE_JOB = `${jobMainPath}/delete;` //:id
+export const FILTER_JOB = `${jobMainPath}/filter/job;` //:id
+
 
 //search
 export const SEARCH_USER = `${userMainPath}/user-search`; //query
@@ -39,5 +54,9 @@ export const DISTRICTS = `${provinceMainPath}`;
 
 //TICKETS
 
-export const TICKETS = `${provinceMainPath}/all`;
-export const CREATE_TICKET = `${ticketMainPath}/create`
+export const TICKETS = `${ticketMainPath}/only-ticket`;
+export const CREATE_TICKET = `${ticketMainPath}/new`
+export const UPDATE_TICKET = `${ticketMainPath}/update`  //:id
+export const TICKET = `${provinceMainPath}`; //:id
+
+

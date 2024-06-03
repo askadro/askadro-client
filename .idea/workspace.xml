@@ -8,33 +8,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="ticket fix">
-      <change afterPath="$PROJECT_DIR$/components/ui/DatePicker.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/JobType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/job.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/[locale]/auth/login/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/FormCheckBox.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/storage.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/paths.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/province.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/province.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/ticket.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/ticket.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/auth/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/auth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/detail/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/detail/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/new/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/new/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/users/edit/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/edit/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/business/CompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/CompanyForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/business/UserForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/UserForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/business/UserTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/UserTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/FormDatePicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormDatePicker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/FormMultiSelectWithSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormMultiSelectWithSearch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/FormSelectWithSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormSelectWithSearch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/TicketAccordionWithSelectTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/TicketAccordionWithSelectTitle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/TicketDetailCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/TicketDetailCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/calendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/enums.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/enums.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/usersTableData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/config/usersTableData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/features.ts" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/features.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/paths.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messages/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/tr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/FormPropsType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/FormPropsType.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/auth.mw.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/auth.mw.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/JobType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/JobType.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/types/TicketType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/TicketType.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/UserType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/UserType.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,6 +163,9 @@
       <workItem from="1715928940043" duration="14228000" />
       <workItem from="1716535091414" duration="675000" />
       <workItem from="1716890110980" duration="11722000" />
+      <workItem from="1716962978367" duration="1525000" />
+      <workItem from="1717313222319" duration="11657000" />
+      <workItem from="1717406358777" duration="5579000" />
     </task>
     <task id="LOCAL-00001" summary="template created">
       <option name="closed" value="true" />

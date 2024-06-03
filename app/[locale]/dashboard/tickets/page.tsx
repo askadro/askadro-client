@@ -27,13 +27,13 @@ const Page = () => {
     const route = useRoute()
     const [selectedValue, setSelectedValue] = React.useState("")
     const {data: companies} = GetCompanies()
-    //const {data: tickets} = GetTickets()
+    const {data: tickets} = GetTickets()
     const returnData = useCallback(() => {
         return companies?.map((item: Company) => {
             return {label: item.name, value: item.id}
         })
     }, [companies])
-
+    console.log(tickets)
     const returnCreateButton = () => <Modal select label={t("create_new_ticket")} selectedValue={selectedValue}
                                             name={t("company")}
                                             setSelectedValue={setSelectedValue} list={returnData()}
@@ -44,34 +44,40 @@ const Page = () => {
     const tics = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     const returnTicketCard = () => {
-        return tics?.map((item: any) => {
+        return tickets?.map((ticket: any) => {
             return (
-                <Card key={item} x-chunk="dashboard-01-chunk-0" className="cursor-pointer" onClick={(e) => {
-                    route(e,`detail/${item}`)
+                <Card key={ticket.id} x-chunk="dashboard-01-chunk-0" className="cursor-pointer" onClick={(e) => {
+                    route(e, `detail/${ticket.id}`)
                 }}>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <CardTitle className="text-md font-body">
-                            Company name
+                            {ticket.company?.name}
                         </CardTitle>
                         <Building2 className="h-5 w-5 text-muted-foreground"/>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">{format(new Date(), "dd MMMM yyyy")}</div>
+                        <div className="text-2xl font-bold">{format(ticket.ticketDate, "dd MMMM yyyy")}</div>
                         <div className="">
                             <p className="text-sm text-muted-foreground">
-                                {`${t("enter_hour")}: ${"12:45"}`}
+                                {`${t("enter_time")}: ${format(ticket.enterTime, "hh:mm")}`}
                             </p>
                             <p className="mb-2 text-sm text-muted-foreground">
-                                {`${t("exit_hour")}: ${"12:45"}`}
+                                {`${t("exit_time")}: ${format(ticket.exitTime, "hh:mm")}`}
                             </p>
-                            <span className="">{t("notes")}</span>
-                            {[1, 2, 3].map((note: any) => {
-                                return (
-                                    <p key={note} className="text-sm text-muted-foreground">
-                                        {`- ${note}`}
-                                    </p>
-                                )
-                            })}
+                            {ticket.ticketNotes ? (
+                                <>
+                                    <span className="">{t("notes")}</span>
+                                    {
+                                        ticket.ticketNotes.split(",").map((note: any) => {
+                                            return (
+                                                <p key={note} className="text-sm text-muted-foreground">
+                                                    {`- ${note}`}
+                                                </p>
+                                            )
+                                        })
+                                    }
+                                </>
+                            ) : null}
                         </div>
                     </CardContent>
                 </Card>

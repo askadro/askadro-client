@@ -30,6 +30,7 @@ export default async function LocaleLayout({
     return (
         <html lang={locale}>
         <body
+            suppressHydrationWarning={true}
             className={cn(
                 "min-h-screen bg-background font-sans antialiased",
                 fontSans.variable

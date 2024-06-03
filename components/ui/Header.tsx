@@ -20,14 +20,24 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {dashboard_navs} from "@/config/nav";
 import {NavType} from "@/types/navType";
 import {LanguageSwitcher} from "@business";
 import {useTranslations} from "next-intl";
+import {APP_NAME} from "@/config/app";
+import {Logout} from "@/api/auth";
+import {useRouter} from "next/navigation";
 
 const Header = () => {
     const t = useTranslations("index")
+    const {mutate: logout} = Logout()
+    const logoutEvent = ()=> {
+        logout()
+        if (window !== undefined) {
+            window.location.reload()
+        }
+    }
+
     const returnNavList = () => {
         return dashboard_navs.map((nav: NavType) => {
             return <Link
@@ -61,26 +71,10 @@ const Header = () => {
                             className="flex items-center gap-2 text-lg font-semibold"
                         >
                             <Package2 className="h-6 w-6"/>
-                            <span className="sr-only">Acme Inc</span>
+                            <span className="sr-only">{APP_NAME}</span>
                         </Link>
                         {returnNavList()}
                     </nav>
-                    <div className="mt-auto">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>Upgrade to Pro</CardTitle>
-                                <CardDescription>
-                                    Unlock all features and get unlimited access to our
-                                    support team.
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <Button size="sm" className="w-full">
-                                    Upgrade
-                                </Button>
-                            </CardContent>
-                        </Card>
-                    </div>
                 </SheetContent>
             </Sheet>
             <div className="w-full flex-1">
@@ -95,7 +89,7 @@ const Header = () => {
                     </div>
                 </form>
             </div>
-            <LanguageSwitcher />
+            <LanguageSwitcher/>
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button variant="secondary" size="icon" className="rounded-full">
@@ -109,7 +103,7 @@ const Header = () => {
                     <DropdownMenuItem>Settings</DropdownMenuItem>
                     <DropdownMenuItem>Support</DropdownMenuItem>
                     <DropdownMenuSeparator/>
-                    <DropdownMenuItem>Logout</DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => logoutEvent()}>{t("logout")}</DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
         </header>
