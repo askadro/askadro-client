@@ -57,6 +57,6 @@ export const DISTRICTS = `${provinceMainPath}`;
 export const TICKETS = `${ticketMainPath}/only-ticket`;
 export const CREATE_TICKET = `${ticketMainPath}/new`
 export const UPDATE_TICKET = `${ticketMainPath}/update`  //:id
-export const TICKET = `${provinceMainPath}`; //:id
+export const TICKET = `${ticketMainPath}`; //:id
 
 

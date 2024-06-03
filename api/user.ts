@@ -1,8 +1,8 @@
 import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
 import {apiClient} from "@/api/index";
-import {CREATE_USER, DELETE_USER, PROFILE, UPDATE_USER, USER, USERS} from "@/api/paths";
+import {CREATE_USER, DELETE_USER, PROFILE, SEARCH_USER, UPDATE_USER, USER, USERS} from "@/api/paths";
 import {AddressType, AuthType, User} from "@/types";
-import {CACHE_TIME_16_HOUR, CACHE_TIME_64_HOUR} from "@/config/app";
+import {CACHE_TIME_16_HOUR, CACHE_TIME_4_HOUR, CACHE_TIME_64_HOUR} from "@/config/app";
 
 export const fetchUsers = async () => {
     const res = await apiClient.get(USERS);
@@ -49,10 +49,21 @@ export function GetUser(id: string | string[] | undefined) {
     })
 }
 
+export function SearchUsers(query: string) {
+    return useQuery({
+        queryKey: ['user', query],
+        queryFn: async () => {
+            const res = await apiClient.get(`${SEARCH_USER}/${query}`);
+            return res.data;
+        },
+        staleTime: CACHE_TIME_4_HOUR
+    })
+}
+
 export function SetUser() {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async (user:User ) => {
+        mutationFn: async (user: User) => {
             const res = await apiClient.post(CREATE_USER, user);
             return await res.data;
         },

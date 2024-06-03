@@ -155,6 +155,13 @@
     "something_went_wrong": "Bir şeyler yanlış",
     "komi": "Komi",
     "chef": "Şef",
-    "housekeeper": "Kat görevlisi"
+    "housekeeper": "Kat görevlisi",
+    "update_ticket_jobs_decs": "Talep içerisinde bulunan personelleri güncelleme",
+    "extra_time": "Mesai",
+    "creator": "Oluşturan",
+    "add_new_row": "Yeni satır ekle",
+    "actions": "Aksiyon",
+    "update": "Güncelle",
+    "ticket": "Talep"
   }
 }

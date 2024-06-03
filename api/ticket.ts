@@ -15,11 +15,11 @@ export function GetTickets() {
     });
 }
 
-export function GetTicket(id:string) {
+export function GetTicket(id?:string) {
     return useQuery({
         queryKey: ['ticket',id],
         queryFn: async () => {
-            const res = await apiClient.get(TICKET);
+            const res = await apiClient.get(`${TICKET}/${id}`);
             return await res.data;
         },
         staleTime:CACHE_TIME_1_HOUR

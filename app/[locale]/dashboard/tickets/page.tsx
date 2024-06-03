@@ -33,15 +33,13 @@ const Page = () => {
             return {label: item.name, value: item.id}
         })
     }, [companies])
-    console.log(tickets)
+
     const returnCreateButton = () => <Modal select label={t("create_new_ticket")} selectedValue={selectedValue}
                                             name={t("company")}
                                             setSelectedValue={setSelectedValue} list={returnData()}
                                             buttonTitle={t("continue")}
                                             cancelButtonTitle={t("cancel")}
                                             onSubmit={(e: any) => route(e, `new/${selectedValue}`)}/>
-
-    const tics = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     const returnTicketCard = () => {
         return tickets?.map((ticket: any) => {
@@ -93,10 +91,8 @@ const Page = () => {
                 </div>
                 {returnCreateButton()}
             </div>
-            <div className="flex flex-1 rounded-lg border border-dashed shadow-sm flex-col gap-4 p-4 md:gap-8 md:p-8">
-                <div className="grid gap-4 md:grid-cols-2 md:gap-8 ">
-                    {returnTicketCard()}
-                </div>
+            <div className="grid gap-4 md:grid-cols-2 md:gap-8 ">
+                {returnTicketCard()}
             </div>
         </div>
     );

@@ -1,3 +1,4 @@
+export {SelectInputWithSearch} from "./SelectInputWithSearch";
 export {FormCheckboxInput} from "@/components/ui/FormCheckBox";
 export {TicketAccordionWithSelectTitle} from "@/components/ui/TicketAccordionWithSelectTitle";
 export {TicketDetailCard} from "@/components/ui/TicketDetailCard";

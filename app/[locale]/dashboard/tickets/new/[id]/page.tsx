@@ -37,6 +37,7 @@ const formSchema = z.object({
     ticketDate: z.date().default(new Date()),
     ticketNotes: z.string().optional().default(""),
 })
+
 const defaultValues = {
     enterTime: getInitialDate(),
     exitTime: getInitialDate(14),
