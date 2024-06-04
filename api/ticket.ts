@@ -1,8 +1,9 @@
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {apiClient} from "@/api/index";
-import {CREATE_TICKET, TICKET, TICKETS, UPDATE_TICKET} from "@/api/paths";
+import {CREATE_JOB, CREATE_TICKET, NEW_JOB_WITH_TICKET, TICKET, TICKETS, UPDATE_TICKET} from "@/api/paths";
 import {Ticket} from "@/types/TicketType";
 import {CACHE_TIME_1_HOUR, CACHE_TIME_4_HOUR} from "@/config/app";
+import {Job} from "@/types/JobType";
 
 export function GetTickets() {
     return useQuery({

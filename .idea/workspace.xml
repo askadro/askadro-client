@@ -7,20 +7,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="created ticket">
-      <change afterPath="$PROJECT_DIR$/components/ui/SelectInputWithSearch.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/tsconfig.json" afterDir="false" />
+    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="3/6">
+      <change afterPath="$PROJECT_DIR$/components/ui/modal/SelectModalTable.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/job.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/job.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/paths.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/ticket.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/ticket.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/detail/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/detail/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/new/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/new/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/FormDatePickerSha.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormDatePickerSha.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/TicketDetailCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/TicketDetailCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/business/UserForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/UserForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/FormSelectInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormSelectInput.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/modal/SelectModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/modal/SelectModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/tsconfig.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/messages/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/tr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/JobType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/JobType.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +153,8 @@
       <workItem from="1716962978367" duration="1525000" />
       <workItem from="1717313222319" duration="11657000" />
       <workItem from="1717406358777" duration="5871000" />
-      <workItem from="1717432803158" duration="5485000" />
+      <workItem from="1717432803158" duration="5601000" />
+      <workItem from="1717485793392" duration="20838000" />
     </task>
     <task id="LOCAL-00001" summary="template created">
       <option name="closed" value="true" />
@@ -257,7 +260,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717416089455</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="3/6">
+      <option name="closed" value="true" />
+      <created>1717438596375</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1717438596375</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,6 +300,7 @@
     <MESSAGE value="ticket created" />
     <MESSAGE value="ticket fix" />
     <MESSAGE value="created ticket" />
-    <option name="LAST_COMMIT_MESSAGE" value="created ticket" />
+    <MESSAGE value="3/6" />
+    <option name="LAST_COMMIT_MESSAGE" value="3/6" />
   </component>
 </project>

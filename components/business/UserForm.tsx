@@ -2,7 +2,7 @@ import React, {useEffect, useMemo} from 'react';
 import {Form} from "@/components/ui/form";
 import {
     FormDatePicker,
-    FormMultiSelectWithSearch,
+    FormMultiSelectWithSearch, FormSelectInput,
     FormSelectWithSearch,
     FormTextArea,
     FormTextInput
@@ -116,7 +116,7 @@ export const UserForm = (props: Props) => {
 
     useEffect(() => {
         if (newSuccess || updateSuccess) {
-            form.reset(cleanValues); // Reset the form on successful submission
+            form.reset(cleanValues, { keepDirtyValues: true,keepValues:false });
             toast({
                 title: `Kullanıcı başarılı bir şekilde ${newSuccess ? "eklendi" : "güncellendi"}`,
                 description: `Kullanıcı ${newSuccess ? "eklendi" : "güncellendi"} artık listeleniyor.`
@@ -138,7 +138,7 @@ export const UserForm = (props: Props) => {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}
-                  className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+                  className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
                 <Card className="sm:col-span-1 md:col-span-1 lg:col-span-1">
                     <CardHeader>
                         <CardTitle>{t("user")}</CardTitle>
@@ -148,16 +148,16 @@ export const UserForm = (props: Props) => {
                         <FormTextInput form={form} name="firstName" label="Ad" placeholder="Adı"/>
                         <FormTextInput form={form} name="lastName" label="Soyad" placeholder="Soyad"/>
                         {!defaultValues?.id ?
-                            <FormTextInput form={form} name="Identity" label="TC" placeholder="12345678921"
+                            <FormTextInput form={form} name="identity" label="TC" placeholder="12345678921"
                                            description="TC ve isim uygunluğu sağlanmalı"/> : null}
                         <FormTextInput form={form} name="iban" label="IBAN"
                                        placeholder="TR123456789012345678901234"/>
-                        <FormSelectWithSearch form={form} name="gender" label={t("gender")} placeholder={t("gender")}
+                        <FormSelectInput form={form} name="gender" label={t("gender")} placeholder={t("gender")}
                                               data={gender || []}/>
                         <FormDatePicker form={form} name="birthDate" label={t("date_of_birth")}
                                         description="Doğum tarihi yaş bilgisi için önemli."/>
                         <FormMultiSelectWithSearch form={form} name="titles" label={t("titles")} data={TITLES}
-                                                   defaultValue={defaultValues?.titles}/>
+                        />
                     </CardContent>
                 </Card>
                 <Card className="sm:col-span-1 md:col-span-1 lg:col-span-1">

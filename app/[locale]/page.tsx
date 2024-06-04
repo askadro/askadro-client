@@ -25,6 +25,9 @@ export default function LocalPage() {
             redirect(`${getLocalStorage("lang")}/`)
         } else {
             reLink("dashboard")
+            if (window !== undefined) {
+                window.location.reload()
+            }
         }
     }, [isValidate]);
 

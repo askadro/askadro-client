@@ -1,23 +1,32 @@
 import React from 'react';
+import {Popover, PopoverContent, PopoverTrigger} from "../popover";
+import {Check, ChevronsUpDown} from "lucide-react";
+import {Command, CommandEmpty, CommandInput, CommandItem, CommandList} from "../command";
+import {Button} from "../button";
+import {Label} from "../label";
+import {cn} from "../../../lib/utils";
 import {
-    Dialog,
+    DialogTrigger, Dialog,
     DialogContent,
     DialogDescription, DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger
-} from "@/components/ui/dialog";
-import {Button} from "@/components/ui/button";
-import {Label} from "@/components/ui/label";
-import {Input} from "@/components/ui/input";
-import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
-import {Check, ChevronsUpDown} from "lucide-react";
-import {Command, CommandEmpty, CommandInput, CommandItem, CommandList} from "@/components/ui/command";
-import {cn} from "@/lib/utils";
-import useRoute from "@/hooks/useRoute";
+} from "../dialog";
 
-export const SelectModal = (props:any) => {
-    const {label,desc,selectLabel,selectedValue,setSelectedValue,list,buttonTitle,cancelButtonTitle,name,onSubmit}= props
+
+export const SelectModal = (props: any) => {
+    const {
+        label,
+        desc,
+        selectLabel,
+        selectedValue,
+        setSelectedValue,
+        list,
+        buttonTitle,
+        cancelButtonTitle,
+        name,
+        onSubmit,
+    } = props
     const [open, setOpen] = React.useState(false)
 
     return (
@@ -48,15 +57,15 @@ export const SelectModal = (props:any) => {
                                     {selectedValue
                                         ? list?.find((l: { value: string; }) => l.value === selectedValue)?.label
                                         : `Select ${name}...`}
-                                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50"/>
                                 </Button>
                             </PopoverTrigger>
                             <PopoverContent className="w-[200px] p-0">
                                 <Command>
-                                    <CommandInput placeholder={`Search ${name}...`} />
+                                    <CommandInput placeholder={`Search ${name}...`}/>
                                     <CommandEmpty>{`No ${name} found.`}</CommandEmpty>
                                     <CommandList>
-                                        {list?.map((l:any) => (
+                                        {list?.map((l: any) => (
                                             <CommandItem
                                                 key={l.value}
                                                 value={l.value}
@@ -80,7 +89,7 @@ export const SelectModal = (props:any) => {
                         </Popover>
                     </div>
                 </div>
-                {selectedValue ?<DialogFooter>
+                {selectedValue ? <DialogFooter>
                     <Button onClick={onSubmit} type="submit">{buttonTitle}</Button>
                 </DialogFooter> : null}
             </DialogContent>

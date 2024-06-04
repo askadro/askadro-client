@@ -162,6 +162,10 @@
     "add_new_row": "Yeni satır ekle",
     "actions": "Aksiyon",
     "update": "Güncelle",
-    "ticket": "Talep"
+    "ticket": "Talep",
+    "search": "Ara",
+    "not_found_state": "{name} bulunamadı",
+    "select_staff": "Personel seç",
+    "updated": "Güncellendi"
   }
 }

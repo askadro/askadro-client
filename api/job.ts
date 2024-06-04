@@ -5,7 +5,7 @@ import {
     CREATE_TICKET,
     DELETE_JOB, FILTER_JOB,
     GET_JOB,
-    GET_JOBS,
+    GET_JOBS, NEW_JOB_WITH_TICKET,
     TICKET,
     TICKETS,
     UPDATE_JOB,
@@ -22,21 +22,20 @@ export function GetJobs() {
             const res = await apiClient.get(GET_JOBS);
             return await res.data;
         },
-        staleTime:CACHE_TIME_4_HOUR
+        staleTime: CACHE_TIME_4_HOUR
     });
 }
 
-export function GetJob(id:string) {
+export function GetJob(id: string) {
     return useQuery({
-        queryKey: ['job',id],
+        queryKey: ['job', id],
         queryFn: async () => {
             const res = await apiClient.get(`${GET_JOB}/${id}`);
             return await res.data;
         },
-        staleTime:CACHE_TIME_1_HOUR
+        staleTime: CACHE_TIME_1_HOUR
     });
 }
-
 
 
 export function CreateJob() {
@@ -55,28 +54,34 @@ export function CreateJob() {
 export function UpdateJob() {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async (job: Job) => {
-            const res = await apiClient.patch(UPDATE_JOB, job);
+        mutationFn: async (job: Partial<Job>) => {
+            const res = await apiClient.patch(`${UPDATE_JOB}/${job.id}`, job);
             return await res.data;
         },
-        async onSuccess() {
-            await queryClient.invalidateQueries({queryKey: ["jobs"]})
-        }
+        // async onSuccess() {
+        //     await queryClient.invalidateQueries({queryKey: ["jobs"]})
+        // }
     });
 }
 
 export function DeleteJob() {
-    const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async (id:String) => {
-            const res = await apiClient.delete(`${DELETE_JOB}/${id}`);
+        mutationFn: async (body:{id: String,ticketId:string}) => {
+            const res = await apiClient.delete(`${DELETE_JOB}/${body.id}`);
             return await res.data;
-        },
-        async onSuccess() {
-            await queryClient.invalidateQueries({queryKey: ["jobs"]})
         }
     });
 }
+
+export function NewJobWithTicket() {
+    return useMutation({
+        mutationFn: async (body: { jobs: Job[] }) => {
+            const res = await apiClient.post(NEW_JOB_WITH_TICKET, body.jobs);
+            return res.data;
+        }
+    })
+}
+
 
 //tipler düzenlenecek
 export function FilterJob() {

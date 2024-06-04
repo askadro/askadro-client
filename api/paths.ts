@@ -30,8 +30,9 @@ export const CREATE_JOB = `${jobMainPath}/new`;
 export const GET_JOB = `${jobMainPath}`; //:id
 export const UPDATE_JOB = `${jobMainPath}/update`; //:id
 export const GET_JOBS = `${jobMainPath}`;
-export const DELETE_JOB = `${jobMainPath}/delete;` //:id
-export const FILTER_JOB = `${jobMainPath}/filter/job;` //:id
+export const DELETE_JOB = `${jobMainPath}/delete` //:id
+export const FILTER_JOB = `${jobMainPath}/filter/job` //:id
+export const NEW_JOB_WITH_TICKET = `${jobMainPath}/new/ticket`;
 
 
 //search
@@ -58,5 +59,4 @@ export const TICKETS = `${ticketMainPath}/only-ticket`;
 export const CREATE_TICKET = `${ticketMainPath}/new`
 export const UPDATE_TICKET = `${ticketMainPath}/update`  //:id
 export const TICKET = `${ticketMainPath}`; //:id
-
 

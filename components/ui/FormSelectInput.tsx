@@ -20,28 +20,30 @@ type Props = {
     form: FormProps<any>
     name: string
     placeholder?: string
-    label: string
+    label?: string
     description?: string
     data: Data[]
+    defaultValues?:string
 }
 
-export const FormSelectInput = ({form, name, placeholder, label, description, data}: Props) => {
+export const FormSelectInput = ({form, name, placeholder, label, description, data,defaultValues}: Props) => {
     return (
         <FormField
             control={form.control}
             name={name}
-            render={({field}) => (
+            render={({field}:any) => (
                 <FormItem>
-                    <FormLabel>{label}</FormLabel>
+                    {label ? <FormLabel>{label}</FormLabel> : null}
                     <FormControl>
-                        <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
+                        <Select onValueChange={field.onChange} defaultValue={defaultValues || field.value} value={field.value}>
                             <SelectTrigger>
-                                <SelectValue placeholder={placeholder || label}/>
+                                <SelectValue placeholder={placeholder || label || ""}/>
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectGroup>
-                                    <SelectLabel>{label}</SelectLabel>
-                                    {data?.map((item: Data) => <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>)}
+                                    {label ? <SelectLabel>{label}</SelectLabel> : null}
+                                    {data?.map((item: Data) => <SelectItem key={item.value}
+                                                                           value={item.value}>{item.label}</SelectItem>)}
                                 </SelectGroup>
                             </SelectContent>
                         </Select>
