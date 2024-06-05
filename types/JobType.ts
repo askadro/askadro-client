@@ -1,10 +1,11 @@
 export type Job = {
-    id?:string
-    userId?:string
-    enterTime:Date
+    id?: string
+    userId?: string
+    enterTime: Date
     exitTime: Date;
-    extraTime?:string
-    title?:string
-    ticketId?:string
-    extraPrice?:string
+    extraTime?: string
+    title?: string
+    ticketId?: string
+    extraPrice?: string
+    users?: any
 }

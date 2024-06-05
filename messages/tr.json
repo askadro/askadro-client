@@ -166,6 +166,11 @@
     "search": "Ara",
     "not_found_state": "{name} bulunamadı",
     "select_staff": "Personel seç",
-    "updated": "Güncellendi"
+    "updated": "Güncellendi",
+    "send_mail": "Mail gönder",
+    "subject": "Konu",
+    "mail_text": "Mail içeriği",
+    "extra_recipient": "Ek olarak gönder (abc@gmail.com,tyz@gmail.com vb.)",
+    "send": "Gönder"
   }
 }

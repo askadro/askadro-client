@@ -80,7 +80,7 @@ export const SelectModalTable = (props: any) => {
                     <DialogTitle>{label}</DialogTitle>
                     <DialogDescription>{desc}</DialogDescription>
                 </DialogHeader>
-                <div className="grid gap-4 py-4">
+                <div className="grid gap-4 py-4 ">
                     <div className="grid grid-cols-1 sm:grid-cols-4 jobs-center gap-4 items-center">
                         <Label htmlFor="name" className="text-right">
                             {selectLabel}

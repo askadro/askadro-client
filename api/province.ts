@@ -1,5 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
-import {apiClient} from "@/api/index";
+import {getApiClient} from "@/api/index";
 import {DISTRICTS, PROVINCES} from "@/api/paths";
 import {CACHE_TIMEOUT} from "@/config/app";
 import {CACHE_ONE_YEAR} from "next/dist/lib/constants";
@@ -8,7 +8,7 @@ export function GetProvinces() {
     return useQuery({
         queryKey: ['provinces'],
         queryFn: async () => {
-            const res = await apiClient.get(PROVINCES);
+            const res = await getApiClient().get(PROVINCES);
             const response = await res.data;
             const data = response.map((province: any) => {
                 return {label: province.name, value: province.id}
@@ -24,7 +24,7 @@ export function GetDistricts(id?:string) {
         queryKey: ['districts',id],
         queryFn: async () => {
             if(!id) return []
-            const res = await apiClient.get(`${DISTRICTS}/${id}/district`);
+            const res = await getApiClient().get(`${DISTRICTS}/${id}/district`);
             if(!res.data) return []
             const response = await res.data;
             const data = response.map((province: any) => {

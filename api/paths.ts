@@ -59,4 +59,5 @@ export const TICKETS = `${ticketMainPath}/only-ticket`;
 export const CREATE_TICKET = `${ticketMainPath}/new`
 export const UPDATE_TICKET = `${ticketMainPath}/update`  //:id
 export const TICKET = `${ticketMainPath}`; //:id
+export const SEND_AS_MAIL = `${ticketMainPath}/send-email`; //:id
 

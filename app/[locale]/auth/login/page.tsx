@@ -13,6 +13,7 @@ import {Button} from "@/components/ui/button";
 import {Label} from "@/components/ui/label";
 import Link from "next/link";
 import {Input} from "@/components/ui/input";
+import {getApiClient} from "@/api";
 
 // Validation schema
 const formSchema = z.object({
@@ -24,7 +25,7 @@ const formSchema = z.object({
 export default function LoginPage() {
     const t = useTranslations("index")
     const router = useRouter();
-    const {mutateAsync: login, data: token, isSuccess: loginSuccess,isError} = Login()
+    const {mutateAsync: login, data: token, isSuccess: loginSuccess, isError} = Login()
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
     });
@@ -39,8 +40,10 @@ export default function LoginPage() {
 
     useEffect(() => {
         if (loginSuccess) {
-            console.log(token)
+            getApiClient().defaults.headers.common["Authorization"] = token.access_token;
+            setLocalStorage("token", token.access_token);
             router.push(`/${getLocalStorage("lang") || "tr"}/dashboard`);
+            console.log(getApiClient().defaults)
         }
     }, [loginSuccess, router, token]);
 
@@ -67,7 +70,7 @@ export default function LoginPage() {
                     </p>
                 </div>
                 <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)}>
+                    <form onSubmit={form.handleSubmit(onSubmit)}>
                         <div className="grid gap-4">
                             <div className="grid gap-2">
                                 <FormTextInput form={form} name={"username"} label={t("username")}/>

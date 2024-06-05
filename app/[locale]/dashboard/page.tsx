@@ -9,7 +9,7 @@ import {LANGUAGE} from "@/config/app";
 export default function Dashboard() {
     const [user, setUser] = useState(null);
     const router = useRouter();
-    const {data}= GetUser("sdf")
+    // const {data}= GetUser("sdf")
 
     useEffect(() => {
          const token = getLocalStorage('token');

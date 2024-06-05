@@ -1,11 +1,11 @@
 import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
-import {apiClient} from "@/api/index";
+import {getApiClient} from "@/api/index";
 import {CREATE_USER, DELETE_USER, PROFILE, SEARCH_USER, UPDATE_USER, USER, USERS} from "@/api/paths";
 import {AddressType, AuthType, User} from "@/types";
 import {CACHE_TIME_16_HOUR, CACHE_TIME_4_HOUR, CACHE_TIME_64_HOUR} from "@/config/app";
 
 export const fetchUsers = async () => {
-    const res = await apiClient.get(USERS);
+    const res = await getApiClient().get(USERS);
     return await res.data;
 }
 
@@ -13,7 +13,7 @@ export function GetProfile() {
     return useQuery({
         queryKey: ['profile'],
         queryFn: async () => {
-            const res = await apiClient.get(PROFILE);
+            const res = await getApiClient().get(PROFILE);
             return await res.data;
         },
         staleTime: CACHE_TIME_64_HOUR, // 64 hour
@@ -24,7 +24,7 @@ export function GetUsers() {
     return useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await apiClient.get(USERS);
+            const res = await getApiClient().get(USERS);
             return await res.data;
         },
         staleTime: CACHE_TIME_16_HOUR, // 64 hour
@@ -38,7 +38,7 @@ export function GetUser(id: string | string[] | undefined) {
         queryFn: async () => {
             let users: any = await queryClient.getQueryData(["users"])
             if (!users) {
-                const res = await apiClient.get(`${USER}/${id}`)
+                const res = await getApiClient().get(`${USER}/${id}`)
                 return res.data;
             }
             return users?.find((u: User) => u.id === id)
@@ -53,7 +53,7 @@ export function SearchUsers(query: string) {
     return useQuery({
         queryKey: ['user', query],
         queryFn: async () => {
-            const res = await apiClient.get(`${SEARCH_USER}/${query}`);
+            const res = await getApiClient().get(`${SEARCH_USER}/${query}`);
             return res.data;
         },
         staleTime: CACHE_TIME_4_HOUR
@@ -64,7 +64,7 @@ export function SetUser() {
     const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async (user: User) => {
-            const res = await apiClient.post(CREATE_USER, user);
+            const res = await getApiClient().post(CREATE_USER, user);
             return await res.data;
         },
         async onSuccess() {
@@ -77,7 +77,7 @@ export function UpdateUser() {
     const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async (user: User) => {
-            const res = await apiClient.patch(`${UPDATE_USER}/${user.id}`, user);
+            const res = await getApiClient().patch(`${UPDATE_USER}/${user.id}`, user);
             return await res.data;
         },
         async onSuccess(data) {
@@ -90,7 +90,7 @@ export function DeleteUser() {
     const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async (id?: string) => {
-            const res = await apiClient.delete(`${DELETE_USER}/${id}`);
+            const res = await getApiClient().delete(`${DELETE_USER}/${id}`);
             console.log("deleted user: ", res.data)
             return await res.data;
         },

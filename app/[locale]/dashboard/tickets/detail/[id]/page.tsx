@@ -13,7 +13,7 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/compo
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 
 import {TITLES} from "@/config/enums";
-import {GetTicket} from "@/api/ticket";
+import {GetTicket, SendMailTicket, UpdateTicket} from "@/api/ticket";
 import {useParams} from "next/navigation";
 import NameWithBack from "@/components/ui/NameWithBack";
 import Modal from "@/components/ui/modal";
@@ -31,6 +31,10 @@ import {
     SelectValue
 } from "@/components/ui/select";
 import {Input} from "@/components/ui/input";
+import {isEqual} from "lodash";
+import {cn} from "@/lib/utils";
+import {useToast} from "@/components/ui/use-toast";
+import {Job} from "@/types/JobType";
 
 const formSchema = z.object({
     enterTime: z.date(),
@@ -42,11 +46,14 @@ const formSchema = z.object({
 const Page = () => {
     const t = useTranslations("index")
     const params: { id: string } | null = useParams()
+    const {toast} = useToast()
     const {data: ticket, refetch: refecthTicket} = GetTicket(params?.id)
     const {data: users} = GetUsers()
     const {mutate: deleteJob, isSuccess: deleteSuccess} = DeleteJob()
     const {mutate: updateJob, isSuccess: updateJobSuccess, data: updateData, reset: resetUpdateJob} = UpdateJob()
     const {mutate: updateJobWithTicket, isSuccess: newJobSuccess} = NewJobWithTicket()
+    const {mutateAsync: updateTicket, isSuccess: updateTicketSuccess, reset: resetUpdateTicket} = UpdateTicket()
+
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -63,31 +70,53 @@ const Page = () => {
             })
         }
     }, [form, ticket]);
+    const callToast = (title: string, desc?: string, variant?: boolean) => {
+        return toast({
+            className: cn(
+                'bottom-0 left-0 flex fixed md:max-w-[420px] md:bottom-4 md:left-4'
+            ),
+            title: title,
+            description: desc ? desc : null,
+            variant: variant ? "destructive" : "default",
+        })
+    }
 
     useEffect(() => {
         if (newJobSuccess || deleteSuccess) {
-            refecthTicket(ticket.id)
+            refecthTicket(ticket.id).then(() => callToast("Yeni işler talebe eklendi"))
         }
         if (updateJobSuccess) {
+            callToast("İş güncellendi")
             const resetTimer = setTimeout(() => resetUpdateJob(), 1500)
             return () => clearTimeout(resetTimer)
         }
-    }, [newJobSuccess, refecthTicket, updateJobSuccess, deleteSuccess, resetUpdateJob]);
+        if (updateTicketSuccess) {
+            callToast("Talep detayı güncellendi")
+            const resetTicketTimer = setTimeout(() => resetUpdateTicket(), 1500)
+            return () => clearTimeout(resetTicketTimer)
+        }
+
+    }, [newJobSuccess, refecthTicket, updateJobSuccess, deleteSuccess, resetUpdateJob, updateTicketSuccess, resetUpdateTicket]);
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
+        await updateTicket({...values, id: ticket.id})
         console.log(values)
     }
 
     const returnData = useCallback(() => {
-        return users?.map((item: User) => {
+        const filteredUser = users?.filter((u: User) => u.id !== ticket?.jobs?.find((i: Job) => i.users.id === u.id)?.users?.id)
+        return filteredUser?.map((item: User) => {
             return {label: item.firstName + " " + item.lastName, value: item.id}
         })
-    }, [users])
+    }, [ticket?.jobs, users])
 
     const updateTicketJobs = async (values: { jobs: any[]; }) => {
         updateJobWithTicket(values);
     };
 
+    if (!ticket) return null
+    if (!ticket.user) return null
+    if (!ticket.company) return null
     const ChangeableStaff = ({jobs}: any) => {
         return (
             <Card className="col-span-4">
@@ -166,14 +195,16 @@ const Page = () => {
                                         </TableCell>
                                         <TableCell>
                                             <div className="flex flex-row items-center gap-2">
-                                                <Button className={updateJobSuccess ? "bg-green-500" : ""}
-                                                        disabled={updateJobSuccess} onClick={() => updateJob({
-                                                    id: job.id,
-                                                    title: job.title,
-                                                    extraTime: job.extraTime,
-                                                    extraPrice: job.extraPrice
-                                                })} size="sm">
-                                                    {updateJobSuccess ? t("updated") : t("update")}
+                                                <Button
+                                                    className={updateJobSuccess && updateData.id === job.id ? "bg-green-500" : ""}
+                                                    disabled={updateJobSuccess && updateData.id === job.id}
+                                                    onClick={() => updateJob({
+                                                        id: job.id,
+                                                        title: job.title,
+                                                        extraTime: job.extraTime,
+                                                        extraPrice: job.extraPrice
+                                                    })} size="sm">
+                                                    {updateJobSuccess && updateData.id === job.id ? t("updated") : t("update")}
                                                 </Button>
                                                 <Button size="sm" variant="destructive"
                                                         onClick={() => deleteJob({id: job.id, ticketId: ticket.id})}>
@@ -201,11 +232,18 @@ const Page = () => {
             </Card>
         )
     }
-    if (!ticket) return null
-    if (!ticket.user) return null
+
+
     return (
         <div>
-            <NameWithBack name={t("ticket")} desc={"update"}/>
+            <div className="flex flex-row items-center justify-between">
+                <NameWithBack name={t("ticket")} desc={"update"}/>
+                <Modal mail
+                       to={ticket?.company?.name}
+                       label={t("send_mail")}
+                       data={ticket}
+                       buttonTitle={t("send")}/>
+            </div>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}
                       className=" grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 mt-4">
@@ -213,7 +251,9 @@ const Page = () => {
                     <TicketDetailCard className="col-span-4" form={form} label={"update_ticket"}
                                       labelDesc={"update_tickets_desc"}/>
 
-                    <Button className="col-span-4" type="submit">{t("update")}</Button>
+                    <Button className={`col-span-4 mb-4 ${updateTicketSuccess ? "bg-green-500" : ""}`} type="submit">
+                        {updateTicketSuccess ? t("updated") : t("update")}
+                    </Button>
                 </form>
                 <ChangeableStaff jobs={ticket?.jobs}/>
             </Form>
