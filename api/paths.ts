@@ -1,11 +1,15 @@
 
-
+const commonMainPath = "common";
 const authMainPath = "auth";
 const userMainPath = "users"
 const companyMainPath = "companies";
 const provinceMainPath = "provinces";
 const ticketMainPath = "tickets";
 const jobMainPath = "jobs"
+
+//COMMON | SUMMARY
+export const SUMMARY = `${commonMainPath}/summary`
+
 //AUTH
 export const LOGIN = `${authMainPath}/login`;
 export const VALIDATE_TOKEN = `${authMainPath}/validate-token`;

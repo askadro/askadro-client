@@ -15,13 +15,11 @@ import {Job} from "@/types/JobType";
 import {MailContentType} from "@/types/MailContentType";
 
 export function GetTickets() {
-    return useQuery({
-        queryKey: ['tickets'],
-        queryFn: async () => {
-            const res = await getApiClient().get(TICKETS);
+    return useMutation({
+        mutationFn: async (body?:{startDate: Date, endDate: Date}) => {
+            const res = await getApiClient().post(TICKETS, body);
             return await res.data;
-        },
-        staleTime:CACHE_TIME_4_HOUR
+        }
     });
 }
 

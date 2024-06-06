@@ -76,7 +76,7 @@ export const companyColums: ColumnDef<Company>[] = [
             )
         },
         cell: ({row}) => {
-            return <div className="capitalize">{row.getValue("location")}</div>
+            return <div className="capitalize">{row?.original?.address?.district?.name}</div>
         },
     },
     {

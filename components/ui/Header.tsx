@@ -26,16 +26,19 @@ import {LanguageSwitcher} from "@business";
 import {useTranslations} from "next-intl";
 import {APP_NAME} from "@/config/app";
 import {Logout} from "@/api/auth";
-import {useRouter} from "next/navigation";
+import {redirect, useRouter} from "next/navigation";
+import {clearLocalStorage, setLocalStorage} from "@/utils/storage";
+import {getApiClient} from "@/api";
 
 const Header = () => {
     const t = useTranslations("index")
+    const router = useRouter()
     const {mutate: logout} = Logout()
-    const logoutEvent = ()=> {
+    const logoutEvent = () => {
         logout()
-        if (window !== undefined) {
-            window.location.reload()
-        }
+        clearLocalStorage("token")
+        getApiClient().defaults.headers.common["Authorization"] = null
+        router.push("/tr")
     }
 
     const returnNavList = () => {

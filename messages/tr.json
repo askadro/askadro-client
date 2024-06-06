@@ -171,6 +171,15 @@
     "subject": "Konu",
     "mail_text": "Mail içeriği",
     "extra_recipient": "Ek olarak gönder (abc@gmail.com,tyz@gmail.com vb.)",
-    "send": "Gönder"
+    "send": "Gönder",
+    "start_date": "Başlangıç tarihi",
+    "end_date": "Bitiş tarihi",
+    "staff_count": "Personel sayısı",
+    "tickets_alltime_summary": "Bütün talepler",
+    "tickets_thismount_summary": "Bu ayın taleplerin",
+    "jobs": "İşler",
+    "jobs_alltime": "Bütün işler",
+    "jobs_thisyear": "Bu yılki işler",
+    "jobs_thismount": "Bu ayki işler"
   }
 }

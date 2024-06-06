@@ -39,11 +39,11 @@ export const CompanyTable = () => {
                 <TableRow key={company.id} >
                     <TableCell className="hidden sm:table-cell">
                         {
-                            company?.logo ? <Image
+                            company?.logoId ? <Image
                                 alt={company?.name}
                                 className="aspect-square rounded-md object-cover"
                                 height="44"
-                                src={company?.logo}
+                                src={company?.logoId}
                                 width="44"
                             /> : <Building2 size={44} strokeWidth={1.75}/>
                         }

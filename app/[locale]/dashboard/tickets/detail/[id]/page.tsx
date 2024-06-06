@@ -103,10 +103,21 @@ const Page = () => {
         console.log(values)
     }
 
+    const getAge = (birthDate: string) => {
+        const today = new Date();
+        const birth = new Date(birthDate);
+        let age = today.getFullYear() - birth.getFullYear();
+        const monthDifference = today.getMonth() - birth.getMonth();
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birth.getDate())) {
+            age--;
+        }
+        return age;
+    }
+
     const returnData = useCallback(() => {
         const filteredUser = users?.filter((u: User) => u.id !== ticket?.jobs?.find((i: Job) => i.users.id === u.id)?.users?.id)
         return filteredUser?.map((item: User) => {
-            return {label: item.firstName + " " + item.lastName, value: item.id}
+            return {label: item.firstName + " " + item.lastName, value: item.id, age: getAge(item.birthDate)}
         })
     }, [ticket?.jobs, users])
 

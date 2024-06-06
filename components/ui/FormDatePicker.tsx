@@ -12,7 +12,7 @@ import {Calendar} from "@/components/ui/calendar";
 type Props = {
     form: FormProps<any>
     name: string
-    label: string
+    label?: string
     description?: string
 }
 
@@ -25,7 +25,7 @@ export const FormDatePicker = forwardRef(({form, name, label, description}: Prop
                 name={name}
                 render={({field}) => (
                     <FormItem className="flex flex-col">
-                        <FormLabel>{label}</FormLabel>
+                        {label && <FormLabel>{label}</FormLabel>}
                         <FormControl defaultValue={field.value} className="w-[180px]">
                             {/*<DatePicker className={cn("flex h-9 w-9 items-center justify-center bg-accent-foreground")}*/}
                             {/*            locale="tr-TR" format={"dd/MM/yyyy"} {...field} />*/}
@@ -33,10 +33,10 @@ export const FormDatePicker = forwardRef(({form, name, label, description}: Prop
                                 <PopoverTrigger asChild>
                                     <Button
                                         variant={"outline"}
-                                        className={cn("w-[240px] justify-start text-left font-normal", !field.value  && "text-muted-foreground")}
+                                        className={cn("w-[240px] justify-start text-left font-normal", !field.value && "text-muted-foreground")}
                                     >
-                                        <CalendarIcon className="mr-2 h-4 w-4" />
-                                        {field.value ? format(field.value , "dd-MM-yyyy") : <span>Pick a date</span>}
+                                        <CalendarIcon className="mr-2 h-4 w-4"/>
+                                        {field.value ? format(field.value, "dd-MM-yyyy") : <span>Pick a date</span>}
                                     </Button>
                                 </PopoverTrigger>
                                 <PopoverContent align="start" className=" w-auto p-0">
@@ -44,7 +44,7 @@ export const FormDatePicker = forwardRef(({form, name, label, description}: Prop
                                         mode="single"
                                         captionLayout="dropdown-buttons"
                                         selected={field.value}
-                                        onSelect={(v)=>field.onChange(v?.toString())}
+                                        onSelect={(v) => field.onChange(v?.toString())}
                                         fromYear={1960}
                                         toYear={new Date().getFullYear()}
                                     />

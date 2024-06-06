@@ -42,17 +42,9 @@ const UserDetail = () => {
                     </Card>
                 </div>
             </div>
-            {/*<div className="flex items-center justify-center gap-2 md:hidden">*/}
-            {/*    <Button variant="outline" size="sm">*/}
-            {/*        {t("clean")}*/}
-            {/*    </Button>*/}
-            {/*    <Button size="sm">{t("saveUser")}</Button>*/}
-            {/*</div>*/}
         </main>
 
     );
 };
-{/*<UserForm defaultValues={data} id={params?.id} />*/
-}
 
 export default UserDetail;

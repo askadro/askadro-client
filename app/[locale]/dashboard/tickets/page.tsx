@@ -1,6 +1,6 @@
 "use client"
 
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {Button} from "@/components/ui/button";
 import {useTranslations} from "next-intl";
 import Modal from "@/components/ui/modal";
@@ -19,20 +19,35 @@ import {Building2, DollarSign} from "lucide-react";
 import {Ticket} from "@/types/TicketType";
 import {format, setDefaultOptions} from "date-fns";
 import {tr} from "date-fns/locale"
+import {FormDatePicker} from "@ui";
+import {useForm} from "react-hook-form";
+import {Form} from "@/components/ui/form";
 
 setDefaultOptions({locale: tr})
+const sd = new Date().setMonth(new Date().getMonth() - 1)
+const ed = new Date().setDate(new Date().getDate() + 5)
 
 const Page = () => {
     const t = useTranslations("index")
     const route = useRoute()
+    const form = useForm({
+        defaultValues: {
+            startDate: sd,
+            endDate: ed,
+        }
+    })
     const [selectedValue, setSelectedValue] = React.useState("")
     const {data: companies} = GetCompanies()
-    const {data: tickets} = GetTickets()
+    const {mutate: getTickets, data: tickets} = GetTickets()
     const returnData = useCallback(() => {
         return companies?.map((item: Company) => {
             return {label: item.name, value: item.id}
         })
     }, [companies])
+
+    useEffect(() => {
+        getTickets({startDate: new Date(form.watch("startDate")), endDate: new Date(form.watch("endDate"))})
+    }, [form, getTickets, form.getValues("startDate"), form.getValues("endDate")]);
 
     const returnCreateButton = () => <Modal select label={t("create_new_ticket")} selectedValue={selectedValue}
                                             name={t("company")}
@@ -91,6 +106,12 @@ const Page = () => {
                 </div>
                 {returnCreateButton()}
             </div>
+            <Form {...form}>
+                <form className="flex flex-row items-center gap-4">
+                    <FormDatePicker form={form} name="startDate" label={t("start_date")}/>
+                    <FormDatePicker form={form} name="endDate" label={t("end_date")}/>
+                </form>
+            </Form>
             <div className="grid gap-4 md:grid-cols-2 md:gap-8 ">
                 {returnTicketCard()}
             </div>

@@ -16,7 +16,7 @@ export const Authorized = () => {
         });
 
         return (
-            <Card className="lg:col-span-2 xl:col-span-2 col-span-4">
+            <Card className="col-span-2">
                 <CardHeader>
                     <CardTitle>{`${t("authorized")} (${t("opsiyonel")})`}</CardTitle>
                     <CardDescription>

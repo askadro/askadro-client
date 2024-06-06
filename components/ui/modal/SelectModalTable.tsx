@@ -109,7 +109,7 @@ export const SelectModalTable = (props: any) => {
                                         {list?.map((l: any) => (
                                             <CommandItem
                                                 key={l.value}
-                                                value={l.label}
+                                                value={`${l.label} - ${l.age}`}
                                                 onSelect={() => {
                                                     handleSelect(l);
                                                     setOpen(false);
@@ -121,7 +121,7 @@ export const SelectModalTable = (props: any) => {
                                                         selectedValue === l.value ? "opacity-100" : "opacity-0"
                                                     )}
                                                 />
-                                                {l.label}
+                                                {`${l.label} - ${l.age}`}
                                             </CommandItem>
                                         ))}
                                     </CommandList>

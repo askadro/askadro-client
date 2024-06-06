@@ -5,16 +5,17 @@ export type User = {
     firstName: string
     lastName: string
     birthDate: string
+    phone: string
     gender: string
-    id?:  string | string[] | undefined;
+    id?: string | string[] | undefined;
     status?: string | undefined
     image?: string | undefined
     iban: string
     titles: string[]
-    addressDetail?:string
+    addressDetail?: string
     districtId?: string
     provinceId?: string
-    password?:string
+    password?: string
     username?: string
     deletedAt?: Date
     createdAt?: Date

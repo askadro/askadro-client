@@ -2,16 +2,11 @@ import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {getApiClient} from "@/api/index";
 import {
     CREATE_JOB,
-    CREATE_TICKET,
     DELETE_JOB, FILTER_JOB,
     GET_JOB,
     GET_JOBS, NEW_JOB_WITH_TICKET,
-    TICKET,
-    TICKETS,
     UPDATE_JOB,
-    UPDATE_TICKET
 } from "@/api/paths";
-import {Ticket} from "@/types/TicketType";
 import {CACHE_TIME_1_HOUR, CACHE_TIME_4_HOUR} from "@/config/app";
 import {Job} from "@/types/JobType";
 

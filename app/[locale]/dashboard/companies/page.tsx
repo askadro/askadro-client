@@ -10,6 +10,7 @@ import {companyColums} from "@/config/companyTableData";
 const Page = () => {
     const [rowSelection, setRowSelection] = React.useState({})
     const {data} = GetCompanies()
+    console.log(data)
     return (
         <div>
             <CustomTable

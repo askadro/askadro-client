@@ -1,5 +1,5 @@
 import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
-import {getApiClient,setToken} from "@/api/index";
+import {getApiClient} from "@/api/index";
 import {LOGIN, LOGOUT, VALIDATE_TOKEN} from "@/api/paths";
 import {clearAllLocalStorage, clearLocalStorage, getLocalStorage, setLocalStorage} from "@/utils/storage";
 
@@ -12,7 +12,6 @@ export function Login(debounceTime: number = 0) {
         },
         onSuccess: (data) => {
             setLocalStorage('token', data.access_token);
-            setToken(data.access_token)
             if (data.rememberMe) {
                 setLocalStorage('rememberedUser', {
                     username: data.username,

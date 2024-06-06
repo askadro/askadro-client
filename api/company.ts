@@ -29,8 +29,8 @@ export function GetCompany(id: string | string[] | undefined) {
 export function SetCompany() {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async ({auth,company,authorized,address}: {auth:AuthType,company:CreateCompany,authorized:AuthorizedType[],address:AddressType}) => {
-            const res = await getApiClient().post(CREATE_COMPANY, {auth,company,authorized,address});
+        mutationFn: async (body: CreateCompany) => {
+            const res = await getApiClient().post(CREATE_COMPANY, body);
             return await res.data;
         },
         async onSuccess() {
@@ -42,8 +42,8 @@ export function SetCompany() {
 export function UpdateCompany() {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: async ({id,auth,company,authorized,address}: {id:string,auth:AuthType,company:CreateCompany,authorized:AuthorizedType[],address:AddressType}) => {
-            const res = await getApiClient().patch(`${UPDATE_COMPANY}/${id}`, {auth,company,authorized,address});
+        mutationFn: async (body: UpdateCompanyType) => {
+            const res = await getApiClient().patch(`${UPDATE_COMPANY}/${body.id}`, body);
             return await res.data;
         },
         async onSuccess() {

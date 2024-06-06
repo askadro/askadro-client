@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {Form} from "@/components/ui/form";
 import {
     FormDatePicker,
@@ -20,6 +20,10 @@ import {useTranslations} from "next-intl";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {GetDistricts, GetProvinces} from "@/api/province";
 import {User} from "@/types";
+import {Label} from "@/components/ui/label";
+
+const turkishPhoneNumberRegex = /^(\+90|0)?\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$/;
+
 
 const formSchema = z.object({
     firstName: z.string().min(2, {
@@ -35,6 +39,9 @@ const formSchema = z.object({
         message: "IBAN must start with TR and be exactly 26 characters long.",
     }),
     gender: z.string(),
+    phone: z.string().refine((value) => turkishPhoneNumberRegex.test(value), {
+        message: "Invalid phone number format"
+    }),
     birthDate: z.string(),
     titles: z.string().array(),
     username: z.string().min(6, {message: 'Username must be at least 6 characters.'}).optional(),
@@ -68,12 +75,8 @@ const cleanValues = {
     identity: "",
     iban: "",
     gender: "",
-    addressDetail: "",
-    districtId: "",
-    provinceId: "",
-    password: "",
-    username: "",
     birthDate: "",
+    phone: "",
     titles: []
 }
 
@@ -81,6 +84,7 @@ export const UserForm = (props: Props) => {
     const {defaultValues, buttonTitle} = props
     const t = useTranslations("index")
     const {toast} = useToast()
+    const [errorMessage,setError] = useState("")
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: useMemo(() => defaultValues, [defaultValues])
@@ -104,23 +108,29 @@ export const UserForm = (props: Props) => {
             provinceId: values.provinceId,
             password: values.password,
             username: values.username?.toLowerCase(),
+            phone: values.phone
         };
-        console.log("user: ", user)
-        if (defaultValues === undefined) {
-            await newUser(user);
-        } else {
-            const {identity, ...userData} = user
-            await updateUser({id: defaultValues?.id, ...userData});
+
+        try {
+            if (defaultValues === undefined) {
+                await newUser(user);
+            } else {
+                const {identity, ...userData} = user
+                await updateUser({id: defaultValues?.id, ...userData});
+            }
+        } catch (error:any) {
+            setError(error?.response?.data?.message);
         }
     }
 
     useEffect(() => {
         if (newSuccess || updateSuccess) {
-            form.reset(cleanValues, { keepDirtyValues: true,keepValues:false });
+            form.reset();
             toast({
                 title: `Kullanıcı başarılı bir şekilde ${newSuccess ? "eklendi" : "güncellendi"}`,
                 description: `Kullanıcı ${newSuccess ? "eklendi" : "güncellendi"} artık listeleniyor.`
             });
+            setError("")
         }
     }, [newSuccess, form, toast, updateSuccess]);
 
@@ -134,9 +144,10 @@ export const UserForm = (props: Props) => {
             })
         }
     }, [provinces, refecthProvinces]);
-    console.log(form.formState.errors)
+
     return (
         <Form {...form}>
+                <Label>{errorMessage}</Label>
             <form onSubmit={form.handleSubmit(onSubmit)}
                   className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
                 <Card className="sm:col-span-1 md:col-span-1 lg:col-span-1">
@@ -152,8 +163,9 @@ export const UserForm = (props: Props) => {
                                            description="TC ve isim uygunluğu sağlanmalı"/> : null}
                         <FormTextInput form={form} name="iban" label="IBAN"
                                        placeholder="TR123456789012345678901234"/>
+                        <FormTextInput form={form} name="phone" label={t("phone")} placeholder="5343297414"/>
                         <FormSelectInput form={form} name="gender" label={t("gender")} placeholder={t("gender")}
-                                              data={gender || []}/>
+                                         data={gender || []}/>
                         <FormDatePicker form={form} name="birthDate" label={t("date_of_birth")}
                                         description="Doğum tarihi yaş bilgisi için önemli."/>
                         <FormMultiSelectWithSearch form={form} name="titles" label={t("titles")} data={TITLES}
@@ -182,7 +194,7 @@ export const UserForm = (props: Props) => {
                                               data={provinces || []}/>
                         <FormSelectWithSearch form={form} name="districtId" label={t("district")}
                                               placeholder={t("district")} data={districts}/>
-                        <FormTextArea form={form} label="address_detail" name="addressDetail"/>
+                        <FormTextArea form={form} label={t("address_detail")} name="addressDetail"/>
                     </CardContent>
                 </Card>
                 <Button className="col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-3 py-5"
