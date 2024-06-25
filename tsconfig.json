@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,17 +22,43 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@business": ["./components/business/index"],
-      "@ui": ["./components/ui/index"],
-      "@assets": ["./assets/*"],
-      "@utils": ["./utils/index"],
-      "@helpers": ["./helpers/*"],
-      "@styles": ["./styles/*"],
-      "@pages": ["./pages/*"],
-      "@config": ["./config/*"]
+      "@/*": [
+        "./*"
+      ],
+      "@business": [
+        "./components/business/index"
+      ],
+      "@ui": [
+        "./components/ui/index"
+      ],
+      "@assets": [
+        "./assets/*"
+      ],
+      "@utils": [
+        "./utils/index"
+      ],
+      "@helpers": [
+        "./helpers/*"
+      ],
+      "@styles": [
+        "./styles/*"
+      ],
+      "@pages": [
+        "./pages/*"
+      ],
+      "@config": [
+        "./config/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "build/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

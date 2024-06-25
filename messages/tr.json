@@ -180,6 +180,8 @@
     "jobs": "İşler",
     "jobs_alltime": "Bütün işler",
     "jobs_thisyear": "Bu yılki işler",
-    "jobs_thismount": "Bu ayki işler"
+    "jobs_thismount": "Bu ayki işler",
+    "authorities": "Yetkililer",
+    "new_staff_desc": "Yeni personel ekleme"
   }
 }

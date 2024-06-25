@@ -7,38 +7,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="4/6">
+    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="prod test">
+      <change afterPath="$PROJECT_DIR$/api/staff.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/[locale]/dashboard/staffs/add/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/[locale]/dashboard/staffs/detail/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/[locale]/dashboard/staffs/edit/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/[locale]/dashboard/staffs/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/HumanType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/StaffType.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/company.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/job.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/job.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/myservices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/myservices.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/paths.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/ticket.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/ticket.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/auth/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/companies/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/home/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/home/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/detail/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/detail/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/users/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/users/add/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth.config.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/business/CompanyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/CompanyForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/business/CompanyTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/CompanyTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/business/AppNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/AppNav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/business/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/Table.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/business/UserForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/UserForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/Authorized.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Authorized.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/FormDatePicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/FormDatePicker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/modal/SelectModalTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/modal/SelectModalTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/companyTableData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/config/companyTableData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/nav.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/nav.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/paths.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/usersTableData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/config/usersTableData.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messages/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/tr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/auth.mw.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/AddressType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/AddressType.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/Company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/Company.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/types/UserType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/UserType.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,31 +73,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/dev/askadro/askadro-client/app/[locale]/dashboard/tickets/new/[id]&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\dev\\askadro\\askadro-client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/dev/askadro/askadro-client/app/[locale]/dashboard/staffs",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "ts.external.directory.path": "C:\\dev\\askadro\\askadro-client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\dev\askadro\askadro-client\app\[locale]\dashboard\staffs" />
+      <recent name="C:\dev\askadro\askadro-client\api" />
       <recent name="C:\dev\askadro\askadro-client\app\[locale]\dashboard\tickets\new\[id]" />
       <recent name="C:\dev\askadro\askadro-client\app\dashboard\companies" />
       <recent name="C:\dev\askadro\askadro-client\app\dashboard\users\add" />
-      <recent name="C:\dev\askadro\askadro-client\app\dashboard\users\edit\[id]" />
-      <recent name="C:\dev\askadro\askadro-client\public\locales\en" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\dev\askadro\askadro-client\app\api" />
@@ -172,7 +164,9 @@
       <workItem from="1717432803158" duration="5601000" />
       <workItem from="1717485793392" duration="21448000" />
       <workItem from="1717570051368" duration="11458000" />
-      <workItem from="1717657751511" duration="22857000" />
+      <workItem from="1717657751511" duration="24869000" />
+      <workItem from="1718193382281" duration="3528000" />
+      <workItem from="1719297136852" duration="3815000" />
     </task>
     <task id="LOCAL-00001" summary="template created">
       <option name="closed" value="true" />
@@ -294,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717512859854</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="prod test">
+      <option name="closed" value="true" />
+      <created>1717691510890</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1717691510890</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,6 +330,7 @@
     <MESSAGE value="created ticket" />
     <MESSAGE value="3/6" />
     <MESSAGE value="4/6" />
-    <option name="LAST_COMMIT_MESSAGE" value="4/6" />
+    <MESSAGE value="prod test" />
+    <option name="LAST_COMMIT_MESSAGE" value="prod test" />
   </component>
 </project>

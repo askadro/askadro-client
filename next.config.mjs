@@ -12,6 +12,7 @@ const nextConfig = {
     experimental: {
         appDir: true,
     },
+    distDir: 'build',
     reactStrictMode:true,
     webpack(config) {
         // Grab the existing rule that handles SVG imports

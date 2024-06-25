@@ -1,7 +1,7 @@
 "use client"
 
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
-import {FormSelectInput, FormTextInput, TicketDetailCard} from "@ui";
+import React, {useCallback, useEffect, useMemo} from 'react';
+import {TicketDetailCard} from "@ui";
 import {Form} from "@/components/ui/form";
 import {Button} from "@/components/ui/button";
 import {useForm} from "react-hook-form";
@@ -13,7 +13,7 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/compo
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 
 import {TITLES} from "@/config/enums";
-import {GetTicket, SendMailTicket, UpdateTicket} from "@/api/ticket";
+import {GetTicket, UpdateTicket} from "@/api/ticket";
 import {useParams} from "next/navigation";
 import NameWithBack from "@/components/ui/NameWithBack";
 import Modal from "@/components/ui/modal";
@@ -31,7 +31,6 @@ import {
     SelectValue
 } from "@/components/ui/select";
 import {Input} from "@/components/ui/input";
-import {isEqual} from "lodash";
 import {cn} from "@/lib/utils";
 import {useToast} from "@/components/ui/use-toast";
 import {Job} from "@/types/JobType";

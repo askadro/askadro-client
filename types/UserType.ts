@@ -1,23 +1,12 @@
-import {format} from "date-fns";
+import {HumanType} from "@/types/HumanType";
 
-export type User = {
-    identity?: string
-    firstName: string
-    lastName: string
-    birthDate: string
-    phone: string
-    gender: string
-    id?: string | string[] | undefined;
+export type UserType = {
     status?: string | undefined
     image?: string | undefined
-    iban: string
-    titles: string[]
-    addressDetail?: string
-    districtId?: string
-    provinceId?: string
+    roles: string
     password?: string
     username?: string
-    deletedAt?: Date
-    createdAt?: Date
-    updatedAt?: Date
+    email: string
 }
+
+export type User = UserType & HumanType

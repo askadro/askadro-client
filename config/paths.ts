@@ -31,4 +31,5 @@ export const APP_PATHS = {
     chat: mergePath(dashboard, "chat"),
     companies: mergePath(dashboard, "companies"),
     myservices:mergePath(dashboard, "myservices"),
+    staffs: mergePath(dashboard, "staffs"),
 }

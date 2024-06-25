@@ -14,13 +14,13 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import {gender, TITLES} from "@/config/enums";
-import {SetUser, UpdateUser} from "@/api/user";
 import {useToast} from "@/components/ui/use-toast"
 import {useTranslations} from "next-intl";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {GetDistricts, GetProvinces} from "@/api/province";
-import {User} from "@/types";
+import {Staff} from "@/types";
 import {Label} from "@/components/ui/label";
+import {SetStaff, UpdateStaff} from "@/api/staff";
 
 const turkishPhoneNumberRegex = /^(\+90|0)?\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$/;
 
@@ -44,28 +44,13 @@ const formSchema = z.object({
     }),
     birthDate: z.string(),
     titles: z.string().array(),
-    username: z.string().min(6, {message: 'Username must be at least 6 characters.'}).optional(),
-    password: z.string().min(6, {message: 'Password must be at least 6 characters.'}).optional(),
     provinceId: z.string().length(36, {message: "Format error"}).optional(),
     districtId: z.string().length(36, {message: "Format error"}).optional(),
     addressDetail: z.string().min(3, {message: ""}).optional(),
-}).superRefine((data, ctx) => {
-    if ((data.username && !data.password) || (!data.username && data.password)) {
-        ctx.addIssue({
-            code: "custom",
-            message: "Both username and password must be provided together.",
-            path: ["username"],
-        });
-        ctx.addIssue({
-            code: "custom",
-            message: "Both username and password must be provided together.",
-            path: ["password"],
-        });
-    }
 });
 
 type Props = {
-    defaultValues?: User
+    defaultValues?: Staff
     buttonTitle?: string
 }
 
@@ -89,34 +74,32 @@ export const UserForm = (props: Props) => {
         resolver: zodResolver(formSchema),
         defaultValues: useMemo(() => defaultValues, [defaultValues])
     })
-    const {mutateAsync: newUser, data, error, isSuccess: newSuccess} = SetUser()
-    const {mutateAsync: updateUser, isSuccess: updateSuccess} = UpdateUser()
+    const {mutateAsync: newStaff, data, error, isSuccess: newSuccess} = SetStaff()
+    const {mutateAsync: updateStaff, isSuccess: updateSuccess} = UpdateStaff()
     const {data: provinces, refetch: refecthProvinces} = GetProvinces()
     const {data: districts} = GetDistricts(form.watch("provinceId"))
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        const user = {
+        const staff = {
             firstName: values.firstName.toLowerCase(),
             lastName: values.lastName.toLowerCase(),
             identity: values.identity,
             iban: values.iban.toLowerCase(),
             gender: values.gender.toLowerCase(),
-            birthDate: values.birthDate,
+            birthDate: new Date(values.birthDate).toISOString(),
             titles: values.titles,
             addressDetail: values.addressDetail?.toLowerCase(),
             districtId: values.districtId,
             provinceId: values.provinceId,
-            password: values.password,
-            username: values.username?.toLowerCase(),
             phone: values.phone
         };
 
         try {
             if (defaultValues === undefined) {
-                await newUser(user);
+                await newStaff(staff);
             } else {
-                const {identity, ...userData} = user
-                await updateUser({id: defaultValues?.id, ...userData});
+                const {identity, ...staffData} = staff
+                await updateStaff({id: defaultValues?.id, ...staffData});
             }
         } catch (error:any) {
             setError(error?.response?.data?.message);
@@ -150,10 +133,10 @@ export const UserForm = (props: Props) => {
                 <Label>{errorMessage}</Label>
             <form onSubmit={form.handleSubmit(onSubmit)}
                   className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
-                <Card className="sm:col-span-1 md:col-span-1 lg:col-span-1">
+                <Card className="sm:col-span-2 md:col-span-2  col-span-1">
                     <CardHeader>
-                        <CardTitle>{t("user")}</CardTitle>
-                        <CardDescription>{t("new_user_desc")}</CardDescription>
+                        <CardTitle>{t("staff")}</CardTitle>
+                        <CardDescription>{t("new_staff_desc")}</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <FormTextInput form={form} name="firstName" label="Ad" placeholder="Adı"/>
@@ -172,19 +155,8 @@ export const UserForm = (props: Props) => {
                         />
                     </CardContent>
                 </Card>
-                <Card className="sm:col-span-1 md:col-span-1 lg:col-span-1">
-                    <CardHeader>
-                        <CardTitle>{`${t("is_manager")} (${t("opsiyonel")})`}</CardTitle>
-                        <CardDescription>{t("is_manager_decs")}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <FormTextInput form={form} name="username" label={t("username")} placeholder={t("username")}/>
-                        <FormTextInput form={form} name="password" type="password" label={t("password")}
-                                       placeholder={t("password")}/>
-                    </CardContent>
-                </Card>
 
-                <Card className="sm:col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2">
+                <Card className="sm:col-span-2 md:col-span-2  col-span-1">
                     <CardHeader>
                         <CardTitle>{`${t("address")} (${t("opsiyonel")})`}</CardTitle>
                         <CardDescription>{t("address_decs")}</CardDescription>

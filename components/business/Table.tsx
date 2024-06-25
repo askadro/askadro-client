@@ -73,7 +73,6 @@ export function CustomTable({
         },
     })
     // console.log("colums: ",rowSelection,data[Object.keys(rowSelection)[0]]) // seçilmişi bulur
-
     if (!data) return null
     return (
         <div className="w-full">

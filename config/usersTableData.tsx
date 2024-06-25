@@ -12,10 +12,10 @@ import {
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import * as React from "react";
-import {User} from "@/types/UserType";
 import {Badge} from "@/components/ui/badge";
+import {Staff} from "@/types";
 
-export const usersColums: ColumnDef<User>[] = [
+export const staffsColums: ColumnDef<Staff>[] = [
     {
         id: "select",
         header: ({table}) => (

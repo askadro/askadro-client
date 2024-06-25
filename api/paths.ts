@@ -1,6 +1,6 @@
 
 const commonMainPath = "common";
-const authMainPath = "auth";
+const staffMainPath = "staff";
 const userMainPath = "users"
 const companyMainPath = "companies";
 const provinceMainPath = "provinces";
@@ -11,9 +11,9 @@ const jobMainPath = "jobs"
 export const SUMMARY = `${commonMainPath}/summary`
 
 //AUTH
-export const LOGIN = `${authMainPath}/login`;
-export const VALIDATE_TOKEN = `${authMainPath}/validate-token`;
-export const LOGOUT = `${authMainPath}/logout`;
+export const LOGIN = `${userMainPath}/login`;
+export const VALIDATE_TOKEN = `${userMainPath}/validate-token`;
+export const LOGOUT = `${userMainPath}/logout`;
 
 //USER
 export const USERS = userMainPath;
@@ -64,4 +64,12 @@ export const CREATE_TICKET = `${ticketMainPath}/new`
 export const UPDATE_TICKET = `${ticketMainPath}/update`  //:id
 export const TICKET = `${ticketMainPath}`; //:id
 export const SEND_AS_MAIL = `${ticketMainPath}/send-email`; //:id
+
+//STAFF
+export const STAFFS = `${staffMainPath}/all`;
+export const CREATE_STAFF = `${staffMainPath}/new`;
+export const STAFF = `${staffMainPath}/user`;
+export const UPDATE_STAFF = `${staffMainPath}/update`;
+export const DELETE_STAFF = `${staffMainPath}/delete`;
+export const SEARCH_STAFF = `${staffMainPath}/search`;
 

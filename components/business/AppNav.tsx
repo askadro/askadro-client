@@ -3,10 +3,9 @@
 import {Navbar, Typography, IconButton, MobileNav} from "@/helpers/tailwind-material";
 import React from "react";
 import {APP_NAME} from "@/config/app";
-import {auth_navs, dashboard_navs} from "@/config/nav";
+import { dashboard_navs} from "@/config/nav";
 import {Collapse} from "@material-tailwind/react";
 import {useRouter} from "next/navigation";
-import Link from "next/link";
 import {Button} from "@/components/ui/button"
 import {Label} from "@/components/ui/label"
 import {NavList} from "@ui";
