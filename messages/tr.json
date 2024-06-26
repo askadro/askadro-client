@@ -183,6 +183,9 @@
     "jobs_thismount": "Bu ayki işler",
     "authorities": "Yetkililer",
     "new_staff_desc": "Yeni personel ekleme",
-    "search_staff-placeholder":"Personel ara"
+    "search_staff-placeholder":"Personel ara",
+    "no_results": "Sonuç bulunamadı",
+    "timesheet": "Puantaj",
+    "timesheets": "Puantajlar"
   }
 }
