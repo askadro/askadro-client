@@ -1,8 +1,6 @@
 "use client"
 import React, {useEffect, useState} from 'react';
-import {UserForm} from "@business";
 import {useRouter, useParams} from "next/navigation";
-import {GetUser} from "@/api/user";
 import {Button} from "@/components/ui/button";
 import {ChevronLeft, PlusCircle} from "lucide-react";
 import {Badge} from "@/components/ui/badge";
@@ -13,22 +11,24 @@ import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/c
 import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import {useTranslations} from "next-intl";
-import {User} from "@/types";
+import {Staff} from "@/types";
+import {GetStaff} from "@/api/staff";
+import {differenceInYears, format} from "date-fns";
 
 
-const UserDetail = () => {
+const StaffDetail = () => {
     const router = useRouter()
     const t = useTranslations("index")
     const params = useParams()
-    const {data, isLoading, isSuccess, error, refetch: refecthUser} = GetUser(params?.id)
-    const [user, setUser] = useState<User | null>(data)
+    const {data, isLoading, isSuccess, error, refetch: refecthUser} = GetStaff(params?.id)
+    const [staff, setStaff] = useState<Staff | null>(data)
     useEffect(() => {
         if (isSuccess) {
-            setUser(data)
+            setStaff(data)
         }
     }, [data, isLoading, isSuccess]);
 
-    if (!data || !user) return null
+    if (!data || !staff) return null
     return (
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
             <div className="flex items-center gap-4">
@@ -40,7 +40,7 @@ const UserDetail = () => {
                     {t("user_detail")}
                 </h1>
                 <Badge variant="outline" className="ml-auto sm:ml-0">
-                    {user?.status}
+                    {differenceInYears(new Date(), staff?.birthDate)}
                 </Badge>
             </div>
             <div className="grid gap-4 lg:grid-cols-6 lg:gap-8">
@@ -240,7 +240,7 @@ const UserDetail = () => {
                         <CardContent>
                             <div className="grid gap-6">
                                 <div className="grid gap-3">
-                                    <Label htmlFor="status">{user?.status}</Label>
+                                    <Label htmlFor="status">{staff?.status}</Label>
                                     {/*<Select>*/}
                                     {/*    <SelectTrigger id="status" aria-label="Select status">*/}
                                     {/*        <SelectValue placeholder="Select status"/>*/}
@@ -330,4 +330,4 @@ const UserDetail = () => {
 {/*<UserForm defaultValues={data} id={params?.id} />*/
 }
 
-export default UserDetail;
+export default StaffDetail;

@@ -52,7 +52,7 @@ export function UpdateStaff() {
     const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async (staff: Staff) => {
-            const res = await getApiClient().patch(`${UPDATE_STAFF}/${staff.id}`, staff);
+            const res = await getApiClient().put(`${UPDATE_STAFF}/${staff.id}`, staff);
             return await res.data;
         },
         async onSuccess(data) {

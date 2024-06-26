@@ -1,6 +1,6 @@
 "use client"
 import React, {useEffect, useState} from 'react';
-import {UserForm} from "@business";
+import {StaffForm} from "@business";
 import {useRouter, useParams} from "next/navigation";
 import {Button} from "@/components/ui/button";
 import {ChevronLeft, PlusCircle} from "lucide-react";
@@ -37,7 +37,7 @@ const UserDetail = () => {
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <UserForm/>
+                            <StaffForm />
                         </CardContent>
                     </Card>
                 </div>

@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { UserForm } from "@business";
+import {StaffForm, UserForm} from "@business";
 import { useRouter, useParams } from "next/navigation";
 import { GetUser } from "@/api/user";
 import { Button } from "@/components/ui/button";
@@ -8,22 +8,23 @@ import { ChevronLeft, PlusCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
-import { User } from "@/types";
+import {Staff, User} from "@/types";
 import NameWithBack from "@/components/ui/NameWithBack";
+import {GetStaff, GetStaffs} from "@/api/staff";
 
-const UserDetail = () => {
+const StaffDetail = () => {
     const router = useRouter()
     const t = useTranslations("index")
     const params = useParams()
-    const { data, isLoading, isSuccess, error, refetch: refecthUser } = GetUser(params?.id)
-    const [user, setUser] = useState<User | null>(data)
+    const { data, isLoading, isSuccess, error, refetch: refecthUser } = GetStaff(params?.id)
+    const [staff, setStaff] = useState<Staff | null>(data)
     useEffect(() => {
         if (isSuccess) {
-            setUser(data)
+            setStaff(data)
         }
     }, [data, isLoading, isSuccess]);
 
-    if (!data || !user) return null
+    if (!data || !staff) return null
     return (
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
             <NameWithBack name={t("back")}/>
@@ -37,7 +38,7 @@ const UserDetail = () => {
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <UserForm defaultValues={user} buttonTitle={"save"} />
+                            <StaffForm defaultValues={staff} buttonTitle={"save"} />
                         </CardContent>
                     </Card>
                 </div>
@@ -46,4 +47,4 @@ const UserDetail = () => {
     );
 };
 
-export default UserDetail;
+export default StaffDetail;

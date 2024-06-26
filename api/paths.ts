@@ -68,7 +68,7 @@ export const SEND_AS_MAIL = `${ticketMainPath}/send-email`; //:id
 //STAFF
 export const STAFFS = `${staffMainPath}/all`;
 export const CREATE_STAFF = `${staffMainPath}/new`;
-export const STAFF = `${staffMainPath}/user`;
+export const STAFF = `${staffMainPath}`;
 export const UPDATE_STAFF = `${staffMainPath}/update`;
 export const DELETE_STAFF = `${staffMainPath}/delete`;
 export const SEARCH_STAFF = `${staffMainPath}/search`;

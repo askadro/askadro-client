@@ -16,13 +16,13 @@ const Page = () => {
     const {data: staffs} = GetStaffs()
     return (
         <div>
-            <CustomTable rowSelection={rowSelection}
-                         setRowSelection={setRowSelection}
-                         columns={staffsColums} data={staffs[0]}
-                         searchFilterParam={"firstName"}
-                         searchPlaceholder={"Search staff with name..."}
-                         addTitle={"add_staff"}
-            />
+            { staffs && staffs[0] ? <CustomTable rowSelection={rowSelection}
+                          setRowSelection={setRowSelection}
+                          columns={staffsColums} data={staffs[0]}
+                          searchFilterParam={"firstName"}
+                          searchPlaceholder={t("search_staff-placeholder")}
+                          addTitle={"add_staff"}
+            /> : <div>Staff yok</div>}
         </div>
     );
 };

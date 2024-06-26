@@ -182,6 +182,7 @@
     "jobs_thisyear": "Bu yılki işler",
     "jobs_thismount": "Bu ayki işler",
     "authorities": "Yetkililer",
-    "new_staff_desc": "Yeni personel ekleme"
+    "new_staff_desc": "Yeni personel ekleme",
+    "search_staff-placeholder":"Personel ara"
   }
 }
