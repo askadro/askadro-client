@@ -186,6 +186,9 @@
     "search_staff-placeholder":"Personel ara",
     "no_results": "Sonuç bulunamadı",
     "timesheet": "Puantaj",
-    "timesheets": "Puantajlar"
+    "timesheets": "Puantajlar",
+    "change_or_create_ts_hour": "Saat bilgisi ekle ya da güncelle",
+    "change_or_create_ts_hour_decs": "Saat bilgisini güncelleyebilir ya da yeni bilgi ekleyebilirsin",
+    "close": "Kapat"
   }
 }

@@ -6,7 +6,6 @@ import {useTranslations} from "next-intl";
 import NameWithBack from "@/components/ui/NameWithBack";
 
 const CompanyDetail = () => {
-    const router = useRouter()
     const t = useTranslations("index")
 
     return (

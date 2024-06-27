@@ -8,7 +8,7 @@ const Page = () => {
     const route = useRoute()
     return (
         <div>
-           <Button onClick={(e)=>route(e,"new")}>go new page</Button>
+           <Button onClick={(e)=>route(e,`new/${"5"}`)}>go new page</Button>
         </div>
     );
 };

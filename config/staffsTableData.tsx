@@ -13,9 +13,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import * as React from "react";
 import {Badge} from "@/components/ui/badge";
-import { User} from "@/types";
+import {Staff} from "@/types";
 
-export const usersColums: ColumnDef<User>[] = [
+export const staffsColums: ColumnDef<Staff>[] = [
     {
         id: "select",
         header: ({table}) => (

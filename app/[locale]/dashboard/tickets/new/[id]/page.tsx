@@ -4,7 +4,7 @@ import React, {useEffect, useMemo} from 'react';
 import {useTranslations} from "next-intl";
 import {GetProfile, GetUsers} from "@/api/user";
 import {CustomTable} from "@business";
-import {usersColums} from "@/config/usersTableData";
+import {usersColums} from "@/config/staffsTableData";
 import {Button} from "@/components/ui/button";
 import {ArrowRight} from "lucide-react";
 import {User} from "@/types";

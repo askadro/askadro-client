@@ -2,14 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import {useRouter, useParams} from "next/navigation";
 import {Button} from "@/components/ui/button";
-import {ChevronLeft, PlusCircle} from "lucide-react";
-import {Badge} from "@/components/ui/badge";
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {Label} from "@/components/ui/label";
-import {Input} from "@/components/ui/input";
-import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
-import {ToggleGroup, ToggleGroupItem} from "@/components/ui/toggle-group";
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import {DeleteCompany, GetCompany} from "@/api/company";
 import {Company} from "@/types/Company";
 import NameWithBack from "@/components/ui/NameWithBack";

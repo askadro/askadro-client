@@ -68,7 +68,7 @@ export function UserTable() {
                             {user.status}
                         </Badge>
                     </TableCell>
-                    <TableCell> {user.titles?.map((r: string) => r.split(",").join(" "))}</TableCell>
+                    <TableCell> {user.roles?.map((r: string) => r.split(",").join(" "))}</TableCell>
                     <TableCell className="hidden md:table-cell">
                         {t(user.gender)}
                     </TableCell>

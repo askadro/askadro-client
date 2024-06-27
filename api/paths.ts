@@ -6,6 +6,7 @@ const companyMainPath = "companies";
 const provinceMainPath = "provinces";
 const ticketMainPath = "tickets";
 const jobMainPath = "jobs"
+const timesheetMainPath = "timesheet"
 
 //COMMON | SUMMARY
 export const SUMMARY = `${commonMainPath}/summary`
@@ -73,3 +74,5 @@ export const UPDATE_STAFF = `${staffMainPath}/update`;
 export const DELETE_STAFF = `${staffMainPath}/delete`;
 export const SEARCH_STAFF = `${staffMainPath}/search`;
 
+//TIMESHEET
+export const TIMESHEET_WITH_MONTH =  `${staffMainPath}/timesheets`;

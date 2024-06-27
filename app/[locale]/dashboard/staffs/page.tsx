@@ -6,7 +6,7 @@ import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import {CustomTable} from "@business";
 import {useTranslations} from "next-intl";
-import {staffsColums} from "@/config/usersTableData";
+import {staffsColums} from "@/config/staffsTableData";
 import {GetStaffs} from "@/api/staff";
 
 const Page = () => {

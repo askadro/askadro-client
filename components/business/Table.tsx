@@ -21,7 +21,6 @@ import {ChevronDown, File, PlusCircle} from "lucide-react";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {useTranslations} from "next-intl";
 import useRoute from "@/hooks/useRoute";
-import {ReactElement} from "react";
 
 type Props = {
     columns: any
