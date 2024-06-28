@@ -189,6 +189,9 @@
     "timesheets": "Puantajlar",
     "change_or_create_ts_hour": "Saat bilgisi ekle ya da güncelle",
     "change_or_create_ts_hour_decs": "Saat bilgisini güncelleyebilir ya da yeni bilgi ekleyebilirsin",
-    "close": "Kapat"
+    "close": "Kapat",
+    "create": "Oluştur",
+    "show_timesheet": "Şirket puantajı listele",
+    "list_timesheet": "Puantajı listele"
   }
 }

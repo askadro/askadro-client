@@ -2,9 +2,8 @@
 
 import React, {useEffect, useMemo} from 'react';
 import {useTranslations} from "next-intl";
-import {GetProfile, GetUsers} from "@/api/user";
 import {CustomTable} from "@business";
-import {usersColums} from "@/config/staffsTableData";
+import {usersColums} from "@/config/usersTableData";
 import {Button} from "@/components/ui/button";
 import {ArrowRight} from "lucide-react";
 import {User} from "@/types";
@@ -30,6 +29,8 @@ import {getInitialDate} from "@/helpers/features";
 import {useToast} from "@/components/ui/use-toast";
 import {cn} from "@/lib/utils";
 import {getLocalStorage} from "@/utils/storage";
+import {GetStaffs} from "@/api/staff";
+import {GetProfile} from "@/api/user";
 
 const formSchema = z.object({
     enterTime: z.date().default(getInitialDate()),
@@ -51,7 +52,7 @@ const Page = () => {
     const {toast} = useToast()
     const params: { id: string } | null = useParams()
     const [rowSelection, setRowSelection] = React.useState({})
-    const [tab, setTab] = React.useState("user-table")
+    const [tab, setTab] = React.useState("staffs-table")
     const [jobsData, setJobsData] = React.useState<{
         userId: string,
         title: string,
@@ -64,7 +65,8 @@ const Page = () => {
         resolver: zodResolver(formSchema),
         defaultValues: useMemo(() => defaultValues, [])
     })
-    const {data: user} = GetUsers()
+    const {data: staffs} = GetStaffs()
+    const staffsData = staffs?.[0]
     const {data: profile} = GetProfile()
     const {data: companies} = GetCompanies()
     const company = companies?.find((e: { id: string | undefined; }) => e.id === params?.id)
@@ -140,7 +142,7 @@ const Page = () => {
 
     useEffect(() => {
         const keys = Object.keys(rowSelection);
-        const selectedData = user?.filter((u: User, index: number) => keys.some((k: string) => k === index.toString()))
+        const selectedData = staffsData?.filter((u: User, index: number) => keys.some((k: string) => k === index.toString()))
         const formattedData = selectedData?.map((u: { id: any; }) => ({
             userId: u.id,
             title: TITLES[0].value,
@@ -149,7 +151,7 @@ const Page = () => {
         }));
         setSelectedStaff(selectedData)
         setJobsData(formattedData)
-    }, [form, rowSelection, user]);
+    }, [form, rowSelection, staffsData]);
 
 
     const StaffList = () => {
@@ -176,12 +178,12 @@ const Page = () => {
     if (!company) return null
     return (
         <div className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
-            <Tabs defaultValue="user-table" onValueChange={setTab} value={tab}>
+            <Tabs defaultValue="staffs-table" onValueChange={setTab} value={tab}>
                 <div className="flex items-center">
                     <TabsList>
                         <TabsTrigger
                             disabled={tab !== "ticket-detail" && tab !== "control-and-finish"}
-                            value="user-table"
+                            value="staffs-table"
                         >
                             {t("staffs")}
                         </TabsTrigger>
@@ -198,10 +200,10 @@ const Page = () => {
                             {t("control-and-finish")}
                         </TabsTrigger> </TabsList>
                 </div>
-                <TabsContent value="user-table">
+                <TabsContent value="staffs-table">
                     <CustomTable rowSelection={rowSelection}
                                  setRowSelection={setRowSelection}
-                                 columns={usersColums} data={user}
+                                 columns={usersColums} data={staffsData}
                                  searchFilterParam={"firstName"}
                                  searchPlaceholder={"Search users with name..."}
                                  addTitle={"add_staff"}

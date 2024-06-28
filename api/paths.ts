@@ -76,3 +76,8 @@ export const SEARCH_STAFF = `${staffMainPath}/search`;
 
 //TIMESHEET
 export const TIMESHEET_WITH_MONTH =  `${staffMainPath}/timesheets`;
+export const UPDATE_TIMESHEET =  `${staffMainPath}/update/timesheet`;
+export const CREATE_TIMESHEET =  `${staffMainPath}/add/timesheet`;
+
+
+

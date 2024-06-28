@@ -1,3 +1,5 @@
+export {Search} from "@/components/ui/Search";
+
 export {TicketDetailCard} from "./TicketDetailCard";
 
 export {SelectInputWithSearch} from "./SelectInputWithSearch";

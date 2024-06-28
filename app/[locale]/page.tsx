@@ -13,25 +13,25 @@ export default function LocalPage() {
     const reLink = (path: string) => {
         return redirect(`${getLocalStorage("lang")}/${path}`);
     }
-    useEffect(() => {
-        if (token) {
-            validateToken(token)
-        } else {
-            reLink("auth/login")
-        }
-    }, [token, validateToken]);
+    // useEffect(() => {
+    //     if (token) {
+    //         validateToken(token)
+    //     } else {
+    //         reLink("auth/login")
+    //     }
+    // }, [token, validateToken]);
 
-    useEffect(() => {
-        if (isValidate?.isValid) {
-            getApiClient().defaults.headers.common["Authorization"] = token
-            redirect(`${getLocalStorage("lang")}/`)
-        } else {
-            reLink("dashboard")
-            if (window !== undefined) {
-                window.location.reload()
-            }
-        }
-    }, [isValidate]);
-
+    // useEffect(() => {
+    //     if (isValidate?.isValid) {
+    //         getApiClient().defaults.headers.common["Authorization"] = token
+    //         redirect(`${getLocalStorage("lang")}/`)
+    //     } else {
+    //         reLink("dashboard")
+    //         if (window !== undefined) {
+    //             window.location.reload()
+    //         }
+    //     }
+    // }, [isValidate]);
+    reLink("dashboard")
     return null
 }

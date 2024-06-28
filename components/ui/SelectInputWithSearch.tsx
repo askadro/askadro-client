@@ -3,10 +3,10 @@ import React from "react";
 import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
 import {Command, CommandEmpty, CommandInput, CommandItem, CommandList} from "@/components/ui/command";
 import {Button} from "@/components/ui/button";
-import {cn} from "../../lib/utils";
+import {cn} from "@/lib/utils";
 import {useTranslations} from "next-intl";
 
-export const SelectInputWithSearch = ({data,label,onSelect,value,onChange}:any)=>{
+export const SelectInputWithSearch = ({data,label,onSelect,value}:any)=>{
     const t = useTranslations("index")
     return(
         <Popover>
@@ -14,14 +14,11 @@ export const SelectInputWithSearch = ({data,label,onSelect,value,onChange}:any)=
                     <Button
                         variant="outline"
                         role="combobox"
-                        className={cn(
-                            "justify-between"
-                        )}
-
+                        className="w-[200px] justify-between"
                     >
                         {value
                             ? data?.find(
-                                (language: { value: any; }) => language.value === value
+                                (i: { value: any; }) => i.value === value
                             )?.label
                             : `${t("search_data",{state:label})}`}
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50"/>
@@ -34,16 +31,14 @@ export const SelectInputWithSearch = ({data,label,onSelect,value,onChange}:any)=
                     <CommandList>
                         {data?.map((d:any) => (
                             <CommandItem
-                                value={d.label}
+                                value={d.value}
                                 key={d.value}
                                 onSelect={onSelect}
                             >
                                 <Check
                                     className={cn(
                                         "mr-2 h-4 w-4",
-                                        // d.value === value
-                                        //     ? "opacity-100"
-                                        //     : "opacity-0"
+                                        value === data.value ? "opacity-100" : "opacity-0"
                                     )}
                                 />
                                 {d.label}

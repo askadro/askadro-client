@@ -13,6 +13,7 @@ import {Button} from "@/components/ui/button";
 import {Label} from "@/components/ui/label";
 import Link from "next/link";
 import {getApiClient} from "@/api";
+import {router} from "next/client";
 
 
 // Validation schema
@@ -37,6 +38,10 @@ export default function LoginPage() {
             form.setValue('password', rememberedUser.password);
         }
     }, [form]);
+
+    useEffect(() => {
+        router.push(`/${getLocalStorage("lang") || "tr"}/dashboard`);
+    }, []);
 
     useEffect(() => {
         if (loginSuccess) {

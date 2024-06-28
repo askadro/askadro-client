@@ -7,23 +7,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="begin timesheet">
-      <change afterPath="$PROJECT_DIR$/api/timesheet.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/[locale]/dashboard/timesheet/new/[month]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/staffsTableData.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/types/TimesheetRequestType.ts" afterDir="false" />
+    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="update 27 06">
+      <change afterPath="$PROJECT_DIR$/components/ui/Search.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/skeleton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/AddTimesheet.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/UpdateTimesheet.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/paths.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/paths.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/companies/add/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/add/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/companies/detail/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/companies/detail/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/staffs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/staffs/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/timesheet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/timesheet.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/auth/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/new/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/tickets/new/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/timesheet/new/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/timesheet/new/[month]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/timesheet/new/[date]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/timesheet/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/timesheet/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/business/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/Table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/business/UserTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/business/UserTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/usersTableData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/config/usersTableData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/SelectInputWithSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/SelectInputWithSearch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messages/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/tr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/TimesheetRequestType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/TimesheetRequestType.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,8 +36,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="tsconfig.json" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -67,24 +68,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/dev/askadro/askadro-client/config",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "ts.external.directory.path": "C:\\dev\\askadro\\askadro-client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/dev/askadro/askadro-client/config&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\dev\\askadro\\askadro-client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\dev\askadro\askadro-client\config" />
@@ -163,7 +164,8 @@
       <workItem from="1719297136852" duration="3838000" />
       <workItem from="1719389294543" duration="5575000" />
       <workItem from="1719414353531" duration="3529000" />
-      <workItem from="1719489025858" duration="12615000" />
+      <workItem from="1719489025858" duration="12688000" />
+      <workItem from="1719551053570" duration="16778000" />
     </task>
     <task id="LOCAL-00001" summary="template created">
       <option name="closed" value="true" />
@@ -317,7 +319,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719420254497</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="update 27 06">
+      <option name="closed" value="true" />
+      <created>1719502664041</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1719502664041</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,6 +364,7 @@
     <MESSAGE value="prod test" />
     <MESSAGE value="timesheet will be created" />
     <MESSAGE value="begin timesheet" />
-    <option name="LAST_COMMIT_MESSAGE" value="begin timesheet" />
+    <MESSAGE value="update 27 06" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 27 06" />
   </component>
 </project>
