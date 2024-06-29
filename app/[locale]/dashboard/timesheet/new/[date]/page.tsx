@@ -1,7 +1,7 @@
 "use client";
 import React, {useCallback, useEffect, useState} from "react";
 import {Label} from "@/components/ui/label";
-import {format, getDaysInMonth, parseISO} from "date-fns";
+import {format, formatISO, getDaysInMonth, parseISO} from "date-fns";
 import {AddTimesheet, GetTimesheetWithMonth, UpdateTimesheetWithId} from "@/api/timesheet";
 import {tr} from "date-fns/locale";
 import {Button} from "@/components/ui/button";
@@ -35,7 +35,6 @@ const Page = () => {
     const [hourText, setHourText] = useState<any>(0);
     const [timesheetData, setTimesheetData] = useState<any[]>([]);
     const [selectedCompany, setSelectedCompany] = useState("")
-
     const [isLoading, setLoading] = useState(false)
     const [isDisabled, setDisabled] = useState(false)
     const [selectedStaff, setSelectedStaff] = useState<Option>({label: "", value: ""})
@@ -47,12 +46,13 @@ const Page = () => {
     const {mutate: addTimesheet} = AddTimesheet()
 
     const chosingDate = new Date(date as Date)
-    const month = chosingDate.getMonth() + 1;
+    const month = chosingDate.getMonth();
     const year = chosingDate.getFullYear();
     const selectedDay = new Date();
-    selectedDay.setMonth(month - 1);
+    selectedDay.setMonth(month);
     const monthName = format(selectedDay, "LLLL", {locale: tr});
     const monthDays = getDaysInMonth(selectedDay);
+
 
     const returnCompanies = useCallback(() => {
         return companies?.map((item: Company) => {
@@ -83,7 +83,6 @@ const Page = () => {
                 if (s.id === selectedStaff?.value) return s
             }), dates: []
         }
-        console.log(timesheetStaffs, timesheetData)
         if (timesheetStaffs && timesheetStaffs?.staff?.id) {
             setTimesheetData((data: any) => [...data, timesheetStaffs])
         }
@@ -92,17 +91,20 @@ const Page = () => {
     const letsListTimesheet = () => {
         timesheetMutate({companyId: selectedCompany, date: chosingDate.toISOString()}, {
             onSuccess: (data) => {
+                console.log("data: ", data)
                 setTimesheetData(data);
             }
         });
     }
 
     useEffect(() => {
-        letsListTimesheet()
+        if (selectedCompany && chosingDate) {
+            letsListTimesheet()
+        }
     }, [selectedCompany, date]);
 
     const addTimesheetMethod = (staffId: any, date: number, hours: number) => {
-        const currentDate = new Date(year, month - 1, date + 1)
+        const currentDate = new Date(year, month, date + 1)
         addTimesheet({
             companyId: selectedCompany,
             date: currentDate.toISOString(),
@@ -112,14 +114,17 @@ const Page = () => {
     }
 
     const handleAddTimesheet = (staffId: string | string[] | undefined, date: number, hours: number) => {
-        const currentDate = new Date(year, month - 1, date + 1);
+        const utcDate = new Date(year, month, date);
+        const formattedDate = formatISO(utcDate);
+        console.log("formattedDate: ", formattedDate)
         addTimesheet({
             companyId: selectedCompany,
-            date: currentDate.toISOString(),
+            date: formattedDate,
             hoursWorked: hours,
             staffId: staffId,
         }, {
             onSuccess: (newTimesheet) => {
+                console.log("newTimesheet: ", newTimesheet)
                 setTimesheetData((prevData: any[]) => {
                     const existingStaffIndex = prevData.findIndex(ts => ts.staff.id === newTimesheet.staff.id);
                     if (existingStaffIndex > -1) {
@@ -128,7 +133,7 @@ const Page = () => {
                             ...prevData[existingStaffIndex],
                             dates: [...prevData[existingStaffIndex].dates, {
                                 id: newTimesheet.id,
-                                date: newTimesheet.date,
+                                date: newTimesheet.date+1,
                                 hours: newTimesheet.hoursWorked,
                             }]
                         };
@@ -148,7 +153,7 @@ const Page = () => {
                             },
                             dates: [{
                                 id: newTimesheet.id,
-                                date: newTimesheet.date,
+                                date: newTimesheet.date+1,
                                 hours: newTimesheet.hoursWorked,
                             }]
                         };
@@ -163,6 +168,7 @@ const Page = () => {
     const handleUpdateTimesheet = (id: string, newHours: number) => {
         updateTimesheet({id, hoursWorked: newHours}, {
             onSuccess: (updatedData) => {
+                console.log("updatedData: ", updatedData)
                 setTimesheetData((prevData: any[]) => {
                     return prevData.map(ts => {
                         if (ts.dates.some((date: { id: any; }) => date.id === updatedData.id)) {
@@ -199,9 +205,9 @@ const Page = () => {
                         </DialogDescription>
                     </DialogHeader>
                     <div className="flex w-full max-w-sm items-center space-x-2">
-                        <Input value={hourText} type="number" placeholder="8"
+                        <Input value={Number(hourText)} type="number" placeholder="8"
                                onChange={(e) => setHourText(e.target.value)}
-                               defaultValue={defaultValues}/>
+                               defaultValue={Number(defaultValues)}/>
                         <Button type="submit" onClick={() => {
                             timesheetId ? handleUpdateTimesheet(timesheetId, Number(hourText)) :
                                 handleAddTimesheet(staff?.id, date, Number(hourText))
