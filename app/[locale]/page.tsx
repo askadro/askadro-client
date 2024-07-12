@@ -1,37 +1,46 @@
 "use client"
 
-import {getLocalStorage, setLocalStorage} from "@/utils/storage";
-import {ValidateToken} from "@/api/auth";
+import {getLocalStorage} from "@/utils/storage";
 import {useEffect} from "react";
-import {redirect} from "next/navigation";
-import {getApiClient} from "@/api";
-
+import {redirect, useRouter} from "next/navigation";
+import {LANGUAGE} from "@/config/app";
+import {jwtDecode} from 'jwt-decode';
 
 export default function LocalPage() {
     const token = getLocalStorage("token")
-    const {mutate: validateToken, data: isValidate} = ValidateToken()
+    const router = useRouter()
+    // const {mutate: validateToken, data: isValidate} = ValidateToken()
     const reLink = (path: string) => {
-        return redirect(`${getLocalStorage("lang")}/${path}`);
+        return redirect(`${LANGUAGE}/${path}`);
     }
-    // useEffect(() => {
-    //     if (token) {
-    //         validateToken(token)
-    //     } else {
-    //         reLink("auth/login")
-    //     }
-    // }, [token, validateToken]);
+    useEffect(() => {
+        if (token) {
+            console.log("token", token)
+            const decodedToken = jwtDecode(token);
+            // @ts-ignore
+            const expirationTime = decodedToken?.exp * 1000; // Convert to milliseconds
+            const currentTime = new Date().getTime();
 
-    // useEffect(() => {
-    //     if (isValidate?.isValid) {
-    //         getApiClient().defaults.headers.common["Authorization"] = token
-    //         redirect(`${getLocalStorage("lang")}/`)
-    //     } else {
-    //         reLink("dashboard")
-    //         if (window !== undefined) {
-    //             window.location.reload()
-    //         }
-    //     }
-    // }, [isValidate]);
-    reLink("dashboard")
+            if (currentTime >= expirationTime) {
+                // Token süresi dolmuş, çıkış yap
+                handleLogout();
+            } else {
+                // Token süresini izlemeye devam et
+                const timeoutId = setTimeout(() => {
+                    handleLogout();
+                }, expirationTime - currentTime);
+
+                // Component unmounted olduğunda timeout'u temizleyin
+                return () => clearTimeout(timeoutId);
+            }
+        }
+    }, [token]);
+
+    const handleLogout = () => {
+        // Token'ı temizleyin ve giriş sayfasına yönlendirin
+        console.log("token sürexzsi bitmiş")
+        localStorage.removeItem('token');
+        router.push(`${LANGUAGE}/auth/login`);
+    };
     return null
 }

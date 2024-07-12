@@ -39,10 +39,9 @@ export default function LoginPage() {
         }
     }, [form]);
 
-    useEffect(() => {
-        router.push(`/${getLocalStorage("lang") || "tr"}/dashboard`);
-    }, []);
-
+    // useEffect(() => {
+    //     router.push(`/${getLocalStorage("lang") || "tr"}/dashboard`);
+    // }, []);
     useEffect(() => {
         if (loginSuccess) {
             getApiClient().defaults.headers.common["Authorization"] = token.access_token;

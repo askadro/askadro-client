@@ -24,7 +24,7 @@ import {dashboard_navs} from "@/config/nav";
 import {NavType} from "@/types/navType";
 import {LanguageSwitcher} from "@business";
 import {useTranslations} from "next-intl";
-import {APP_NAME} from "@/config/app";
+import {APP_NAME, LANGUAGE} from "@/config/app";
 import {Logout} from "@/api/auth";
 import {redirect, useRouter} from "next/navigation";
 import {clearLocalStorage, setLocalStorage} from "@/utils/storage";
@@ -38,7 +38,7 @@ const Header = () => {
         logout()
         clearLocalStorage("token")
         getApiClient().defaults.headers.common["Authorization"] = null
-        router.push("/tr")
+        router.push(`/${LANGUAGE}/auth/login`)
     }
 
     const returnNavList = () => {

@@ -4,6 +4,7 @@ import {Providers} from "@/utils/providers";
 import "./[locale]/globals.css";
 import {useRouter} from "next/navigation";
 import {getLocalStorage, setLocalStorage} from "@/utils/storage";
+import {LANGUAGE} from "@/config/app";
 
 export default function RootLayout({children,}: {
     children: React.ReactNode;
@@ -12,8 +13,8 @@ export default function RootLayout({children,}: {
 
     useEffect(() => {
         if (!getLocalStorage('lang')) {
-            setLocalStorage('lang', 'tr'); // Varsayılan dil
-            router.push('/tr');
+            setLocalStorage('lang', LANGUAGE); // Varsayılan dil
+            router.push(`/${LANGUAGE}`);
         }
     }, [router]);
     return children

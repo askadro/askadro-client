@@ -7,9 +7,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="update 28 06">
+    <list default="true" id="0b06ae17-ed89-4add-a6a3-b8e0b1ca97c5" name="Changes" comment="update 29 06">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/dashboard/timesheet/new/[date]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/dashboard/timesheet/new/[date]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/auth/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/auth/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +158,13 @@
       <workItem from="1719414353531" duration="3529000" />
       <workItem from="1719489025858" duration="12688000" />
       <workItem from="1719551053570" duration="17271000" />
-      <workItem from="1719680067000" duration="8193000" />
+      <workItem from="1719680067000" duration="8209000" />
+      <workItem from="1719740488555" duration="1219000" />
+      <workItem from="1719810487409" duration="1257000" />
+      <workItem from="1719926178126" duration="581000" />
+      <workItem from="1720282069794" duration="3217000" />
+      <workItem from="1720417474647" duration="3916000" />
+      <workItem from="1720785875812" duration="748000" />
     </task>
     <task id="LOCAL-00001" summary="template created">
       <option name="closed" value="true" />
@@ -320,7 +334,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719588340961</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="update 29 06">
+      <option name="closed" value="true" />
+      <created>1719691685142</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1719691685142</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,6 +381,7 @@
     <MESSAGE value="begin timesheet" />
     <MESSAGE value="update 27 06" />
     <MESSAGE value="update 28 06" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 28 06" />
+    <MESSAGE value="update 29 06" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 29 06" />
   </component>
 </project>
